@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>宾哥部落格</title>
+  <title>SpringBoot整合HBase | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="宾哥部落格">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="#前言    SpringBoot整合HBase #废话不多说，开始步入正题！ ##第一步，映入Maven依赖     &amp;lt;parent&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/arti">
+<meta name="keywords" content="技术心得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot整合HBase">
+<meta property="og:url" content="http://yoursite.com/2018/06/20/SpringBoot整合HBase/index.html">
 <meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="#前言    SpringBoot整合HBase #废话不多说，开始步入正题！ ##第一步，映入Maven依赖     &amp;lt;parent&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/arti">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-20T06:14:29.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="宾哥部落格">
+<meta name="twitter:title" content="SpringBoot整合HBase">
+<meta name="twitter:description" content="#前言    SpringBoot整合HBase #废话不多说，开始步入正题！ ##第一步，映入Maven依赖     &amp;lt;parent&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/arti">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-SpringBoot整合HBase" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-SpringBoot整合HBase" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/20/SpringBoot整合HBase/" class="article-date">
   <time datetime="2018-06-20T05:44:18.000Z" itemprop="datePublished">2018-06-20</time>
@@ -75,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
+    <h1 class="article-title" itemprop="name">
+      SpringBoot整合HBase
     </h1>
   
 
@@ -160,12 +163,147 @@ public void testCreateTable(){
     });
     System.out.println(ls);
 }
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2018/06/20/SpringBoot整合HBase/#more">Read More</a>
-          </p>
-        
+</code></pre><a id="more"></a>
+<p>##将使用原生的ConnectionFactory.createConnection进行调用HBASE</p>
+<pre><code>import com.hispeed.hbase.label.entity.R;
+import org.apache.hadoop.hbase.*;
+import org.apache.hadoop.hbase.client.*;
+import org.apache.hadoop.hbase.client.coprocessor.AggregationClient;
+import org.apache.hadoop.hbase.client.coprocessor.LongColumnInterpreter;
+import org.apache.hadoop.hbase.filter.FilterBase;
+import org.apache.hadoop.hbase.util.Bytes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.hadoop.hbase.HbaseTemplate;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Component
+public class Hbase {
+
+
+    protected Logger logger = LoggerFactory.getLogger(getClass());
+
+    private  Connection connection;
+
+    public Hbase(HbaseTemplate hbaseTemplate){
+        try {
+            connection = ConnectionFactory.createConnection(hbaseTemplate.getConfiguration());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean createTable(String tableName, String familyName) {
+        try {
+            logger.info(&quot;检查表{}是否存在&quot;, tableName);
+            if (connection.getAdmin().tableExists(TableName.valueOf(tableName))) {
+                logger.info(&quot;表{}已存在&quot;, tableName);
+                return true;
+            }
+            HTableDescriptor hTableDescriptor = new HTableDescriptor(TableName.valueOf(tableName));
+            HColumnDescriptor hColumnDescriptor = new HColumnDescriptor(familyName);
+            hTableDescriptor.addFamily(hColumnDescriptor);
+            connection.getAdmin().createTable(hTableDescriptor);
+            logger.info(&quot;表{}已创建&quot;, tableName);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public R insertData(String tableName, String familyName, String rowKey, Map&lt;String, String&gt; map) {
+        try {
+            if (!connection.getAdmin().tableExists(TableName.valueOf(tableName))) {
+                logger.info(&quot;表{}不存在&quot;, tableName);
+                return R.error(&quot;101&quot;, &quot;表不存在&quot;);
+            }
+            //HTable继承Table
+            HTable hTable = (HTable) connection.getTable(TableName.valueOf(tableName));
+            Put put = new Put(rowKey.getBytes(), rowKey.length());
+            for (Map.Entry&lt;String, String&gt; entry : map.entrySet()) {
+                KeyValue kv = new KeyValue(rowKey.getBytes(), 0, rowKey.getBytes().length, familyName.getBytes(), 0,
+                        familyName.getBytes().length, entry.getKey().getBytes(), 0, entry.getKey().getBytes().length, System.currentTimeMillis(),
+                        KeyValue.Type.Put, entry.getValue().getBytes(), 0, entry.getValue().getBytes().length);
+                put.add(kv);
+            }
+            hTable.put(put);
+            logger.info(&quot;插入成功&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return R.error(&quot;999&quot;, &quot;插入HBase数据异常&quot;);
+        }
+        return R.ok();
+    }
+
+    public &lt;T extends FilterBase&gt;  List&lt;Map&lt;String,String &gt;&gt; queryResult(T filter, int count, String tableName,String familyName) {
+        Scan scan = new Scan();
+        scan.setFilter(filter);
+        try {
+            if (!connection.getAdmin().tableExists(TableName.valueOf(tableName))) {
+                logger.info(&quot;表{}不存在&quot;, tableName);
+                return null;
+            }
+            HTable hTable = (HTable) connection.getTable(TableName.valueOf(tableName));
+            ResultScanner scanner=hTable.getScanner(scan);
+            List&lt;Map&lt;String,String &gt;&gt; list=new ArrayList&lt;&gt;();
+            int ct=0;
+            for (Result result : scanner) {
+                Map&lt;String,String&gt; map=new HashMap();
+                List&lt;Cell&gt; cellList=result.listCells();
+                for(Cell cell : cellList){
+                    String key= Bytes.toString(cell.getQualifierArray(),cell.getQualifierOffset(),cell.getQualifierLength());
+                    String value= Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
+                    map.put(key,value);
+                }
+                list.add(map);
+                logger.info(&quot;查询数据的索引为&quot;+ct);
+                if(list.size()&gt;=count){
+                    break;
+                }
+                ct++;
+            }
+            scanner.close();
+            return list;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    public &lt;T extends FilterBase&gt;  long  query(T filter ,String tableName,String familyName){
+        long rowCount = 0;
+        Scan scan = new Scan();
+        scan.setFilter(filter);
+        scan.addFamily(Bytes.toBytes(familyName));
+        AggregationClient ac = new AggregationClient(connection.getConfiguration());
+        try {
+            rowCount = ac.rowCount(TableName.valueOf(tableName), new LongColumnInterpreter(), scan);
+        }catch (Throwable throwable){
+            logger.info(throwable.getMessage(), throwable);
+        }
+        return rowCount;
+    }
+    public boolean isClose(){
+        try {
+            connection.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+}
+</code></pre><blockquote>
+<p>宾曰：感谢踏雪大佬的指导，学如逆水行舟，不进则退</p>
+</blockquote>
+
       
     </div>
     <footer class="article-footer">
@@ -177,138 +315,19 @@ public void testCreateTable(){
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-宾哥的技术之旅" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/05/宾哥的技术之旅/" class="article-date">
-  <time datetime="2018-06-05T06:29:10.000Z" itemprop="datePublished">2018-06-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/05/宾哥的技术之旅/">宾哥的技术之旅</a>
-    </h1>
+    <a href="/2018/06/05/宾哥的技术之旅/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">宾哥的技术之旅</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天我宾哥就是要干翻在座的各位渣渣！</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><blockquote>
-<p>子曰：不搞个个人技术博客还能叫程序员？</p>
-</blockquote>
-<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/06/05/宾哥的技术之旅/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjimposnk0000mo7kx5qrdbdg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="postname-新建文章" class="article article-type-postname" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/03/新建文章/" class="article-date">
-  <time datetime="2018-06-02T16:47:59.000Z" itemprop="datePublished">2018-06-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/03/新建文章/">新建文章</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/新建文章/" data-id="cjimposnp0001mo7kxtgjtd3n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/03/hello-world/" class="article-date">
-  <time datetime="2018-06-02T16:39:02.340Z" itemprop="datePublished">2018-06-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/03/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjimposnt0003mo7kg5kut35k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
