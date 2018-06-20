@@ -84,10 +84,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#前言<br>    SpringBoot整合HBase</p>
-<p>#废话不多说，开始步入正题！</p>
-<p>##第一步，映入Maven依赖</p>
-<pre><code>    &lt;parent&gt;
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>SpringBoot整合HBase
+</code></pre><h1 id="废话不多说，开始步入正题！"><a href="#废话不多说，开始步入正题！" class="headerlink" title="废话不多说，开始步入正题！"></a>废话不多说，开始步入正题！</h1><h2 id="第一步，映入Maven依赖"><a href="#第一步，映入Maven依赖" class="headerlink" title="第一步，映入Maven依赖"></a>第一步，映入Maven依赖</h2><pre><code>    &lt;parent&gt;
         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
         &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
         &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;
@@ -114,52 +112,57 @@
     &lt;artifactId&gt;spring-data-hadoop&lt;/artifactId&gt;
     &lt;version&gt;2.5.0.RELEASE&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre><p>##第二步，加入SpringBoot配置文件<br>        hbase.zookeeper.quorum=ip<br>        hbase.zookeeper.port=2181</p>
-<p>##第三步，引用HbaseTemplate,测试类使用方式<br>        @Autowired<br>            private HbaseTemplate hbaseTemplate;<br>            @Test<br>            public void contextLoads() {</p>
-<pre><code>}
-@Test
-public void testPut() {
-    hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;name&quot;, Bytes.toBytes(&quot;Alice&quot;));
-    hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;phone&quot;, Bytes.toBytes(&quot;15620974206&quot;));
-}
-@Test
-public void testQuery(){
-    List&lt;String&gt; rows = hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, &quot;phone&quot;, new RowMapper&lt;String&gt;() {
-        @Override
-        public String mapRow(Result result, int i) throws Exception {
-            return result.toString();
-        }
-    });
-    System.out.println(JSONArray.toJSONString(rows));
-    List&lt;String&gt; rowli=    hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, new RowMapper&lt;String&gt;() {
-        @Override
-        public String mapRow(Result result, int i) throws Exception {
-            return result.toString();
-        }
-    });
-    System.out.println(JSONArray.toJSONString(rowli));
+</code></pre><h2 id="第二步，加入SpringBoot配置文件"><a href="#第二步，加入SpringBoot配置文件" class="headerlink" title="第二步，加入SpringBoot配置文件"></a>第二步，加入SpringBoot配置文件</h2><pre><code>hbase.zookeeper.quorum=ip
+hbase.zookeeper.port=2181
+</code></pre><h2 id="第三步，引用HbaseTemplate-测试类使用方式"><a href="#第三步，引用HbaseTemplate-测试类使用方式" class="headerlink" title="第三步，引用HbaseTemplate,测试类使用方式"></a>第三步，引用HbaseTemplate,测试类使用方式</h2><pre><code>@Autowired
+    private HbaseTemplate hbaseTemplate;
+    @Test
+    public void contextLoads() {
 
-}
-
-//依据表名，行号，列族，列名获取数据
-@Test
-public void testCreateTable(){
-    if(hbaseTemplate.getConfiguration()==null){
-        System.out.println(&quot;为啥是空的呢&quot;);
     }
-    String ls = hbaseTemplate.get(&quot;t&quot;, &quot;1&quot;,&quot;f&quot;, &quot;name&quot;, new RowMapper&lt;String&gt;() {
-        @Override
-        public String mapRow(Result result,int i)throws Exception{
-            List&lt;Cell&gt; cellList=result.listCells();
-            String res=&quot;&quot;;
-            for(Cell cell:cellList){
-                res=Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
+    @Test
+    public void testPut() {
+        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;name&quot;, Bytes.toBytes(&quot;Alice&quot;));
+        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;phone&quot;, Bytes.toBytes(&quot;15620974206&quot;));
+    }
+    @Test
+    public void testQuery(){
+        List&lt;String&gt; rows = hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, &quot;phone&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result, int i) throws Exception {
+                return result.toString();
             }
-            return res;
+        });
+        System.out.println(JSONArray.toJSONString(rows));
+        List&lt;String&gt; rowli=    hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result, int i) throws Exception {
+                return result.toString();
+            }
+        });
+        System.out.println(JSONArray.toJSONString(rowli));
+
+    }
+
+    //依据表名，行号，列族，列名获取数据
+    @Test
+    public void testCreateTable(){
+        if(hbaseTemplate.getConfiguration()==null){
+            System.out.println(&quot;为啥是空的呢&quot;);
         }
-    });
-    System.out.println(ls);
-}
+        String ls = hbaseTemplate.get(&quot;t&quot;, &quot;1&quot;,&quot;f&quot;, &quot;name&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result,int i)throws Exception{
+                List&lt;Cell&gt; cellList=result.listCells();
+                String res=&quot;&quot;;
+                for(Cell cell:cellList){
+                    res=Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
+                }
+                return res;
+            }
+        });
+        System.out.println(ls);
+    }
 </code></pre>
         
           <p class="article-more-link">
