@@ -3,16 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>新建文章 | 宾哥部落格</title>
+  <title>代码扫描工具 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="新建文章">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/新建文章/index.html">
+  <meta name="description" content="前言作为一个程序员,需要对自己的代码进行CR,提前找到自己代码中的坏味道或者漏洞;先介绍如下几种代码扫描工具  sonar使用步骤1. 启动sona  地址：E:\sonarqube-6.7.4\bin 选择对应的环境执行  2. 登陆http://localhost:9000/  3. 在工作空间执行          mvn sonar:sonar  4. 对比文档进行修改      Find">
+<meta name="keywords" content="排查工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码扫描工具">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/代码扫描工具/index.html">
 <meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="前言作为一个程序员,需要对自己的代码进行CR,提前找到自己代码中的坏味道或者漏洞;先介绍如下几种代码扫描工具  sonar使用步骤1. 启动sona  地址：E:\sonarqube-6.7.4\bin 选择对应的环境执行  2. 登陆http://localhost:9000/  3. 在工作空间执行          mvn sonar:sonar  4. 对比文档进行修改      Find">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-02T16:47:59.357Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/22/代码扫描工具/FindBugs.png">
+<meta property="og:updated_time" content="2018-11-22T07:40:44.028Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新建文章">
+<meta name="twitter:title" content="代码扫描工具">
+<meta name="twitter:description" content="前言作为一个程序员,需要对自己的代码进行CR,提前找到自己代码中的坏味道或者漏洞;先介绍如下几种代码扫描工具  sonar使用步骤1. 启动sona  地址：E:\sonarqube-6.7.4\bin 选择对应的环境执行  2. 登陆http://localhost:9000/  3. 在工作空间执行          mvn sonar:sonar  4. 对比文档进行修改      Find">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/22/代码扫描工具/FindBugs.png">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -61,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="postname-新建文章" class="article article-type-postname" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-代码扫描工具" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/03/新建文章/" class="article-date">
-  <time datetime="2018-06-02T16:47:59.000Z" itemprop="datePublished">2018-06-03</time>
+    <a href="/2018/11/22/代码扫描工具/" class="article-date">
+  <time datetime="2018-11-22T07:39:08.000Z" itemprop="datePublished">2018-11-22</time>
 </a>
     
   </div>
@@ -75,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      新建文章
+      代码扫描工具
     </h1>
   
 
@@ -83,32 +89,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>作为一个程序员,需要对自己的代码进行CR,提前找到自己代码中的坏味道或者漏洞;先介绍如下几种代码扫描工具
+</code></pre><hr>
+<h2 id="sonar使用步骤"><a href="#sonar使用步骤" class="headerlink" title="sonar使用步骤"></a>sonar使用步骤</h2><pre><code>1. 启动sona
+ 地址：E:\sonarqube-6.7.4\bin 选择对应的环境执行
+
+2. 登陆http://localhost:9000/
+
+3. 在工作空间执行
+         mvn sonar:sonar
+
+4. 对比文档进行修改    
+</code></pre><hr>
+<h2 id="FindBugs使用步骤"><a href="#FindBugs使用步骤" class="headerlink" title="FindBugs使用步骤"></a>FindBugs使用步骤</h2><pre><code>1. 如图下载FindBUgs插件
+</code></pre><p>   <img src="/2018/11/22/代码扫描工具/FindBugs.png" alt="FindBugs.png"></p>
+<ol start="2">
+<li>使用说明<br>邮件点击工程项目,然后点击FIndBugs执行扫描</li>
+</ol>
+<p>【提示】</p>
+<p>至此，findBugs安装完毕，但有个问题，在验证是否安装成功的时候发现，重新启动eclipse后并没有findBugs功能，经过查询分析，问题出在版本上，在线安装的是findBugs3.0的版本，这个版本对jdk的最低要求是jdk1.7。</p>
+<hr>
+<h2 id="P3C阿里插件"><a href="#P3C阿里插件" class="headerlink" title="P3C阿里插件"></a>P3C阿里插件</h2><ol>
+<li>如上述步骤下载插件</li>
+<li>使用方式和FindBugs一样</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/新建文章/" data-id="cjosae3xs0004yw7k3osjvz1o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/代码扫描工具/" data-id="cjosae3xn0002yw7kzfq80tja" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排查工具/">排查工具</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/06/05/宾哥的技术之旅/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          宾哥的技术之旅
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/06/20/SpringBoot整合HBase/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">SpringBoot整合HBase</div>
     </a>
   
 </nav>

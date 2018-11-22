@@ -62,6 +62,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-代码扫描工具" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/代码扫描工具/" class="article-date">
+  <time datetime="2018-11-22T07:39:08.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/代码扫描工具/">代码扫描工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>作为一个程序员,需要对自己的代码进行CR,提前找到自己代码中的坏味道或者漏洞;先介绍如下几种代码扫描工具
+</code></pre><hr>
+<h2 id="sonar使用步骤"><a href="#sonar使用步骤" class="headerlink" title="sonar使用步骤"></a>sonar使用步骤</h2><pre><code>1. 启动sona
+ 地址：E:\sonarqube-6.7.4\bin 选择对应的环境执行
+
+2. 登陆http://localhost:9000/
+
+3. 在工作空间执行
+         mvn sonar:sonar
+
+4. 对比文档进行修改    
+</code></pre><hr>
+<h2 id="FindBugs使用步骤"><a href="#FindBugs使用步骤" class="headerlink" title="FindBugs使用步骤"></a>FindBugs使用步骤</h2><pre><code>1. 如图下载FindBUgs插件
+</code></pre><p>   <img src="/2018/11/22/代码扫描工具/FindBugs.png" alt="FindBugs.png"></p>
+<ol start="2">
+<li>使用说明<br>邮件点击工程项目,然后点击FIndBugs执行扫描</li>
+</ol>
+<p>【提示】</p>
+<p>至此，findBugs安装完毕，但有个问题，在验证是否安装成功的时候发现，重新启动eclipse后并没有findBugs功能，经过查询分析，问题出在版本上，在线安装的是findBugs3.0的版本，这个版本对jdk的最低要求是jdk1.7。</p>
+<hr>
+<h2 id="P3C阿里插件"><a href="#P3C阿里插件" class="headerlink" title="P3C阿里插件"></a>P3C阿里插件</h2><ol>
+<li>如上述步骤下载插件</li>
+<li>使用方式和FindBugs一样</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/代码扫描工具/" data-id="cjosae3xn0002yw7kzfq80tja" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排查工具/">排查工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-SpringBoot整合HBase" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/20/SpringBoot整合HBase/" class="article-date">
@@ -172,7 +234,7 @@ hbase.zookeeper.port=2181
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/20/SpringBoot整合HBase/" data-id="cjimq3d5t0000xo7kc9pms76v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/20/SpringBoot整合HBase/" data-id="cjosae3y40008yw7kp59vfiyq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
@@ -210,7 +272,7 @@ hbase.zookeeper.port=2181
 <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><blockquote>
 <p>子曰：不搞个个人技术博客还能叫程序员？</p>
 </blockquote>
-<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br>
+<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br></p>
         
           <p class="article-more-link">
             <a href="/2018/06/05/宾哥的技术之旅/#more">Read More</a>
@@ -219,7 +281,7 @@ hbase.zookeeper.port=2181
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjimposnk0000mo7kx5qrdbdg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjosae3xj0001yw7ksl1po7if" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
@@ -257,7 +319,7 @@ hbase.zookeeper.port=2181
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/新建文章/" data-id="cjimposnp0001mo7kxtgjtd3n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/03/新建文章/" data-id="cjosae3xs0004yw7k3osjvz1o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +364,7 @@ hbase.zookeeper.port=2181
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjimposnt0003mo7kg5kut35k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjosae3xd0000yw7krn8j1h2k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +386,7 @@ hbase.zookeeper.port=2181
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术心得/">技术心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排查工具/">排查工具</a></li></ul>
     </div>
   </div>
 
@@ -334,7 +396,7 @@ hbase.zookeeper.port=2181
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/技术心得/" style="font-size: 10px;">技术心得</a>
+      <a href="/tags/技术心得/" style="font-size: 20px;">技术心得</a> <a href="/tags/排查工具/" style="font-size: 10px;">排查工具</a>
     </div>
   </div>
 
@@ -343,7 +405,7 @@ hbase.zookeeper.port=2181
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
     </div>
   </div>
 
@@ -354,6 +416,10 @@ hbase.zookeeper.port=2181
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/11/22/代码扫描工具/">代码扫描工具</a>
+          </li>
         
           <li>
             <a href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
