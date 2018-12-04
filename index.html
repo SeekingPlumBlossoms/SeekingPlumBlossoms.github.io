@@ -62,6 +62,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-設計模式之工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/04/設計模式之工厂方法模式/" class="article-date">
+  <time datetime="2018-12-04T03:22:25.000Z" itemprop="datePublished">2018-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/04/設計模式之工厂方法模式/">設計模式之工厂方法模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="工厂方法模式介绍"><a href="#工厂方法模式介绍" class="headerlink" title="工厂方法模式介绍"></a>工厂方法模式介绍</h1><p>工厂方法模式：定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。</p>
+<h1 id="工厂方法模式应用"><a href="#工厂方法模式应用" class="headerlink" title="工厂方法模式应用"></a>工厂方法模式应用</h1><h2 id="工厂方法模式的优点"><a href="#工厂方法模式的优点" class="headerlink" title="工厂方法模式的优点"></a>工厂方法模式的优点</h2><ul>
+<li>良好的封装性，代码结构清晰。</li>
+<li>工厂模式的扩展性非常优秀。在增加产品类的情况下，只要适当的修改具体的工厂类或者扩展一个工厂类就可以完成”拥抱变化”。</li>
+<li>屏蔽产品类。这一特点非常重要，产品类的实现如何变化，调用者都不需要关心，它只需要关心产品的接口，只要接口保持不变，系统的上层模块就不要发生变化，因为产品类的实例化工作是由工厂类负责的，一个产品对象具体由哪一个产品生产是由工厂类决定的。</li>
+<li>工厂方法模式是典型的解耦框架。高层模块只需要知道产品的抽象类，其他的实现类都不用关心，符合迪米特法则，我不需要的就不要去交流，也符合依赖倒置原则，只依赖产品类的抽象，当然也符合里式替换原则，使用产品子类替换产品父类，没有问题！</li>
+</ul>
+<hr>
+<h3 id="工厂方法模式的使用场景"><a href="#工厂方法模式的使用场景" class="headerlink" title="工厂方法模式的使用场景"></a>工厂方法模式的使用场景</h3><ul>
+<li>工厂方法模式是new一个对象的替代品，所以在所有需要生成对象的地方都可以使用，但是需要慎重的考虑是否需要增加一个工厂类进行管理，增加代码的复杂度。</li>
+<li>需要灵活的、可扩展的框架时，可以考虑工厂模式。</li>
+<li>工厂方法模式可以用在异构项目中，例如通过webservice与一个非Java的项目交互，虽然webservice号称是可以做到异构系统的同步化，但是在实际的开发中，还是会碰到很多问题，如类型问题、WSDL文件的支持问题，等等。</li>
+<li>可以使用在测试驱动开发的框架下。例如，测试一个类A，就需要把与类A有关联关系的类B也同时产生出来，我们可以使用工厂方法模式把类B虚拟出来，避免类A与类B的耦合。目前由于JMock和EasyMock的诞生，该使用场景已经弱化了。</li>
+</ul>
+<hr>
+<p>github示例:工厂方法模式:<br><a href="https://github.com/SeekingPlumBlossoms/FactoryPattern.git" target="_blank" rel="noopener">https://github.com/SeekingPlumBlossoms/FactoryPattern.git</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之工厂方法模式/" data-id="cjp9ksp6y00066o7k15wgbqaj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-設計模式之01單例模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/04/設計模式之01單例模式/" class="article-date">
@@ -76,7 +130,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/04/設計模式之01單例模式/">設計模式之01單例模式</a>
+      <a class="article-title" href="/2018/12/04/設計模式之01單例模式/">設計模式之單例模式</a>
     </h1>
   
 
@@ -84,8 +138,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="单例模式介绍"><a href="#单例模式介绍" class="headerlink" title="单例模式介绍"></a>单例模式介绍</h1><pre><code>单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。
-</code></pre><h1 id="单例模式的应用"><a href="#单例模式的应用" class="headerlink" title="单例模式的应用"></a>单例模式的应用</h1><h2 id="1-单例模式的优点"><a href="#1-单例模式的优点" class="headerlink" title="1.单例模式的优点"></a>1.单例模式的优点</h2><ul>
+        <h1 id="单例模式介绍"><a href="#单例模式介绍" class="headerlink" title="单例模式介绍"></a>单例模式介绍</h1><p>单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</p>
+<h1 id="单例模式的应用"><a href="#单例模式的应用" class="headerlink" title="单例模式的应用"></a>单例模式的应用</h1><h2 id="1-单例模式的优点"><a href="#1-单例模式的优点" class="headerlink" title="1.单例模式的优点"></a>1.单例模式的优点</h2><ul>
 <li>由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。 </li>
 <li>由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资源时,如读取配置，产生其他依赖对象时，则可以通过在应用启动时直接产生一个单例对象,然后用永久驻留内存的方式来解决(在java EE中采用单例模式时需要注意JVM垃圾回收机制)。 </li>
 <li>单例模式可以避免对资源的多重占用,例如一个写文件的动作,由于只有一个实例存在内存中，避免对同一个资源文件的同时写操作。</li>
@@ -110,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之01單例模式/" data-id="cjp94guvy0001b87kb1h9uypa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之01單例模式/" data-id="cjp9ksp6v00056o7k0scwg2yl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -172,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/代码扫描工具/" data-id="cjp94guw00002b87k85xfwwn1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/代码扫描工具/" data-id="cjp9ksp6j00016o7k52vj868w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排查工具/">排查工具</a></li></ul>
@@ -294,7 +348,7 @@ hbase.zookeeper.port=2181
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/20/SpringBoot整合HBase/" data-id="cjp94guwq000ab87k321o713o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/20/SpringBoot整合HBase/" data-id="cjp9ksp6q00046o7kawvulyts" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
@@ -341,7 +395,7 @@ hbase.zookeeper.port=2181
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjp94guwe0007b87k7053ib3t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjp9ksp6l00026o7ku1b10tzg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
@@ -388,7 +442,7 @@ hbase.zookeeper.port=2181
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjp94guvt0000b87k9y3a46e0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjp9ksp5y00006o7kru5paxn1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -420,7 +474,7 @@ hbase.zookeeper.port=2181
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/技术心得/" style="font-size: 20px;">技术心得</a> <a href="/tags/排查工具/" style="font-size: 10px;">排查工具</a> <a href="/tags/設計模式/" style="font-size: 10px;">設計模式</a>
+      <a href="/tags/技术心得/" style="font-size: 20px;">技术心得</a> <a href="/tags/排查工具/" style="font-size: 10px;">排查工具</a> <a href="/tags/設計模式/" style="font-size: 20px;">設計模式</a>
     </div>
   </div>
 
@@ -442,7 +496,11 @@ hbase.zookeeper.port=2181
       <ul>
         
           <li>
-            <a href="/2018/12/04/設計模式之01單例模式/">設計模式之01單例模式</a>
+            <a href="/2018/12/04/設計模式之工厂方法模式/">設計模式之工厂方法模式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/04/設計模式之01單例模式/">設計模式之單例模式</a>
           </li>
         
           <li>
@@ -455,10 +513,6 @@ hbase.zookeeper.port=2181
         
           <li>
             <a href="/2018/06/05/宾哥的技术之旅/">宾哥的技术之旅</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/03/hello-world/">Hello World</a>
           </li>
         
       </ul>
