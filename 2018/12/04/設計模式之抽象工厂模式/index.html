@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>宾哥的技术之旅 | 宾哥部落格</title>
+  <title>設計模式之抽象工厂模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天我宾哥就是要干翻在座的各位渣渣！ 一级标题二级标题三级标题 子曰：不搞个个人技术博客还能叫程序员？  鲁迅说：子说的对我怎么斜了？">
-<meta name="keywords" content="技术心得">
+  <meta name="description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+<meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="宾哥的技术之旅">
-<meta property="og:url" content="http://yoursite.com/2018/06/05/宾哥的技术之旅/index.html">
+<meta property="og:title" content="設計模式之抽象工厂模式">
+<meta property="og:url" content="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="今天我宾哥就是要干翻在座的各位渣渣！ 一级标题二级标题三级标题 子曰：不搞个个人技术博客还能叫程序员？  鲁迅说：子说的对我怎么斜了？">
+<meta property="og:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-05T06:34:32.143Z">
+<meta property="og:updated_time" content="2018-12-04T14:45:47.530Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="宾哥的技术之旅">
-<meta name="twitter:description" content="今天我宾哥就是要干翻在座的各位渣渣！ 一级标题二级标题三级标题 子曰：不搞个个人技术博客还能叫程序员？  鲁迅说：子说的对我怎么斜了？">
+<meta name="twitter:title" content="設計模式之抽象工厂模式">
+<meta name="twitter:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-宾哥的技术之旅" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-設計模式之抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/05/宾哥的技术之旅/" class="article-date">
-  <time datetime="2018-06-05T06:29:10.000Z" itemprop="datePublished">2018-06-05</time>
+    <a href="/2018/12/04/設計模式之抽象工厂模式/" class="article-date">
+  <time datetime="2018-12-04T14:31:37.000Z" itemprop="datePublished">2018-12-04</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      宾哥的技术之旅
+      設計模式之抽象工厂模式
     </h1>
   
 
@@ -87,36 +87,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天我宾哥就是要干翻在座的各位渣渣！</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><blockquote>
-<p>子曰：不搞个个人技术博客还能叫程序员？</p>
-</blockquote>
-<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br><a id="more"></a></p>
-<font color="yellow">我怎么黄了?</font>
+        <h1 id="抽象工厂模式介绍"><a href="#抽象工厂模式介绍" class="headerlink" title="抽象工厂模式介绍"></a>抽象工厂模式介绍</h1><p>抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。</p>
+<h1 id="抽象工厂模式的应用"><a href="#抽象工厂模式的应用" class="headerlink" title="抽象工厂模式的应用"></a>抽象工厂模式的应用</h1><h2 id="1-抽象工厂模式的优点"><a href="#1-抽象工厂模式的优点" class="headerlink" title="1.抽象工厂模式的优点"></a>1.抽象工厂模式的优点</h2><ul>
+<li>封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如此。</li>
+<li>产品族内的约束为非公开状态。具体的产品族内的约束是在工厂内实现的。</li>
+</ul>
+<hr>
+<h2 id="2-抽象工厂模式的缺点"><a href="#2-抽象工厂模式的缺点" class="headerlink" title="2.抽象工厂模式的缺点"></a>2.抽象工厂模式的缺点</h2><ul>
+<li>抽象工厂模式的最大缺点就是产品族扩展非常困难。</li>
+</ul>
+<hr>
+<h2 id="3-抽象工厂模式的使用场景"><a href="#3-抽象工厂模式的使用场景" class="headerlink" title="3.抽象工厂模式的使用场景"></a>3.抽象工厂模式的使用场景</h2><ul>
+<li>一个对象族(或是一组没有任何关系的对象)都有相同的约束，则可以使用抽象工厂模式。</li>
+</ul>
+<hr>
+<p> github示例:抽象工厂模式:<a href="https://github.com/SeekingPlumBlossoms/AbstractFactoryPattern.git" target="_blank" rel="noopener">https://github.com/SeekingPlumBlossoms/AbstractFactoryPattern.git</a></p>
 
-<pre><code>@Component
-public class HbaseClient {
-
-    @Bean
-    public HbaseTemplate hbaseTemplate(@Value(&quot;${hbase.zookeeper.quorum}&quot;) String quorum,
-                                       @Value(&quot;${hbase.zookeeper.port}&quot;) String port) {
-        HbaseTemplate hbaseTemplate = new HbaseTemplate();
-        org.apache.hadoop.conf.Configuration conf = HBaseConfiguration.create();
-        conf.set(&quot;hbase.zookeeper.quorum&quot;, quorum);
-        conf.set(&quot;hbase.zookeeper.port&quot;, port);
-        hbaseTemplate.setConfiguration(conf);
-        hbaseTemplate.setAutoFlush(true);
-        return hbaseTemplate;
-    }
-}
-</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjp9uw2ej0001eo7k3st5zzm7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/" data-id="cjp9uw2fa000deo7kuuwx5u0z" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
 
     </footer>
   </div>
@@ -124,19 +117,10 @@ public class HbaseClient {
     
 <nav id="article-nav">
   
-    <a href="/2018/06/20/SpringBoot整合HBase/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          SpringBoot整合HBase
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/12/04/設計模式之工厂方法模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">設計模式之工厂方法模式</div>
     </a>
   
 </nav>
