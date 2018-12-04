@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>設計模式之01單例模式 | 宾哥部落格</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 单例模式的应用1.单例模式的优点 由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。  由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资">
+<meta name="keywords" content="設計模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="設計模式之01單例模式">
+<meta property="og:url" content="http://yoursite.com/2018/12/04/設計模式之01單例模式/index.html">
+<meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 单例模式的应用1.单例模式的优点 由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。  由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-04T03:17:17.007Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="設計模式之01單例模式">
+<meta name="twitter:description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 单例模式的应用1.单例模式的优点 由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。  由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资">
+  
+    <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">宾哥部落格</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-設計模式之01單例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/04/設計模式之01單例模式/" class="article-date">
+  <time datetime="2018-12-04T01:13:24.000Z" itemprop="datePublished">2018-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      設計模式之01單例模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="单例模式介绍"><a href="#单例模式介绍" class="headerlink" title="单例模式介绍"></a>单例模式介绍</h1><pre><code>单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。
+</code></pre><h1 id="单例模式的应用"><a href="#单例模式的应用" class="headerlink" title="单例模式的应用"></a>单例模式的应用</h1><h2 id="1-单例模式的优点"><a href="#1-单例模式的优点" class="headerlink" title="1.单例模式的优点"></a>1.单例模式的优点</h2><ul>
+<li>由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。 </li>
+<li>由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资源时,如读取配置，产生其他依赖对象时，则可以通过在应用启动时直接产生一个单例对象,然后用永久驻留内存的方式来解决(在java EE中采用单例模式时需要注意JVM垃圾回收机制)。 </li>
+<li>单例模式可以避免对资源的多重占用,例如一个写文件的动作,由于只有一个实例存在内存中，避免对同一个资源文件的同时写操作。</li>
+<li>单例模式可以再系统设置全局的访问点，优化和共享资源访问，例如可以设计一个单例类，负责所有数据表的映射处理。</li>
+</ul>
+<hr>
+<h2 id="2-单例模式的缺点"><a href="#2-单例模式的缺点" class="headerlink" title="2.单例模式的缺点"></a>2.单例模式的缺点</h2><ul>
+<li>单例模式一般没有接口,扩展很困难,若要扩展,除了修改代码基本上没有第二种途径可以实现。因为接口对单例模式是没有任何意义的，它要求”自行实例化”，并且提供单一实例、接口或抽象类是不可能被实例化的。当然，在特殊情况下，单例模式可以实现接口、被继承等，需要在系统开发中根据环境判断。</li>
+<li>单例模式对测试是不利的。在并发开发环境中，如果单例模式没有完成，是不能进行测试的，没有接口也不能使用mock的方式虚拟一个对象。</li>
+<li>单例模式与单一职责原则有冲突。一个类应该只实现一个逻辑，而不关心它是否是单例的，是不是要单例取决于环境，单例模式把“要单例”和业务逻辑融合在一个类中。</li>
+</ul>
+<hr>
+<h2 id="3-单例模式的使用场景"><a href="#3-单例模式的使用场景" class="headerlink" title="3.单例模式的使用场景"></a>3.单例模式的使用场景</h2><ul>
+<li>要求生成唯一序列号的环境；</li>
+<li>在整个项目中需要一个共享访问点或者共享数据，例如一个web页面上的计数器，可以不用把每次舒心都记录到数据库中，使用单例模式保持计数器的值，并确保是线程安全的；</li>
+<li>创建一个对象需要消耗的资源过多，如要访问IO和数据库等资源;</li>
+<li>需要定义大量的静态资源和静态方法(如工具类)的环境，可以采用单例模式（当然，也可以直接声明为static的方式）</li>
+</ul>
+<hr>
+<p> github示例:单例模式:<a href="https://github.com/SeekingPlumBlossoms/SingletonPattern.git" target="_blank" rel="noopener">https://github.com/SeekingPlumBlossoms/SingletonPattern.git</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之01單例模式/" data-id="cjp94guvy0001b87kb1h9uypa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/代码扫描工具/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">代码扫描工具</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术心得/">技术心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排查工具/">排查工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/技术心得/" style="font-size: 20px;">技术心得</a> <a href="/tags/排查工具/" style="font-size: 10px;">排查工具</a> <a href="/tags/設計模式/" style="font-size: 10px;">設計模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/04/設計模式之01單例模式/">設計模式之01單例模式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/代码扫描工具/">代码扫描工具</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/05/宾哥的技术之旅/">宾哥的技术之旅</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/03/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
