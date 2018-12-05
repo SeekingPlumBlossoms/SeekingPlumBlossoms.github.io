@@ -5,18 +5,18 @@
   
   <title>設計模式之原型模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。     原型模式的应用1.原型模式的优点 性能优良 原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。   逃避构造函数的约束 这既是他的优点也是他的缺点，直接在内存中拷贝">
+  <meta name="description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。">
 <meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="設計模式之原型模式">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/設計模式之原型模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。     原型模式的应用1.原型模式的优点 性能优良 原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。   逃避构造函数的约束 这既是他的优点也是他的缺点，直接在内存中拷贝">
+<meta property="og:description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T08:32:13.605Z">
+<meta property="og:updated_time" content="2018-12-05T08:42:40.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="設計模式之原型模式">
-<meta name="twitter:description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。     原型模式的应用1.原型模式的优点 性能优良 原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。   逃避构造函数的约束 这既是他的优点也是他的缺点，直接在内存中拷贝">
+<meta name="twitter:description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -94,6 +94,7 @@
 </li>
 </ul>
 <hr>
+<a id="more"></a>
 <h1 id="原型模式的应用"><a href="#原型模式的应用" class="headerlink" title="原型模式的应用"></a>原型模式的应用</h1><h2 id="1-原型模式的优点"><a href="#1-原型模式的优点" class="headerlink" title="1.原型模式的优点"></a>1.原型模式的优点</h2><ul>
 <li>性能优良<ul>
 <li>原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。</li>

@@ -5,18 +5,18 @@
   
   <title>設計模式之抽象工厂模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+  <meta name="description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。">
 <meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="設計模式之抽象工厂模式">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+<meta property="og:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T08:31:25.436Z">
+<meta property="og:updated_time" content="2018-12-05T08:44:25.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="設計模式之抽象工厂模式">
-<meta name="twitter:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+<meta name="twitter:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -88,6 +88,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="抽象工厂模式介绍"><a href="#抽象工厂模式介绍" class="headerlink" title="抽象工厂模式介绍"></a>抽象工厂模式介绍</h1><p>抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。</p>
+<a id="more"></a>
 <h1 id="抽象工厂模式的应用"><a href="#抽象工厂模式的应用" class="headerlink" title="抽象工厂模式的应用"></a>抽象工厂模式的应用</h1><h2 id="1-抽象工厂模式的优点"><a href="#1-抽象工厂模式的优点" class="headerlink" title="1.抽象工厂模式的优点"></a>1.抽象工厂模式的优点</h2><ul>
 <li>封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如此。</li>
 <li>产品族内的约束为非公开状态。具体的产品族内的约束是在工厂内实现的。</li>

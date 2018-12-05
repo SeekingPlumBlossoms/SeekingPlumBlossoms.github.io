@@ -129,40 +129,11 @@
 </li>
 </ul>
 <hr>
-<h1 id="原型模式的应用"><a href="#原型模式的应用" class="headerlink" title="原型模式的应用"></a>原型模式的应用</h1><h2 id="1-原型模式的优点"><a href="#1-原型模式的优点" class="headerlink" title="1.原型模式的优点"></a>1.原型模式的优点</h2><ul>
-<li>性能优良<ul>
-<li>原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。</li>
-</ul>
-</li>
-<li>逃避构造函数的约束<ul>
-<li>这既是他的优点也是他的缺点，直接在内存中拷贝，构造函数不会被执行。优点就是减少了约束。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="2-原型模式的使用场景"><a href="#2-原型模式的使用场景" class="headerlink" title="2.原型模式的使用场景"></a>2.原型模式的使用场景</h2><ul>
-<li>资源优化场景<ul>
-<li>类初始化需要消化非常多的资源，这个资源包括数据，硬件资源等。</li>
-</ul>
-</li>
-<li>性能和安全要求的场景<ul>
-<li>通过new产生一个对象需要非常繁琐的数据准备或者访问权限，则可以使用原型模式。</li>
-</ul>
-</li>
-<li>一个对象多个修改者的场景<ul>
-<li>一个对象需要提供给其他对象访问，而且各个调用者都可能需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-原型模式注意事项"><a href="#3-原型模式注意事项" class="headerlink" title="3.原型模式注意事项"></a>3.原型模式注意事项</h2><ul>
-<li>构造函数不会被执行</li>
-<li>浅拷贝和深拷贝</li>
-<li>clone和final冲突</li>
-</ul>
-<hr>
-<p> github示例:<br> <a href="https://github.com/SeekingPlumBlossoms/PrototypePattern.git" target="_blank" rel="noopener">原型模式</a></p>
-<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/12/05/設計模式之原型模式/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -216,27 +187,11 @@
 <li>Proxy代理主题角色<br>  *也叫做委托类、代理类。它负责对真实角色的应用，把所有抽象主题类定义的方法限制委托给真实的主题角色实现，并且在真实主题角色处理完毕前后做预处理和善后处理工作。</li>
 </ul>
 <hr>
-<h1 id="代理模式的应用"><a href="#代理模式的应用" class="headerlink" title="代理模式的应用"></a>代理模式的应用</h1><h2 id="1-代理模式的优点"><a href="#1-代理模式的优点" class="headerlink" title="1.代理模式的优点"></a>1.代理模式的优点</h2><ul>
-<li>职责清晰<ul>
-<li>真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，通过后去的代理完成一件事务，附带的结果就是编程简洁清晰。</li>
-</ul>
-</li>
-<li>高扩展性<ul>
-<li>具体主题角色是随时都会发生变化的，只要它实现了接口，甭管它如何变化，都逃不脱如来佛的手掌(接口)，那我们的代理类完全就可以再不做任何修改的情况下使用。</li>
-</ul>
-</li>
-<li>智能化</li>
-</ul>
-<hr>
-<h2 id="2-代理模式的扩展"><a href="#2-代理模式的扩展" class="headerlink" title="2.代理模式的扩展"></a>2.代理模式的扩展</h2><ul>
-<li>普通代理</li>
-<li>强制代理</li>
-<li>动态代理</li>
-</ul>
-<hr>
-<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/ProxyPattern.git" target="_blank" rel="noopener">代理模式</a></p>
-<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/12/05/設計模式之代理模式/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -297,28 +252,11 @@
 </li>
 </ul>
 <hr>
-<h1 id="建造者模式的应用"><a href="#建造者模式的应用" class="headerlink" title="建造者模式的应用"></a>建造者模式的应用</h1><h2 id="建造者模式的优点"><a href="#建造者模式的优点" class="headerlink" title="建造者模式的优点"></a>建造者模式的优点</h2><ul>
-<li>封装性<ul>
-<li>使用建造者模式可以使客户端不必知道产品内部的组成细节。</li>
-</ul>
-</li>
-<li>建造者独立，容易扩展</li>
-<li>便于控制细节风险<ul>
-<li>由于具体的建造者是独立的，因此可以对建造过程逐步细化，而不对其他的模板产生任何的影响。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="建造者模式的使用场景"><a href="#建造者模式的使用场景" class="headerlink" title="建造者模式的使用场景"></a>建造者模式的使用场景</h2><ul>
-<li>相同的方法，不同的执行顺序，产生不同的事件结果时，可以采用建造者模式。</li>
-<li>多个部件或者零件，都可以装配到一个对象中，但是产生的运行结果又不相同时，则可以使用该模式。</li>
-<li>产品类非常复杂，或者产品类中的调用顺序不同产生了不同的效能，这个时候使用建造者模式非常合适。</li>
-<li>在对象创建过程中会使用到系统中的一些其他对象，这些对象在产品对象的创建过程中不易得到时，也可以采用建造者模式封装对该对象的创建过程，这种场景只能是一个补偿方法，因为一个对象不容易获得，而在设计阶段竟然没有发觉，而要通过创建者模式柔化创建过程，本身已经违反涉及的最初目标。</li>
-</ul>
-<hr>
-<p> github示例:<a href="https://github.com/SeekingPlumBlossoms/BuilderPattern.git" target="_blank" rel="noopener">建造者模式</a></p>
-<p>  友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/12/05/設計模式之建造者模式/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -357,25 +295,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="模板方法模式介紹"><a href="#模板方法模式介紹" class="headerlink" title="模板方法模式介紹"></a>模板方法模式介紹</h1><p>模板方法模式(Template Method Pattern):定义一个操作中的算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法的结构即可重定义该算法的某些特定的步骤。</p>
-<h1 id="模板方法模式的应用"><a href="#模板方法模式的应用" class="headerlink" title="模板方法模式的应用"></a>模板方法模式的应用</h1><h2 id="1-模板方法模式的优点"><a href="#1-模板方法模式的优点" class="headerlink" title="1.模板方法模式的优点"></a>1.模板方法模式的优点</h2><ul>
-<li>封装不变部分，扩展可变部分。把认为是不变部分的算法封装到父类实现，而可变部分的则可以通过类继承来继续扩展。</li>
-<li>提取公共部分代码，便于维护。</li>
-<li>行为由父类控制，子类实现。基本方法都是由子类实现的，因此子类可以通过扩展的方式增加相应的功能，符合开闭原则。</li>
-</ul>
 <hr>
-<h2 id="2-模板方法模式的缺点"><a href="#2-模板方法模式的缺点" class="headerlink" title="2.模板方法模式的缺点"></a>2.模板方法模式的缺点</h2><ul>
-<li>按照我们的设计习惯，抽象类负责声明最抽象、最一般的事物属性和方法，实现类完成具体的事物属性和方法。但是模板方法模式缺颠倒了，抽象类定义了部分抽象方法，由子类实现，子类的执行结果影响了父类的结果，也就是子类对父类产生了影响，这在复杂的项目中，会带来代码阅读的难度，而且也会让新手产生不适感。</li>
-</ul>
-<hr>
-<h2 id="3-模板方法模式的使用场景"><a href="#3-模板方法模式的使用场景" class="headerlink" title="3.模板方法模式的使用场景"></a>3.模板方法模式的使用场景</h2><ul>
-<li>多个子类有公有的方法，并且逻辑基本相同时。</li>
-<li>重要、复杂的算法，可以把核心算法设计为模板方法，周边的相关细节功能则有各个子类实现。</li>
-<li>重构时，模板方法模式是一个经常使用的模式，把相同的代码抽象到父类中，然后通过钩子函数约束其行为。</li>
-</ul>
-<hr>
-<p>github示例:<br> <a href="https://github.com/SeekingPlumBlossoms/TemplateMethodPattern.git" target="_blank" rel="noopener">模板方法模式</a></p>
-<p> 友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/12/04/設計模式之模板方法模式/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -414,22 +339,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="抽象工厂模式介绍"><a href="#抽象工厂模式介绍" class="headerlink" title="抽象工厂模式介绍"></a>抽象工厂模式介绍</h1><p>抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。</p>
-<h1 id="抽象工厂模式的应用"><a href="#抽象工厂模式的应用" class="headerlink" title="抽象工厂模式的应用"></a>抽象工厂模式的应用</h1><h2 id="1-抽象工厂模式的优点"><a href="#1-抽象工厂模式的优点" class="headerlink" title="1.抽象工厂模式的优点"></a>1.抽象工厂模式的优点</h2><ul>
-<li>封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如此。</li>
-<li>产品族内的约束为非公开状态。具体的产品族内的约束是在工厂内实现的。</li>
-</ul>
-<hr>
-<h2 id="2-抽象工厂模式的缺点"><a href="#2-抽象工厂模式的缺点" class="headerlink" title="2.抽象工厂模式的缺点"></a>2.抽象工厂模式的缺点</h2><ul>
-<li>抽象工厂模式的最大缺点就是产品族扩展非常困难。</li>
-</ul>
-<hr>
-<h2 id="3-抽象工厂模式的使用场景"><a href="#3-抽象工厂模式的使用场景" class="headerlink" title="3.抽象工厂模式的使用场景"></a>3.抽象工厂模式的使用场景</h2><ul>
-<li>一个对象族(或是一组没有任何关系的对象)都有相同的约束，则可以使用抽象工厂模式。</li>
-</ul>
-<hr>
-<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/AbstractFactoryPattern.git" target="_blank" rel="noopener">抽象工厂模式</a></p>
-<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/12/04/設計模式之抽象工厂模式/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -468,23 +382,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="工厂方法模式介绍"><a href="#工厂方法模式介绍" class="headerlink" title="工厂方法模式介绍"></a>工厂方法模式介绍</h1><p>工厂方法模式：定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。</p>
-<h1 id="工厂方法模式应用"><a href="#工厂方法模式应用" class="headerlink" title="工厂方法模式应用"></a>工厂方法模式应用</h1><h2 id="工厂方法模式的优点"><a href="#工厂方法模式的优点" class="headerlink" title="工厂方法模式的优点"></a>工厂方法模式的优点</h2><ul>
-<li>良好的封装性，代码结构清晰。</li>
-<li>工厂模式的扩展性非常优秀。在增加产品类的情况下，只要适当的修改具体的工厂类或者扩展一个工厂类就可以完成”拥抱变化”。</li>
-<li>屏蔽产品类。这一特点非常重要，产品类的实现如何变化，调用者都不需要关心，它只需要关心产品的接口，只要接口保持不变，系统的上层模块就不要发生变化，因为产品类的实例化工作是由工厂类负责的，一个产品对象具体由哪一个产品生产是由工厂类决定的。</li>
-<li>工厂方法模式是典型的解耦框架。高层模块只需要知道产品的抽象类，其他的实现类都不用关心，符合迪米特法则，我不需要的就不要去交流，也符合依赖倒置原则，只依赖产品类的抽象，当然也符合里式替换原则，使用产品子类替换产品父类，没有问题！</li>
-</ul>
-<hr>
-<h3 id="工厂方法模式的使用场景"><a href="#工厂方法模式的使用场景" class="headerlink" title="工厂方法模式的使用场景"></a>工厂方法模式的使用场景</h3><ul>
-<li>工厂方法模式是new一个对象的替代品，所以在所有需要生成对象的地方都可以使用，但是需要慎重的考虑是否需要增加一个工厂类进行管理，增加代码的复杂度。</li>
-<li>需要灵活的、可扩展的框架时，可以考虑工厂模式。</li>
-<li>工厂方法模式可以用在异构项目中，例如通过webservice与一个非Java的项目交互，虽然webservice号称是可以做到异构系统的同步化，但是在实际的开发中，还是会碰到很多问题，如类型问题、WSDL文件的支持问题，等等。</li>
-<li>可以使用在测试驱动开发的框架下。例如，测试一个类A，就需要把与类A有关联关系的类B也同时产生出来，我们可以使用工厂方法模式把类B虚拟出来，避免类A与类B的耦合。目前由于JMock和EasyMock的诞生，该使用场景已经弱化了。</li>
-</ul>
-<hr>
-<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/FactoryPattern.git" target="_blank" rel="noopener">工厂方法模式</a></p>
-<p> 友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/12/04/設計模式之工厂方法模式/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -523,29 +425,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="单例模式介绍"><a href="#单例模式介绍" class="headerlink" title="单例模式介绍"></a>单例模式介绍</h1><p>单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</p>
-<h1 id="单例模式的应用"><a href="#单例模式的应用" class="headerlink" title="单例模式的应用"></a>单例模式的应用</h1><h2 id="1-单例模式的优点"><a href="#1-单例模式的优点" class="headerlink" title="1.单例模式的优点"></a>1.单例模式的优点</h2><ul>
-<li>由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。 </li>
-<li>由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资源时,如读取配置，产生其他依赖对象时，则可以通过在应用启动时直接产生一个单例对象,然后用永久驻留内存的方式来解决(在java EE中采用单例模式时需要注意JVM垃圾回收机制)。 </li>
-<li>单例模式可以避免对资源的多重占用,例如一个写文件的动作,由于只有一个实例存在内存中，避免对同一个资源文件的同时写操作。</li>
-<li>单例模式可以再系统设置全局的访问点，优化和共享资源访问，例如可以设计一个单例类，负责所有数据表的映射处理。</li>
-</ul>
-<hr>
-<h2 id="2-单例模式的缺点"><a href="#2-单例模式的缺点" class="headerlink" title="2.单例模式的缺点"></a>2.单例模式的缺点</h2><ul>
-<li>单例模式一般没有接口,扩展很困难,若要扩展,除了修改代码基本上没有第二种途径可以实现。因为接口对单例模式是没有任何意义的，它要求”自行实例化”，并且提供单一实例、接口或抽象类是不可能被实例化的。当然，在特殊情况下，单例模式可以实现接口、被继承等，需要在系统开发中根据环境判断。</li>
-<li>单例模式对测试是不利的。在并发开发环境中，如果单例模式没有完成，是不能进行测试的，没有接口也不能使用mock的方式虚拟一个对象。</li>
-<li>单例模式与单一职责原则有冲突。一个类应该只实现一个逻辑，而不关心它是否是单例的，是不是要单例取决于环境，单例模式把“要单例”和业务逻辑融合在一个类中。</li>
-</ul>
-<hr>
-<h2 id="3-单例模式的使用场景"><a href="#3-单例模式的使用场景" class="headerlink" title="3.单例模式的使用场景"></a>3.单例模式的使用场景</h2><ul>
-<li>要求生成唯一序列号的环境；</li>
-<li>在整个项目中需要一个共享访问点或者共享数据，例如一个web页面上的计数器，可以不用把每次舒心都记录到数据库中，使用单例模式保持计数器的值，并确保是线程安全的；</li>
-<li>创建一个对象需要消耗的资源过多，如要访问IO和数据库等资源;</li>
-<li>需要定义大量的静态资源和静态方法(如工具类)的环境，可以采用单例模式（当然，也可以直接声明为static的方式）</li>
-</ul>
-<hr>
-<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/SingletonPattern.git" target="_blank" rel="noopener">单例模式</a></p>
-<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/12/04/設計模式之01單例模式/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

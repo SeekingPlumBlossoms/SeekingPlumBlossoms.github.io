@@ -5,18 +5,18 @@
   
   <title>設計模式之單例模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 单例模式的应用1.单例模式的优点 由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。  由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资">
+  <meta name="description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。">
 <meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="設計模式之單例模式">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/設計模式之01單例模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 单例模式的应用1.单例模式的优点 由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。  由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资">
+<meta property="og:description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T08:29:58.826Z">
+<meta property="og:updated_time" content="2018-12-05T08:42:07.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="設計模式之單例模式">
-<meta name="twitter:description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。 单例模式的应用1.单例模式的优点 由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。  由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资">
+<meta name="twitter:description" content="单例模式介绍单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -88,6 +88,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="单例模式介绍"><a href="#单例模式介绍" class="headerlink" title="单例模式介绍"></a>单例模式介绍</h1><p>单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</p>
+<a id="more"></a>
 <h1 id="单例模式的应用"><a href="#单例模式的应用" class="headerlink" title="单例模式的应用"></a>单例模式的应用</h1><h2 id="1-单例模式的优点"><a href="#1-单例模式的优点" class="headerlink" title="1.单例模式的优点"></a>1.单例模式的优点</h2><ul>
 <li>由于单例模式在内存中只有一个实例，减少了内存开支，特别是一个对象需要频繁的创建、销毁时,而且创建或者销毁时性能又无法优化,单例模式的优势就非常明显。 </li>
 <li>由于单例模式只生成一个实例，所以减少了系统的性能开销，当一个对象的产生需要    比较多的资源时,如读取配置，产生其他依赖对象时，则可以通过在应用启动时直接产生一个单例对象,然后用永久驻留内存的方式来解决(在java EE中采用单例模式时需要注意JVM垃圾回收机制)。 </li>

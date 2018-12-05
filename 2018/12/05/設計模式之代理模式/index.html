@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="宾哥部落格">
 <meta property="og:description" content="代理模式介绍 代理模式定义 代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。   Subject抽象主体角色 抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。   RealSubkect具体主题角色 也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。   Proxy代理主题角色  *也叫做委托类、代理类。它负责对真">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T08:30:51.793Z">
+<meta property="og:updated_time" content="2018-12-05T08:44:13.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="設計模式之代理模式">
 <meta name="twitter:description" content="代理模式介绍 代理模式定义 代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。   Subject抽象主体角色 抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。   RealSubkect具体主题角色 也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。   Proxy代理主题角色  *也叫做委托类、代理类。它负责对真">
@@ -103,6 +103,7 @@
 <li>Proxy代理主题角色<br>  *也叫做委托类、代理类。它负责对真实角色的应用，把所有抽象主题类定义的方法限制委托给真实的主题角色实现，并且在真实主题角色处理完毕前后做预处理和善后处理工作。</li>
 </ul>
 <hr>
+<a id="more"></a>
 <h1 id="代理模式的应用"><a href="#代理模式的应用" class="headerlink" title="代理模式的应用"></a>代理模式的应用</h1><h2 id="1-代理模式的优点"><a href="#1-代理模式的优点" class="headerlink" title="1.代理模式的优点"></a>1.代理模式的优点</h2><ul>
 <li>职责清晰<ul>
 <li>真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，通过后去的代理完成一件事务，附带的结果就是编程简洁清晰。</li>
