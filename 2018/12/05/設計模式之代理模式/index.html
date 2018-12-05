@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | 宾哥部落格</title>
+  <title>設計模式之代理模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="代理模式介绍 代理模式定义 代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。   Subject抽象主体角色 抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。   RealSubkect具体主题角色 也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。   Proxy代理主题角色  *也叫做委托类、代理类。它负责对真">
+<meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/hello-world/index.html">
+<meta property="og:title" content="設計模式之代理模式">
+<meta property="og:url" content="http://yoursite.com/2018/12/05/設計模式之代理模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="代理模式介绍 代理模式定义 代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。   Subject抽象主体角色 抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。   RealSubkect具体主题角色 也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。   Proxy代理主题角色  *也叫做委托类、代理类。它负责对真">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-28T00:39:58.000Z">
+<meta property="og:updated_time" content="2018-12-05T08:30:51.793Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="設計模式之代理模式">
+<meta name="twitter:description" content="代理模式介绍 代理模式定义 代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。   Subject抽象主体角色 抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。   RealSubkect具体主题角色 也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。   Proxy代理主题角色  *也叫做委托类、代理类。它负责对真">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -64,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-設計模式之代理模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/03/hello-world/" class="article-date">
-  <time datetime="2018-06-02T16:39:02.340Z" itemprop="datePublished">2018-06-03</time>
+    <a href="/2018/12/05/設計模式之代理模式/" class="article-date">
+  <time datetime="2018-12-05T06:15:41.000Z" itemprop="datePublished">2018-12-05</time>
 </a>
     
   </div>
@@ -78,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      設計模式之代理模式
     </h1>
   
 
@@ -86,37 +87,71 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="代理模式介绍"><a href="#代理模式介绍" class="headerlink" title="代理模式介绍"></a>代理模式介绍</h1><ul>
+<li>代理模式定义<ul>
+<li>代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。</li>
+</ul>
+</li>
+<li>Subject抽象主体角色<ul>
+<li>抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。</li>
+</ul>
+</li>
+<li>RealSubkect具体主题角色<ul>
+<li>也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。</li>
+</ul>
+</li>
+<li>Proxy代理主题角色<br>  *也叫做委托类、代理类。它负责对真实角色的应用，把所有抽象主题类定义的方法限制委托给真实的主题角色实现，并且在真实主题角色处理完毕前后做预处理和善后处理工作。</li>
+</ul>
+<hr>
+<h1 id="代理模式的应用"><a href="#代理模式的应用" class="headerlink" title="代理模式的应用"></a>代理模式的应用</h1><h2 id="1-代理模式的优点"><a href="#1-代理模式的优点" class="headerlink" title="1.代理模式的优点"></a>1.代理模式的优点</h2><ul>
+<li>职责清晰<ul>
+<li>真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，通过后去的代理完成一件事务，附带的结果就是编程简洁清晰。</li>
+</ul>
+</li>
+<li>高扩展性<ul>
+<li>具体主题角色是随时都会发生变化的，只要它实现了接口，甭管它如何变化，都逃不脱如来佛的手掌(接口)，那我们的代理类完全就可以再不做任何修改的情况下使用。</li>
+</ul>
+</li>
+<li>智能化</li>
+</ul>
+<hr>
+<h2 id="2-代理模式的扩展"><a href="#2-代理模式的扩展" class="headerlink" title="2.代理模式的扩展"></a>2.代理模式的扩展</h2><ul>
+<li>普通代理</li>
+<li>强制代理</li>
+<li>动态代理</li>
+</ul>
+<hr>
+<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/ProxyPattern.git" target="_blank" rel="noopener">代理模式</a></p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjpax09i20000t47k64dvvzh6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之代理模式/" data-id="cjpax09io0006t47kopfojlxm" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/06/05/宾哥的技术之旅/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/05/設計模式之原型模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          宾哥的技术之旅
+          設計模式之原型模式
         
       </div>
     </a>
   
+  
+    <a href="/2018/12/05/設計模式之建造者模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">設計模式之建造者模式</div>
+    </a>
   
 </nav>
 

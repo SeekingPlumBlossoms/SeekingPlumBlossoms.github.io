@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>設計模式之抽象工厂模式 | 宾哥部落格</title>
+  <title>設計模式之原型模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+  <meta name="description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。     原型模式的应用1.原型模式的优点 性能优良 原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。   逃避构造函数的约束 这既是他的优点也是他的缺点，直接在内存中拷贝">
 <meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="設計模式之抽象工厂模式">
-<meta property="og:url" content="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/index.html">
+<meta property="og:title" content="設計模式之原型模式">
+<meta property="og:url" content="http://yoursite.com/2018/12/05/設計模式之原型模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+<meta property="og:description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。     原型模式的应用1.原型模式的优点 性能优良 原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。   逃避构造函数的约束 这既是他的优点也是他的缺点，直接在内存中拷贝">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T08:31:25.436Z">
+<meta property="og:updated_time" content="2018-12-05T08:32:13.605Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="設計模式之抽象工厂模式">
-<meta name="twitter:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+<meta name="twitter:title" content="設計模式之原型模式">
+<meta name="twitter:description" content="原型模式介绍 原型模式的定义 原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。     原型模式的应用1.原型模式的优点 性能优良 原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。   逃避构造函数的约束 这既是他的优点也是他的缺点，直接在内存中拷贝">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-設計模式之抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-設計模式之原型模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/04/設計模式之抽象工厂模式/" class="article-date">
-  <time datetime="2018-12-04T14:31:37.000Z" itemprop="datePublished">2018-12-04</time>
+    <a href="/2018/12/05/設計模式之原型模式/" class="article-date">
+  <time datetime="2018-12-05T07:09:33.000Z" itemprop="datePublished">2018-12-05</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      設計模式之抽象工厂模式
+      設計模式之原型模式
     </h1>
   
 
@@ -87,27 +87,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="抽象工厂模式介绍"><a href="#抽象工厂模式介绍" class="headerlink" title="抽象工厂模式介绍"></a>抽象工厂模式介绍</h1><p>抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。</p>
-<h1 id="抽象工厂模式的应用"><a href="#抽象工厂模式的应用" class="headerlink" title="抽象工厂模式的应用"></a>抽象工厂模式的应用</h1><h2 id="1-抽象工厂模式的优点"><a href="#1-抽象工厂模式的优点" class="headerlink" title="1.抽象工厂模式的优点"></a>1.抽象工厂模式的优点</h2><ul>
-<li>封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如此。</li>
-<li>产品族内的约束为非公开状态。具体的产品族内的约束是在工厂内实现的。</li>
+        <h1 id="原型模式介绍"><a href="#原型模式介绍" class="headerlink" title="原型模式介绍"></a>原型模式介绍</h1><ul>
+<li>原型模式的定义<ul>
+<li>原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。</li>
+</ul>
+</li>
 </ul>
 <hr>
-<h2 id="2-抽象工厂模式的缺点"><a href="#2-抽象工厂模式的缺点" class="headerlink" title="2.抽象工厂模式的缺点"></a>2.抽象工厂模式的缺点</h2><ul>
-<li>抽象工厂模式的最大缺点就是产品族扩展非常困难。</li>
+<h1 id="原型模式的应用"><a href="#原型模式的应用" class="headerlink" title="原型模式的应用"></a>原型模式的应用</h1><h2 id="1-原型模式的优点"><a href="#1-原型模式的优点" class="headerlink" title="1.原型模式的优点"></a>1.原型模式的优点</h2><ul>
+<li>性能优良<ul>
+<li>原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。</li>
+</ul>
+</li>
+<li>逃避构造函数的约束<ul>
+<li>这既是他的优点也是他的缺点，直接在内存中拷贝，构造函数不会被执行。优点就是减少了约束。</li>
+</ul>
+</li>
 </ul>
 <hr>
-<h2 id="3-抽象工厂模式的使用场景"><a href="#3-抽象工厂模式的使用场景" class="headerlink" title="3.抽象工厂模式的使用场景"></a>3.抽象工厂模式的使用场景</h2><ul>
-<li>一个对象族(或是一组没有任何关系的对象)都有相同的约束，则可以使用抽象工厂模式。</li>
+<h2 id="2-原型模式的使用场景"><a href="#2-原型模式的使用场景" class="headerlink" title="2.原型模式的使用场景"></a>2.原型模式的使用场景</h2><ul>
+<li>资源优化场景<ul>
+<li>类初始化需要消化非常多的资源，这个资源包括数据，硬件资源等。</li>
+</ul>
+</li>
+<li>性能和安全要求的场景<ul>
+<li>通过new产生一个对象需要非常繁琐的数据准备或者访问权限，则可以使用原型模式。</li>
+</ul>
+</li>
+<li>一个对象多个修改者的场景<ul>
+<li>一个对象需要提供给其他对象访问，而且各个调用者都可能需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-原型模式注意事项"><a href="#3-原型模式注意事项" class="headerlink" title="3.原型模式注意事项"></a>3.原型模式注意事项</h2><ul>
+<li>构造函数不会被执行</li>
+<li>浅拷贝和深拷贝</li>
+<li>clone和final冲突</li>
 </ul>
 <hr>
-<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/AbstractFactoryPattern.git" target="_blank" rel="noopener">抽象工厂模式</a></p>
+<p> github示例:<br> <a href="https://github.com/SeekingPlumBlossoms/PrototypePattern.git" target="_blank" rel="noopener">原型模式</a></p>
 <p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/" data-id="cjpax09iz000ft47kb49xrxfl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之原型模式/" data-id="cjpax09ir0009t47kc5hv560y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -118,19 +142,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/12/04/設計模式之模板方法模式/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/05/設計模式之中介者模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          設計模式之模板方法模式
+          設計模式之中介者模式
         
       </div>
     </a>
   
   
-    <a href="/2018/12/04/設計模式之工厂方法模式/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/12/05/設計模式之代理模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">設計模式之工厂方法模式</div>
+      <div class="article-nav-title">設計模式之代理模式</div>
     </a>
   
 </nav>

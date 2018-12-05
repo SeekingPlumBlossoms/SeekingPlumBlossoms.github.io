@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>設計模式之抽象工厂模式 | 宾哥部落格</title>
+  <title>設計模式之模板方法模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+  <meta name="description" content="模板方法模式介紹模板方法模式(Template Method Pattern):定义一个操作中的算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法的结构即可重定义该算法的某些特定的步骤。 模板方法模式的应用1.模板方法模式的优点 封装不变部分，扩展可变部分。把认为是不变部分的算法封装到父类实现，而可变部分的则可以通过类继承来继续扩展。 提取公共部分代码，便于维护。 行为由父类控制，子">
 <meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="設計模式之抽象工厂模式">
-<meta property="og:url" content="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/index.html">
+<meta property="og:title" content="設計模式之模板方法模式">
+<meta property="og:url" content="http://yoursite.com/2018/12/04/設計模式之模板方法模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+<meta property="og:description" content="模板方法模式介紹模板方法模式(Template Method Pattern):定义一个操作中的算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法的结构即可重定义该算法的某些特定的步骤。 模板方法模式的应用1.模板方法模式的优点 封装不变部分，扩展可变部分。把认为是不变部分的算法封装到父类实现，而可变部分的则可以通过类继承来继续扩展。 提取公共部分代码，便于维护。 行为由父类控制，子">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T08:31:25.436Z">
+<meta property="og:updated_time" content="2018-12-05T08:27:45.971Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="設計模式之抽象工厂模式">
-<meta name="twitter:description" content="抽象工厂模式介绍抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。 抽象工厂模式的应用1.抽象工厂模式的优点 封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如">
+<meta name="twitter:title" content="設計模式之模板方法模式">
+<meta name="twitter:description" content="模板方法模式介紹模板方法模式(Template Method Pattern):定义一个操作中的算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法的结构即可重定义该算法的某些特定的步骤。 模板方法模式的应用1.模板方法模式的优点 封装不变部分，扩展可变部分。把认为是不变部分的算法封装到父类实现，而可变部分的则可以通过类继承来继续扩展。 提取公共部分代码，便于维护。 行为由父类控制，子">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-設計模式之抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-設計模式之模板方法模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/04/設計模式之抽象工厂模式/" class="article-date">
-  <time datetime="2018-12-04T14:31:37.000Z" itemprop="datePublished">2018-12-04</time>
+    <a href="/2018/12/04/設計模式之模板方法模式/" class="article-date">
+  <time datetime="2018-12-04T14:49:56.000Z" itemprop="datePublished">2018-12-04</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      設計模式之抽象工厂模式
+      設計模式之模板方法模式
     </h1>
   
 
@@ -87,27 +87,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="抽象工厂模式介绍"><a href="#抽象工厂模式介绍" class="headerlink" title="抽象工厂模式介绍"></a>抽象工厂模式介绍</h1><p>抽象工厂模式(Abstract Factory Pattern):为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。</p>
-<h1 id="抽象工厂模式的应用"><a href="#抽象工厂模式的应用" class="headerlink" title="抽象工厂模式的应用"></a>抽象工厂模式的应用</h1><h2 id="1-抽象工厂模式的优点"><a href="#1-抽象工厂模式的优点" class="headerlink" title="1.抽象工厂模式的优点"></a>1.抽象工厂模式的优点</h2><ul>
-<li>封装性，每个产品的实现类不是高层模块要关心的，它要关心的是什么？是接口，是抽象，它不关心对象是如何创建出来，这由谁负责呢？工厂类，只要知道工厂类是谁，我就能创建出一个需要的对象，省时省力，优秀设计就应该如此。</li>
-<li>产品族内的约束为非公开状态。具体的产品族内的约束是在工厂内实现的。</li>
+        <h1 id="模板方法模式介紹"><a href="#模板方法模式介紹" class="headerlink" title="模板方法模式介紹"></a>模板方法模式介紹</h1><p>模板方法模式(Template Method Pattern):定义一个操作中的算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法的结构即可重定义该算法的某些特定的步骤。</p>
+<h1 id="模板方法模式的应用"><a href="#模板方法模式的应用" class="headerlink" title="模板方法模式的应用"></a>模板方法模式的应用</h1><h2 id="1-模板方法模式的优点"><a href="#1-模板方法模式的优点" class="headerlink" title="1.模板方法模式的优点"></a>1.模板方法模式的优点</h2><ul>
+<li>封装不变部分，扩展可变部分。把认为是不变部分的算法封装到父类实现，而可变部分的则可以通过类继承来继续扩展。</li>
+<li>提取公共部分代码，便于维护。</li>
+<li>行为由父类控制，子类实现。基本方法都是由子类实现的，因此子类可以通过扩展的方式增加相应的功能，符合开闭原则。</li>
 </ul>
 <hr>
-<h2 id="2-抽象工厂模式的缺点"><a href="#2-抽象工厂模式的缺点" class="headerlink" title="2.抽象工厂模式的缺点"></a>2.抽象工厂模式的缺点</h2><ul>
-<li>抽象工厂模式的最大缺点就是产品族扩展非常困难。</li>
+<h2 id="2-模板方法模式的缺点"><a href="#2-模板方法模式的缺点" class="headerlink" title="2.模板方法模式的缺点"></a>2.模板方法模式的缺点</h2><ul>
+<li>按照我们的设计习惯，抽象类负责声明最抽象、最一般的事物属性和方法，实现类完成具体的事物属性和方法。但是模板方法模式缺颠倒了，抽象类定义了部分抽象方法，由子类实现，子类的执行结果影响了父类的结果，也就是子类对父类产生了影响，这在复杂的项目中，会带来代码阅读的难度，而且也会让新手产生不适感。</li>
 </ul>
 <hr>
-<h2 id="3-抽象工厂模式的使用场景"><a href="#3-抽象工厂模式的使用场景" class="headerlink" title="3.抽象工厂模式的使用场景"></a>3.抽象工厂模式的使用场景</h2><ul>
-<li>一个对象族(或是一组没有任何关系的对象)都有相同的约束，则可以使用抽象工厂模式。</li>
+<h2 id="3-模板方法模式的使用场景"><a href="#3-模板方法模式的使用场景" class="headerlink" title="3.模板方法模式的使用场景"></a>3.模板方法模式的使用场景</h2><ul>
+<li>多个子类有公有的方法，并且逻辑基本相同时。</li>
+<li>重要、复杂的算法，可以把核心算法设计为模板方法，周边的相关细节功能则有各个子类实现。</li>
+<li>重构时，模板方法模式是一个经常使用的模式，把相同的代码抽象到父类中，然后通过钩子函数约束其行为。</li>
 </ul>
 <hr>
-<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/AbstractFactoryPattern.git" target="_blank" rel="noopener">抽象工厂模式</a></p>
-<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
+<p>github示例:<br> <a href="https://github.com/SeekingPlumBlossoms/TemplateMethodPattern.git" target="_blank" rel="noopener">模板方法模式</a></p>
+<p> 友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/" data-id="cjpax09iz000ft47kb49xrxfl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之模板方法模式/" data-id="cjpax09j3000it47ko38a2tr8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -118,19 +121,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/12/04/設計模式之模板方法模式/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/05/設計模式之建造者模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          設計模式之模板方法模式
+          設計模式之建造者模式
         
       </div>
     </a>
   
   
-    <a href="/2018/12/04/設計模式之工厂方法模式/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/12/04/設計模式之抽象工厂模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">設計模式之工厂方法模式</div>
+      <div class="article-nav-title">設計模式之抽象工厂模式</div>
     </a>
   
 </nav>

@@ -62,6 +62,335 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-設計模式之中介者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/05/設計模式之中介者模式/" class="article-date">
+  <time datetime="2018-12-05T08:15:21.000Z" itemprop="datePublished">2018-12-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/05/設計模式之中介者模式/">設計模式之中介者模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之中介者模式/" data-id="cjpax09il0005t47kjqeyu1gb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-設計模式之原型模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/05/設計模式之原型模式/" class="article-date">
+  <time datetime="2018-12-05T07:09:33.000Z" itemprop="datePublished">2018-12-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/05/設計模式之原型模式/">設計模式之原型模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="原型模式介绍"><a href="#原型模式介绍" class="headerlink" title="原型模式介绍"></a>原型模式介绍</h1><ul>
+<li>原型模式的定义<ul>
+<li>原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="原型模式的应用"><a href="#原型模式的应用" class="headerlink" title="原型模式的应用"></a>原型模式的应用</h1><h2 id="1-原型模式的优点"><a href="#1-原型模式的优点" class="headerlink" title="1.原型模式的优点"></a>1.原型模式的优点</h2><ul>
+<li>性能优良<ul>
+<li>原型模式是在内存二进制流的拷贝，要比直接new一个对象性能要好很多，特别是在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。</li>
+</ul>
+</li>
+<li>逃避构造函数的约束<ul>
+<li>这既是他的优点也是他的缺点，直接在内存中拷贝，构造函数不会被执行。优点就是减少了约束。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="2-原型模式的使用场景"><a href="#2-原型模式的使用场景" class="headerlink" title="2.原型模式的使用场景"></a>2.原型模式的使用场景</h2><ul>
+<li>资源优化场景<ul>
+<li>类初始化需要消化非常多的资源，这个资源包括数据，硬件资源等。</li>
+</ul>
+</li>
+<li>性能和安全要求的场景<ul>
+<li>通过new产生一个对象需要非常繁琐的数据准备或者访问权限，则可以使用原型模式。</li>
+</ul>
+</li>
+<li>一个对象多个修改者的场景<ul>
+<li>一个对象需要提供给其他对象访问，而且各个调用者都可能需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-原型模式注意事项"><a href="#3-原型模式注意事项" class="headerlink" title="3.原型模式注意事项"></a>3.原型模式注意事项</h2><ul>
+<li>构造函数不会被执行</li>
+<li>浅拷贝和深拷贝</li>
+<li>clone和final冲突</li>
+</ul>
+<hr>
+<p> github示例:<br> <a href="https://github.com/SeekingPlumBlossoms/PrototypePattern.git" target="_blank" rel="noopener">原型模式</a></p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之原型模式/" data-id="cjpax09ir0009t47kc5hv560y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-設計模式之代理模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/05/設計模式之代理模式/" class="article-date">
+  <time datetime="2018-12-05T06:15:41.000Z" itemprop="datePublished">2018-12-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/05/設計模式之代理模式/">設計模式之代理模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="代理模式介绍"><a href="#代理模式介绍" class="headerlink" title="代理模式介绍"></a>代理模式介绍</h1><ul>
+<li>代理模式定义<ul>
+<li>代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。</li>
+</ul>
+</li>
+<li>Subject抽象主体角色<ul>
+<li>抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。</li>
+</ul>
+</li>
+<li>RealSubkect具体主题角色<ul>
+<li>也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。</li>
+</ul>
+</li>
+<li>Proxy代理主题角色<br>  *也叫做委托类、代理类。它负责对真实角色的应用，把所有抽象主题类定义的方法限制委托给真实的主题角色实现，并且在真实主题角色处理完毕前后做预处理和善后处理工作。</li>
+</ul>
+<hr>
+<h1 id="代理模式的应用"><a href="#代理模式的应用" class="headerlink" title="代理模式的应用"></a>代理模式的应用</h1><h2 id="1-代理模式的优点"><a href="#1-代理模式的优点" class="headerlink" title="1.代理模式的优点"></a>1.代理模式的优点</h2><ul>
+<li>职责清晰<ul>
+<li>真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，通过后去的代理完成一件事务，附带的结果就是编程简洁清晰。</li>
+</ul>
+</li>
+<li>高扩展性<ul>
+<li>具体主题角色是随时都会发生变化的，只要它实现了接口，甭管它如何变化，都逃不脱如来佛的手掌(接口)，那我们的代理类完全就可以再不做任何修改的情况下使用。</li>
+</ul>
+</li>
+<li>智能化</li>
+</ul>
+<hr>
+<h2 id="2-代理模式的扩展"><a href="#2-代理模式的扩展" class="headerlink" title="2.代理模式的扩展"></a>2.代理模式的扩展</h2><ul>
+<li>普通代理</li>
+<li>强制代理</li>
+<li>动态代理</li>
+</ul>
+<hr>
+<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/ProxyPattern.git" target="_blank" rel="noopener">代理模式</a></p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之代理模式/" data-id="cjpax09io0006t47kopfojlxm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-設計模式之建造者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/05/設計模式之建造者模式/" class="article-date">
+  <time datetime="2018-12-05T05:50:10.000Z" itemprop="datePublished">2018-12-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/05/設計模式之建造者模式/">設計模式之建造者模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="建造者模式介绍"><a href="#建造者模式介绍" class="headerlink" title="建造者模式介绍"></a>建造者模式介绍</h1><ul>
+<li>定义<ul>
+<li>建造者模式(BuilderPattern):将一个复杂对象的构建与他的表示分离，使得同样的构建过程可以创建不同的表示。</li>
+</ul>
+</li>
+<li>Product产品类：<ul>
+<li>通常是为了实现模板方法模式，也就是有模板方法的基本方法。</li>
+</ul>
+</li>
+<li>Builder抽象建造者<ul>
+<li>规范产品的组建，一般是由子类实现。</li>
+</ul>
+</li>
+<li>ConcreteBuilder具体建造者<ul>
+<li>实现抽象类定义的所有方法，并且返回一个组建好的对象。</li>
+</ul>
+</li>
+<li>Director导演类<ul>
+<li>负责安排已有的模块的顺序，然后告诉Builder开始建造。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="建造者模式的应用"><a href="#建造者模式的应用" class="headerlink" title="建造者模式的应用"></a>建造者模式的应用</h1><h2 id="建造者模式的优点"><a href="#建造者模式的优点" class="headerlink" title="建造者模式的优点"></a>建造者模式的优点</h2><ul>
+<li>封装性<ul>
+<li>使用建造者模式可以使客户端不必知道产品内部的组成细节。</li>
+</ul>
+</li>
+<li>建造者独立，容易扩展</li>
+<li>便于控制细节风险<ul>
+<li>由于具体的建造者是独立的，因此可以对建造过程逐步细化，而不对其他的模板产生任何的影响。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="建造者模式的使用场景"><a href="#建造者模式的使用场景" class="headerlink" title="建造者模式的使用场景"></a>建造者模式的使用场景</h2><ul>
+<li>相同的方法，不同的执行顺序，产生不同的事件结果时，可以采用建造者模式。</li>
+<li>多个部件或者零件，都可以装配到一个对象中，但是产生的运行结果又不相同时，则可以使用该模式。</li>
+<li>产品类非常复杂，或者产品类中的调用顺序不同产生了不同的效能，这个时候使用建造者模式非常合适。</li>
+<li>在对象创建过程中会使用到系统中的一些其他对象，这些对象在产品对象的创建过程中不易得到时，也可以采用建造者模式封装对该对象的创建过程，这种场景只能是一个补偿方法，因为一个对象不容易获得，而在设计阶段竟然没有发觉，而要通过创建者模式柔化创建过程，本身已经违反涉及的最初目标。</li>
+</ul>
+<hr>
+<p> github示例:<a href="https://github.com/SeekingPlumBlossoms/BuilderPattern.git" target="_blank" rel="noopener">建造者模式</a></p>
+<p>  友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之建造者模式/" data-id="cjpax09ix000dt47kzhxpitu5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-設計模式之模板方法模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/04/設計模式之模板方法模式/" class="article-date">
+  <time datetime="2018-12-04T14:49:56.000Z" itemprop="datePublished">2018-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/04/設計模式之模板方法模式/">設計模式之模板方法模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="模板方法模式介紹"><a href="#模板方法模式介紹" class="headerlink" title="模板方法模式介紹"></a>模板方法模式介紹</h1><p>模板方法模式(Template Method Pattern):定义一个操作中的算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法的结构即可重定义该算法的某些特定的步骤。</p>
+<h1 id="模板方法模式的应用"><a href="#模板方法模式的应用" class="headerlink" title="模板方法模式的应用"></a>模板方法模式的应用</h1><h2 id="1-模板方法模式的优点"><a href="#1-模板方法模式的优点" class="headerlink" title="1.模板方法模式的优点"></a>1.模板方法模式的优点</h2><ul>
+<li>封装不变部分，扩展可变部分。把认为是不变部分的算法封装到父类实现，而可变部分的则可以通过类继承来继续扩展。</li>
+<li>提取公共部分代码，便于维护。</li>
+<li>行为由父类控制，子类实现。基本方法都是由子类实现的，因此子类可以通过扩展的方式增加相应的功能，符合开闭原则。</li>
+</ul>
+<hr>
+<h2 id="2-模板方法模式的缺点"><a href="#2-模板方法模式的缺点" class="headerlink" title="2.模板方法模式的缺点"></a>2.模板方法模式的缺点</h2><ul>
+<li>按照我们的设计习惯，抽象类负责声明最抽象、最一般的事物属性和方法，实现类完成具体的事物属性和方法。但是模板方法模式缺颠倒了，抽象类定义了部分抽象方法，由子类实现，子类的执行结果影响了父类的结果，也就是子类对父类产生了影响，这在复杂的项目中，会带来代码阅读的难度，而且也会让新手产生不适感。</li>
+</ul>
+<hr>
+<h2 id="3-模板方法模式的使用场景"><a href="#3-模板方法模式的使用场景" class="headerlink" title="3.模板方法模式的使用场景"></a>3.模板方法模式的使用场景</h2><ul>
+<li>多个子类有公有的方法，并且逻辑基本相同时。</li>
+<li>重要、复杂的算法，可以把核心算法设计为模板方法，周边的相关细节功能则有各个子类实现。</li>
+<li>重构时，模板方法模式是一个经常使用的模式，把相同的代码抽象到父类中，然后通过钩子函数约束其行为。</li>
+</ul>
+<hr>
+<p>github示例:<br> <a href="https://github.com/SeekingPlumBlossoms/TemplateMethodPattern.git" target="_blank" rel="noopener">模板方法模式</a></p>
+<p> 友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之模板方法模式/" data-id="cjpax09j3000it47ko38a2tr8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-設計模式之抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/04/設計模式之抽象工厂模式/" class="article-date">
@@ -98,12 +427,13 @@
 <li>一个对象族(或是一组没有任何关系的对象)都有相同的约束，则可以使用抽象工厂模式。</li>
 </ul>
 <hr>
-<p> github示例:抽象工厂模式:<a href="https://github.com/SeekingPlumBlossoms/AbstractFactoryPattern.git" target="_blank" rel="noopener">https://github.com/SeekingPlumBlossoms/AbstractFactoryPattern.git</a></p>
+<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/AbstractFactoryPattern.git" target="_blank" rel="noopener">抽象工厂模式</a></p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/" data-id="cjp9uw2fa000deo7kuuwx5u0z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/" data-id="cjpax09iz000ft47kb49xrxfl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -152,12 +482,13 @@
 <li>可以使用在测试驱动开发的框架下。例如，测试一个类A，就需要把与类A有关联关系的类B也同时产生出来，我们可以使用工厂方法模式把类B虚拟出来，避免类A与类B的耦合。目前由于JMock和EasyMock的诞生，该使用场景已经弱化了。</li>
 </ul>
 <hr>
-<p>github示例:工厂方法模式:<br><a href="https://github.com/SeekingPlumBlossoms/FactoryPattern.git" target="_blank" rel="noopener">https://github.com/SeekingPlumBlossoms/FactoryPattern.git</a></p>
+<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/FactoryPattern.git" target="_blank" rel="noopener">工厂方法模式</a></p>
+<p> 友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之工厂方法模式/" data-id="cjp9uw2eq0004eo7komlaugjm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之工厂方法模式/" data-id="cjpax09iu000at47kinqq8pjb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -212,12 +543,13 @@
 <li>需要定义大量的静态资源和静态方法(如工具类)的环境，可以采用单例模式（当然，也可以直接声明为static的方式）</li>
 </ul>
 <hr>
-<p> github示例:单例模式:<a href="https://github.com/SeekingPlumBlossoms/SingletonPattern.git" target="_blank" rel="noopener">https://github.com/SeekingPlumBlossoms/SingletonPattern.git</a></p>
+<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/SingletonPattern.git" target="_blank" rel="noopener">单例模式</a></p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之01單例模式/" data-id="cjp9uw2em0002eo7kbupa9xro" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之01單例模式/" data-id="cjpax09id0002t47k7el28wm4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -279,7 +611,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/代码扫描工具/" data-id="cjp9uw2es0005eo7k2r81zbqj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/代码扫描工具/" data-id="cjpax09ia0001t47k635g1i2n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排查工具/">排查工具</a></li></ul>
@@ -401,7 +733,7 @@ hbase.zookeeper.port=2181
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/20/SpringBoot整合HBase/" data-id="cjp9uw2fc000eeo7k883m9blu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/20/SpringBoot整合HBase/" data-id="cjpax09je000qt47kat5u39f9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
@@ -413,99 +745,11 @@ hbase.zookeeper.port=2181
 
 
   
-    <article id="post-宾哥的技术之旅" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/05/宾哥的技术之旅/" class="article-date">
-  <time datetime="2018-06-05T06:29:10.000Z" itemprop="datePublished">2018-06-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/05/宾哥的技术之旅/">宾哥的技术之旅</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天我宾哥就是要干翻在座的各位渣渣！</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><blockquote>
-<p>子曰：不搞个个人技术博客还能叫程序员？</p>
-</blockquote>
-<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/06/05/宾哥的技术之旅/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjp9uw2ej0001eo7k3st5zzm7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/03/hello-world/" class="article-date">
-  <time datetime="2018-06-02T16:39:02.340Z" itemprop="datePublished">2018-06-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/03/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjp9uw2ef0000eo7kkkn235pq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -549,23 +793,23 @@ hbase.zookeeper.port=2181
       <ul>
         
           <li>
-            <a href="/2018/12/04/設計模式之抽象工厂模式/">設計模式之抽象工厂模式</a>
+            <a href="/2018/12/05/設計模式之中介者模式/">設計模式之中介者模式</a>
           </li>
         
           <li>
-            <a href="/2018/12/04/設計模式之工厂方法模式/">設計模式之工厂方法模式</a>
+            <a href="/2018/12/05/設計模式之原型模式/">設計模式之原型模式</a>
           </li>
         
           <li>
-            <a href="/2018/12/04/設計模式之01單例模式/">設計模式之單例模式</a>
+            <a href="/2018/12/05/設計模式之代理模式/">設計模式之代理模式</a>
           </li>
         
           <li>
-            <a href="/2018/11/22/代码扫描工具/">代码扫描工具</a>
+            <a href="/2018/12/05/設計模式之建造者模式/">設計模式之建造者模式</a>
           </li>
         
           <li>
-            <a href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
+            <a href="/2018/12/04/設計模式之模板方法模式/">設計模式之模板方法模式</a>
           </li>
         
       </ul>
