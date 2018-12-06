@@ -62,6 +62,128 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SpringBoot整合HBase" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/20/SpringBoot整合HBase/" class="article-date">
+  <time datetime="2018-06-20T05:44:18.000Z" itemprop="datePublished">2018-06-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>SpringBoot整合HBase
+</code></pre><h1 id="废话不多说，开始步入正题！"><a href="#废话不多说，开始步入正题！" class="headerlink" title="废话不多说，开始步入正题！"></a>废话不多说，开始步入正题！</h1><h2 id="第一步，映入Maven依赖"><a href="#第一步，映入Maven依赖" class="headerlink" title="第一步，映入Maven依赖"></a>第一步，映入Maven依赖</h2><pre><code>    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+    &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
+    &lt;version&gt;1.3.0&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-data-hadoop&lt;/artifactId&gt;
+    &lt;version&gt;2.5.0.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="第二步，加入SpringBoot配置文件"><a href="#第二步，加入SpringBoot配置文件" class="headerlink" title="第二步，加入SpringBoot配置文件"></a>第二步，加入SpringBoot配置文件</h2><pre><code>hbase.zookeeper.quorum=ip
+hbase.zookeeper.port=2181
+</code></pre><h2 id="第三步，引用HbaseTemplate-测试类使用方式"><a href="#第三步，引用HbaseTemplate-测试类使用方式" class="headerlink" title="第三步，引用HbaseTemplate,测试类使用方式"></a>第三步，引用HbaseTemplate,测试类使用方式</h2><pre><code>@Autowired
+    private HbaseTemplate hbaseTemplate;
+    @Test
+    public void contextLoads() {
+
+    }
+    @Test
+    public void testPut() {
+        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;name&quot;, Bytes.toBytes(&quot;Alice&quot;));
+        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;phone&quot;, Bytes.toBytes(&quot;15620974206&quot;));
+    }
+    @Test
+    public void testQuery(){
+        List&lt;String&gt; rows = hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, &quot;phone&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result, int i) throws Exception {
+                return result.toString();
+            }
+        });
+        System.out.println(JSONArray.toJSONString(rows));
+        List&lt;String&gt; rowli=    hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result, int i) throws Exception {
+                return result.toString();
+            }
+        });
+        System.out.println(JSONArray.toJSONString(rowli));
+
+    }
+
+    //依据表名，行号，列族，列名获取数据
+    @Test
+    public void testCreateTable(){
+        if(hbaseTemplate.getConfiguration()==null){
+            System.out.println(&quot;为啥是空的呢&quot;);
+        }
+        String ls = hbaseTemplate.get(&quot;t&quot;, &quot;1&quot;,&quot;f&quot;, &quot;name&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result,int i)throws Exception{
+                List&lt;Cell&gt; cellList=result.listCells();
+                String res=&quot;&quot;;
+                for(Cell cell:cellList){
+                    res=Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
+                }
+                return res;
+            }
+        });
+        System.out.println(ls);
+    }
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2018/06/20/SpringBoot整合HBase/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/20/SpringBoot整合HBase/" data-id="cjpcaysny000pu87kht4dpkro" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-宾哥的技术之旅" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/05/宾哥的技术之旅/" class="article-date">
@@ -97,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjpax09ij0004t47kl2ft5fc3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjpcaysnx000ou87kxj5qpico" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
@@ -144,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjpax09i20000t47k64dvvzh6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/03/hello-world/" data-id="cjpcaysmu0001u87koyyr40wx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,6 +324,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/06/設計模式之命令模式/">設計模式之命令模式</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/05/設計模式之中介者模式/">設計模式之中介者模式</a>
           </li>
         
@@ -215,10 +341,6 @@
         
           <li>
             <a href="/2018/12/05/設計模式之建造者模式/">設計模式之建造者模式</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/04/設計模式之模板方法模式/">設計模式之模板方法模式</a>
           </li>
         
       </ul>

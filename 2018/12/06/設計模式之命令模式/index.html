@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>宾哥的技术之旅 | 宾哥部落格</title>
+  <title>設計模式之命令模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天我宾哥就是要干翻在座的各位渣渣！ 一级标题二级标题三级标题 子曰：不搞个个人技术博客还能叫程序员？  鲁迅说：子说的对我怎么斜了？">
-<meta name="keywords" content="技术心得">
+  <meta name="description" content="命令模式介绍 定义 命令模式是一个高内聚的模式，将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能。   角色 Receive接受者角色:该角色就是干活的角色，命令传递到这里是应该被执行的. Command命令角色：需要执行所有命令都在这里声明。 Invoker调用者角色：接受到命令，并执行命令。">
+<meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="宾哥的技术之旅">
-<meta property="og:url" content="http://yoursite.com/2018/06/05/宾哥的技术之旅/index.html">
+<meta property="og:title" content="設計模式之命令模式">
+<meta property="og:url" content="http://yoursite.com/2018/12/06/設計模式之命令模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="今天我宾哥就是要干翻在座的各位渣渣！ 一级标题二级标题三级标题 子曰：不搞个个人技术博客还能叫程序员？  鲁迅说：子说的对我怎么斜了？">
+<meta property="og:description" content="命令模式介绍 定义 命令模式是一个高内聚的模式，将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能。   角色 Receive接受者角色:该角色就是干活的角色，命令传递到这里是应该被执行的. Command命令角色：需要执行所有命令都在这里声明。 Invoker调用者角色：接受到命令，并执行命令。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-05T06:34:32.143Z">
+<meta property="og:updated_time" content="2018-12-06T07:47:23.175Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="宾哥的技术之旅">
-<meta name="twitter:description" content="今天我宾哥就是要干翻在座的各位渣渣！ 一级标题二级标题三级标题 子曰：不搞个个人技术博客还能叫程序员？  鲁迅说：子说的对我怎么斜了？">
+<meta name="twitter:title" content="設計模式之命令模式">
+<meta name="twitter:description" content="命令模式介绍 定义 命令模式是一个高内聚的模式，将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能。   角色 Receive接受者角色:该角色就是干活的角色，命令传递到这里是应该被执行的. Command命令角色：需要执行所有命令都在这里声明。 Invoker调用者角色：接受到命令，并执行命令。">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-宾哥的技术之旅" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-設計模式之命令模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/05/宾哥的技术之旅/" class="article-date">
-  <time datetime="2018-06-05T06:29:10.000Z" itemprop="datePublished">2018-06-05</time>
+    <a href="/2018/12/06/設計模式之命令模式/" class="article-date">
+  <time datetime="2018-12-06T07:19:09.000Z" itemprop="datePublished">2018-12-06</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      宾哥的技术之旅
+      設計模式之命令模式
     </h1>
   
 
@@ -87,36 +87,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天我宾哥就是要干翻在座的各位渣渣！</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><blockquote>
-<p>子曰：不搞个个人技术博客还能叫程序员？</p>
-</blockquote>
-<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br><a id="more"></a></p>
-<font color="yellow">我怎么黄了?</font>
+        <h1 id="命令模式介绍"><a href="#命令模式介绍" class="headerlink" title="命令模式介绍"></a>命令模式介绍</h1><ul>
+<li>定义<ul>
+<li>命令模式是一个高内聚的模式，将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能。</li>
+</ul>
+</li>
+<li>角色<ul>
+<li>Receive接受者角色:该角色就是干活的角色，命令传递到这里是应该被执行的.</li>
+<li>Command命令角色：需要执行所有命令都在这里声明。</li>
+<li>Invoker调用者角色：接受到命令，并执行命令。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<a id="more"></a>
+<h1 id="命令模式的应用"><a href="#命令模式的应用" class="headerlink" title="命令模式的应用"></a>命令模式的应用</h1><h2 id="1-命令模式的优点"><a href="#1-命令模式的优点" class="headerlink" title="1.命令模式的优点"></a>1.命令模式的优点</h2><ul>
+<li>类间解耦<ul>
+<li>调用者角色与接受者角色之间没有任何依赖关系，调用者实现功能时只需要调用Command抽象类的execute方法就可以了，不需要了解到底哪个接受者执行了。</li>
+</ul>
+</li>
+<li>可扩展性<ul>
+<li>Command的子类可以非常容易的扩展，而调用者Invoker和高层次的模块Client不产生严重的代码耦合。</li>
+</ul>
+</li>
+<li>命令模式结合其他模式会更优秀<ul>
+<li>命令模式可以结合责任链模式，实现命令族解析，结合模板方法模式，则可以减少Command子类的膨胀问题。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="2-命令模式的缺点"><a href="#2-命令模式的缺点" class="headerlink" title="2.命令模式的缺点"></a>2.命令模式的缺点</h2><ul>
+<li>如果有N个命令，问题就出来了，Command的子类就可不是几个，而是N个，这个类膨胀的非常大，这个就需要读者在项目中慎重的考虑。</li>
+</ul>
+<hr>
+<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/CommandPattern.git" target="_blank" rel="noopener">单例模式</a></p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
-<pre><code>@Component
-public class HbaseClient {
-
-    @Bean
-    public HbaseTemplate hbaseTemplate(@Value(&quot;${hbase.zookeeper.quorum}&quot;) String quorum,
-                                       @Value(&quot;${hbase.zookeeper.port}&quot;) String port) {
-        HbaseTemplate hbaseTemplate = new HbaseTemplate();
-        org.apache.hadoop.conf.Configuration conf = HBaseConfiguration.create();
-        conf.set(&quot;hbase.zookeeper.quorum&quot;, quorum);
-        conf.set(&quot;hbase.zookeeper.port&quot;, port);
-        hbaseTemplate.setConfiguration(conf);
-        hbaseTemplate.setAutoFlush(true);
-        return hbaseTemplate;
-    }
-}
-</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/05/宾哥的技术之旅/" data-id="cjpcaysnx000ou87kxj5qpico" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/06/設計模式之命令模式/" data-id="cjpcaysn30005u87kd2ip1umk" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
 
     </footer>
   </div>
@@ -124,19 +137,10 @@ public class HbaseClient {
     
 <nav id="article-nav">
   
-    <a href="/2018/06/20/SpringBoot整合HBase/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          SpringBoot整合HBase
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/12/05/設計模式之中介者模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">設計模式之中介者模式</div>
     </a>
   
 </nav>

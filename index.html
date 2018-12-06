@@ -62,6 +62,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-設計模式之命令模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/06/設計模式之命令模式/" class="article-date">
+  <time datetime="2018-12-06T07:19:09.000Z" itemprop="datePublished">2018-12-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/06/設計模式之命令模式/">設計模式之命令模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="命令模式介绍"><a href="#命令模式介绍" class="headerlink" title="命令模式介绍"></a>命令模式介绍</h1><ul>
+<li>定义<ul>
+<li>命令模式是一个高内聚的模式，将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能。</li>
+</ul>
+</li>
+<li>角色<ul>
+<li>Receive接受者角色:该角色就是干活的角色，命令传递到这里是应该被执行的.</li>
+<li>Command命令角色：需要执行所有命令都在这里声明。</li>
+<li>Invoker调用者角色：接受到命令，并执行命令。</li>
+</ul>
+</li>
+</ul>
+<hr>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/06/設計模式之命令模式/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/06/設計模式之命令模式/" data-id="cjpcaysn30005u87kd2ip1umk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-設計模式之中介者模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/05/設計模式之中介者模式/" class="article-date">
@@ -84,11 +139,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        <h1 id="中介者模式介绍"><a href="#中介者模式介绍" class="headerlink" title="中介者模式介绍"></a>中介者模式介绍</h1><ul>
+<li>定义<ul>
+<li>中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。</li>
+</ul>
+</li>
+<li>Mediator抽象中介者角色<ul>
+<li>抽象中介者角色定义统一的接口，用于各角色之间的通信。</li>
+</ul>
+</li>
+<li>ConcreteMediator具体中介者角色<ul>
+<li>具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。</li>
+</ul>
+</li>
+<li>Colleague同事角色<ul>
+<li>每一个同事角色都知道中介者角色，而且与其他的同事角色的通信的时候，一定要通过中介者角色协作。每个同事类的行为分为2种：一种是同事本身的行为，比如改变对象本身的状态，处理自己的行为等。这种行为叫做自发行为(Self-Method),与其他的同事类或者中介者没有任何的依赖；第二种是必须依赖中介者才能完成的任务的行为，叫做依赖方法。</li>
+</ul>
+</li>
+</ul>
+<hr>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/05/設計模式之中介者模式/#more">Read More</a>
+          </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/設計模式之中介者模式/" data-id="cjpax09il0005t47kjqeyu1gb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之中介者模式/" data-id="cjpcaysn00003u87kyzvvhs0q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -137,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/設計模式之原型模式/" data-id="cjpax09ir0009t47kc5hv560y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之原型模式/" data-id="cjpcaysn9000au87kubmz6cq6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -195,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/設計模式之代理模式/" data-id="cjpax09io0006t47kopfojlxm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之代理模式/" data-id="cjpcaysn60008u87kr46l296s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -260,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/設計模式之建造者模式/" data-id="cjpax09ix000dt47kzhxpitu5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之建造者模式/" data-id="cjpcaysnn000ju87k6dtlaamu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -304,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之模板方法模式/" data-id="cjpax09j3000it47ko38a2tr8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之模板方法模式/" data-id="cjpcaysnk000hu87knjaa9zrt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -347,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/" data-id="cjpax09iz000ft47kb49xrxfl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之抽象工厂模式/" data-id="cjpcaysni000fu87khsgk4hkc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -390,7 +468,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之工厂方法模式/" data-id="cjpax09iu000at47kinqq8pjb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之工厂方法模式/" data-id="cjpcaysnc000du87kaiztobxw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -433,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/設計模式之01單例模式/" data-id="cjpax09id0002t47k7el28wm4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/設計模式之01單例模式/" data-id="cjpcaysmn0000u87k1jdfaesy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -495,132 +573,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/代码扫描工具/" data-id="cjpax09ia0001t47k635g1i2n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/代码扫描工具/" data-id="cjpcaysn10004u87kzxdlcy1t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排查工具/">排查工具</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SpringBoot整合HBase" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/20/SpringBoot整合HBase/" class="article-date">
-  <time datetime="2018-06-20T05:44:18.000Z" itemprop="datePublished">2018-06-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>SpringBoot整合HBase
-</code></pre><h1 id="废话不多说，开始步入正题！"><a href="#废话不多说，开始步入正题！" class="headerlink" title="废话不多说，开始步入正题！"></a>废话不多说，开始步入正题！</h1><h2 id="第一步，映入Maven依赖"><a href="#第一步，映入Maven依赖" class="headerlink" title="第一步，映入Maven依赖"></a>第一步，映入Maven依赖</h2><pre><code>    &lt;parent&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-        &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;
-        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
-    &lt;/parent&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
-    &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
-    &lt;version&gt;1.3.0&lt;/version&gt;
-    &lt;exclusions&gt;
-        &lt;exclusion&gt;
-            &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
-            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-        &lt;/exclusion&gt;
-    &lt;/exclusions&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-data-hadoop&lt;/artifactId&gt;
-    &lt;version&gt;2.5.0.RELEASE&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h2 id="第二步，加入SpringBoot配置文件"><a href="#第二步，加入SpringBoot配置文件" class="headerlink" title="第二步，加入SpringBoot配置文件"></a>第二步，加入SpringBoot配置文件</h2><pre><code>hbase.zookeeper.quorum=ip
-hbase.zookeeper.port=2181
-</code></pre><h2 id="第三步，引用HbaseTemplate-测试类使用方式"><a href="#第三步，引用HbaseTemplate-测试类使用方式" class="headerlink" title="第三步，引用HbaseTemplate,测试类使用方式"></a>第三步，引用HbaseTemplate,测试类使用方式</h2><pre><code>@Autowired
-    private HbaseTemplate hbaseTemplate;
-    @Test
-    public void contextLoads() {
-
-    }
-    @Test
-    public void testPut() {
-        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;name&quot;, Bytes.toBytes(&quot;Alice&quot;));
-        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;phone&quot;, Bytes.toBytes(&quot;15620974206&quot;));
-    }
-    @Test
-    public void testQuery(){
-        List&lt;String&gt; rows = hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, &quot;phone&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result, int i) throws Exception {
-                return result.toString();
-            }
-        });
-        System.out.println(JSONArray.toJSONString(rows));
-        List&lt;String&gt; rowli=    hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result, int i) throws Exception {
-                return result.toString();
-            }
-        });
-        System.out.println(JSONArray.toJSONString(rowli));
-
-    }
-
-    //依据表名，行号，列族，列名获取数据
-    @Test
-    public void testCreateTable(){
-        if(hbaseTemplate.getConfiguration()==null){
-            System.out.println(&quot;为啥是空的呢&quot;);
-        }
-        String ls = hbaseTemplate.get(&quot;t&quot;, &quot;1&quot;,&quot;f&quot;, &quot;name&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result,int i)throws Exception{
-                List&lt;Cell&gt; cellList=result.listCells();
-                String res=&quot;&quot;;
-                for(Cell cell:cellList){
-                    res=Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
-                }
-                return res;
-            }
-        });
-        System.out.println(ls);
-    }
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2018/06/20/SpringBoot整合HBase/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/20/SpringBoot整合HBase/" data-id="cjpax09je000qt47kat5u39f9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术心得/">技术心得</a></li></ul>
 
     </footer>
   </div>
@@ -677,6 +633,10 @@ hbase.zookeeper.port=2181
       <ul>
         
           <li>
+            <a href="/2018/12/06/設計模式之命令模式/">設計模式之命令模式</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/05/設計模式之中介者模式/">設計模式之中介者模式</a>
           </li>
         
@@ -690,10 +650,6 @@ hbase.zookeeper.port=2181
         
           <li>
             <a href="/2018/12/05/設計模式之建造者模式/">設計模式之建造者模式</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/04/設計模式之模板方法模式/">設計模式之模板方法模式</a>
           </li>
         
       </ul>

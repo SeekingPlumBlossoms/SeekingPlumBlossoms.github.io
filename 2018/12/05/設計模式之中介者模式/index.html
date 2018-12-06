@@ -5,15 +5,18 @@
   
   <title>設計模式之中介者模式 | 宾哥部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="設計模式">
+  <meta name="description" content="中介者模式介绍 定义 中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。   Mediator抽象中介者角色 抽象中介者角色定义统一的接口，用于各角色之间的通信。   ConcreteMediator具体中介者角色 具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。   Colleagu">
+<meta name="keywords" content="設計模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="設計模式之中介者模式">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/設計模式之中介者模式/index.html">
 <meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="中介者模式介绍 定义 中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。   Mediator抽象中介者角色 抽象中介者角色定义统一的接口，用于各角色之间的通信。   ConcreteMediator具体中介者角色 具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。   Colleagu">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T08:33:26.814Z">
+<meta property="og:updated_time" content="2018-12-06T07:18:00.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="設計模式之中介者模式">
+<meta name="twitter:description" content="中介者模式介绍 定义 中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。   Mediator抽象中介者角色 抽象中介者角色定义统一的接口，用于各角色之间的通信。   ConcreteMediator具体中介者角色 具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。   Colleagu">
   
     <link rel="alternate" href="/atom.xml" title="宾哥部落格" type="application/atom+xml">
   
@@ -84,11 +87,57 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="中介者模式介绍"><a href="#中介者模式介绍" class="headerlink" title="中介者模式介绍"></a>中介者模式介绍</h1><ul>
+<li>定义<ul>
+<li>中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。</li>
+</ul>
+</li>
+<li>Mediator抽象中介者角色<ul>
+<li>抽象中介者角色定义统一的接口，用于各角色之间的通信。</li>
+</ul>
+</li>
+<li>ConcreteMediator具体中介者角色<ul>
+<li>具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。</li>
+</ul>
+</li>
+<li>Colleague同事角色<ul>
+<li>每一个同事角色都知道中介者角色，而且与其他的同事角色的通信的时候，一定要通过中介者角色协作。每个同事类的行为分为2种：一种是同事本身的行为，比如改变对象本身的状态，处理自己的行为等。这种行为叫做自发行为(Self-Method),与其他的同事类或者中介者没有任何的依赖；第二种是必须依赖中介者才能完成的任务的行为，叫做依赖方法。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<a id="more"></a>
+<h1 id="中介者模式的应用"><a href="#中介者模式的应用" class="headerlink" title="中介者模式的应用"></a>中介者模式的应用</h1><h2 id="1-中介者模式的优点"><a href="#1-中介者模式的优点" class="headerlink" title="1.中介者模式的优点"></a>1.中介者模式的优点</h2><ul>
+<li>中介者模式的优点就是减少类间的依赖，把原有的一对多的依赖变成了一对一的依赖，同事类只依赖中介者，减少了依赖，当然同事也降低了类间的耦合。</li>
+</ul>
+<hr>
+<h2 id="2-中介者模式的缺点"><a href="#2-中介者模式的缺点" class="headerlink" title="2.中介者模式的缺点"></a>2.中介者模式的缺点</h2><ul>
+<li>中介者模式的缺点就是中介者会膨胀得很大，而且逻辑复杂，原本N个对象直接的相互依赖关系转换为中介者和同事类的依赖关系，同事类越多，中介者的逻辑就越多。</li>
+</ul>
+<hr>
+<h2 id="3-中介者模式的使用场景"><a href="#3-中介者模式的使用场景" class="headerlink" title="3.中介者模式的使用场景"></a>3.中介者模式的使用场景</h2><ul>
+<li>N个对象之间产生了相互依赖的关系(N&gt;2)。</li>
+<li>多个对象有依赖关系，但是依赖的行为尚不能确定或者发生改变的可能，在这种情况下一般建议采用中介者模式，降低变更引起的风险扩散。</li>
+<li>产品开发。把中介者模式应用到产品中，可以提升产品的性能和扩展性，但是对于项目开发就未必，因为项目是以交付投产为目标，而产品则是以稳定、高效、扩展为宗旨。</li>
+</ul>
+<hr>
+<h2 id="4-中介者模式案例"><a href="#4-中介者模式案例" class="headerlink" title="4.中介者模式案例"></a>4.中介者模式案例</h2><ul>
+<li>MVC框架<ul>
+<li>MVC框架：其中的C(Controller)就是一个中介者，叫做前端控制器，它的作用就是把M(Model，业务逻辑)和V(View,视图)隔离开，协调M和V协调工作，把M的运行结果和V代表的视图融合成一个前端可以展示的页面，减少M和V的依赖。</li>
+</ul>
+</li>
+<li>中介服务</li>
+<li>媒体网关</li>
+<li>机场调度中心</li>
+</ul>
+<hr>
+<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/MediatorPattern.git" target="_blank" rel="noopener">单例模式</a></p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/設計模式之中介者模式/" data-id="cjpax09il0005t47kjqeyu1gb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/設計模式之中介者模式/" data-id="cjpcaysn00003u87kyzvvhs0q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/設計模式/">設計模式</a></li></ul>
@@ -98,6 +147,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/12/06/設計模式之命令模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          設計模式之命令模式
+        
+      </div>
+    </a>
   
   
     <a href="/2018/12/05/設計模式之原型模式/" id="article-nav-older" class="article-nav-link-wrap">
@@ -153,6 +211,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/06/設計模式之命令模式/">設計模式之命令模式</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/05/設計模式之中介者模式/">設計模式之中介者模式</a>
           </li>
         
@@ -166,10 +228,6 @@
         
           <li>
             <a href="/2018/12/05/設計模式之建造者模式/">設計模式之建造者模式</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/04/設計模式之模板方法模式/">設計模式之模板方法模式</a>
           </li>
         
       </ul>
