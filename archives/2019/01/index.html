@@ -2,14 +2,14 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>宾哥部落格</title>
+<title>归档: 2019/1 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="宾哥部落格">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2019/01/index.html">
 <meta property="og:site_name" content="宾哥部落格">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
@@ -134,220 +134,38 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    <div class="card">
-    
-    <div class="card-content article ">
+
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="tag is-link">
+        一月 2019
+        </h3>
+        <div class="timeline">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-22T07:39:08.000Z">2018-11-22</time>
+            <article class="media">
                 
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 242 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/22/代码扫描工具/">代码扫描工具</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>作为一个程序员,需要对自己的代码进行CR,提前找到自己代码中的坏味道或者漏洞;先介绍如下几种代码扫描工具
-</code></pre><hr>
-<h2 id="sonar使用步骤"><a href="#sonar使用步骤" class="headerlink" title="sonar使用步骤"></a>sonar使用步骤</h2><pre><code>1. 启动sona
- 地址：E:\sonarqube-6.7.4\bin 选择对应的环境执行
-
-2. 登陆http://localhost:9000/
-
-3. 在工作空间执行
-         mvn sonar:sonar
-
-4. 对比文档进行修改    
-</code></pre><hr>
-<h2 id="FindBugs使用步骤"><a href="#FindBugs使用步骤" class="headerlink" title="FindBugs使用步骤"></a>FindBugs使用步骤</h2><pre><code>1. 如图下载FindBUgs插件
-</code></pre><p>   <img src="/2018/11/22/代码扫描工具/FindBugs.png" alt="FindBugs.png"></p>
-<ol start="2">
-<li>使用说明<br>邮件点击工程项目,然后点击FIndBugs执行扫描</li>
-</ol>
-<p>【提示】</p>
-<p>至此，findBugs安装完毕，但有个问题，在验证是否安装成功的时候发现，重新启动eclipse后并没有findBugs功能，经过查询分析，问题出在版本上，在线安装的是findBugs3.0的版本，这个版本对jdk的最低要求是jdk1.7。</p>
-<hr>
-<h2 id="P3C阿里插件"><a href="#P3C阿里插件" class="headerlink" title="P3C阿里插件"></a>P3C阿里插件</h2><ol>
-<li>如上述步骤下载插件</li>
-<li>使用方式和FindBugs一样</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-06-20T05:44:18.000Z">2018-06-20</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 799 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>SpringBoot整合HBase
-</code></pre><h1 id="废话不多说，开始步入正题！"><a href="#废话不多说，开始步入正题！" class="headerlink" title="废话不多说，开始步入正题！"></a>废话不多说，开始步入正题！</h1><h2 id="第一步，映入Maven依赖"><a href="#第一步，映入Maven依赖" class="headerlink" title="第一步，映入Maven依赖"></a>第一步，映入Maven依赖</h2><pre><code>    &lt;parent&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-        &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;
-        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
-    &lt;/parent&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
-    &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
-    &lt;version&gt;1.3.0&lt;/version&gt;
-    &lt;exclusions&gt;
-        &lt;exclusion&gt;
-            &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
-            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-        &lt;/exclusion&gt;
-    &lt;/exclusions&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-data-hadoop&lt;/artifactId&gt;
-    &lt;version&gt;2.5.0.RELEASE&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h2 id="第二步，加入SpringBoot配置文件"><a href="#第二步，加入SpringBoot配置文件" class="headerlink" title="第二步，加入SpringBoot配置文件"></a>第二步，加入SpringBoot配置文件</h2><pre><code>hbase.zookeeper.quorum=ip
-hbase.zookeeper.port=2181
-</code></pre><h2 id="第三步，引用HbaseTemplate-测试类使用方式"><a href="#第三步，引用HbaseTemplate-测试类使用方式" class="headerlink" title="第三步，引用HbaseTemplate,测试类使用方式"></a>第三步，引用HbaseTemplate,测试类使用方式</h2><pre><code>@Autowired
-    private HbaseTemplate hbaseTemplate;
-    @Test
-    public void contextLoads() {
-
-    }
-    @Test
-    public void testPut() {
-        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;name&quot;, Bytes.toBytes(&quot;Alice&quot;));
-        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;phone&quot;, Bytes.toBytes(&quot;15620974206&quot;));
-    }
-    @Test
-    public void testQuery(){
-        List&lt;String&gt; rows = hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, &quot;phone&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result, int i) throws Exception {
-                return result.toString();
-            }
-        });
-        System.out.println(JSONArray.toJSONString(rows));
-        List&lt;String&gt; rowli=    hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result, int i) throws Exception {
-                return result.toString();
-            }
-        });
-        System.out.println(JSONArray.toJSONString(rowli));
-
-    }
-
-    //依据表名，行号，列族，列名获取数据
-    @Test
-    public void testCreateTable(){
-        if(hbaseTemplate.getConfiguration()==null){
-            System.out.println(&quot;为啥是空的呢&quot;);
-        }
-        String ls = hbaseTemplate.get(&quot;t&quot;, &quot;1&quot;,&quot;f&quot;, &quot;name&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result,int i)throws Exception{
-                List&lt;Cell&gt; cellList=result.listCells();
-                String res=&quot;&quot;;
-                for(Cell cell:cellList){
-                    res=Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
-                }
-                return res;
-            }
-        });
-        System.out.println(ls);
-    }
-</code></pre>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/06/20/SpringBoot整合HBase/#more">阅读更多</a>
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-01-23T07:44:56.000Z">2019-01-23</time>
+                        <a href="/2019/01/23/Long-getLong-与Long-valueOf-的区别/" class="has-link-black-ter is-size-6">Long.getLong()与Long.valueOf()的区别</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </article>
+        
         </div>
-        
-        
     </div>
 </div>
 
 
-
-
-
-
-
-
-
-    
-<div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/5/">上一页</a>
-        </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/7/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
-            
-            <li><a class="pagination-link is-current" href="/page/6/">6</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
-            
-        </ul>
-    </nav>
-</div>
 </div>
                 
 
