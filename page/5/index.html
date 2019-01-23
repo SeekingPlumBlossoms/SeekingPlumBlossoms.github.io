@@ -9,7 +9,7 @@
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="宾哥部落格">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="宾哥部落格">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
@@ -91,7 +91,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/">Home</a>
                 
                 <a class="navbar-item"
@@ -140,13 +140,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-06T07:19:09.000Z">2018-12-06</time>
+                <time class="level-item has-text-grey" datetime="2018-12-04T01:13:24.000Z">2018-12-04</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 431 个字)
+                    6 分钟 读完 (大约 841 个字)
                 </span>
                 
             </div>
@@ -154,30 +154,18 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/06/設計模式之命令模式/">設計模式之命令模式</a>
+                <a class="has-link-black-ter" href="/2018/12/04/設計模式之01單例模式/">設計模式之單例模式</a>
             
         </h1>
         <div class="content">
-            <h1 id="命令模式介绍"><a href="#命令模式介绍" class="headerlink" title="命令模式介绍"></a>命令模式介绍</h1><ul>
-<li>定义<ul>
-<li>命令模式是一个高内聚的模式，将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能。</li>
-</ul>
-</li>
-<li>角色<ul>
-<li>Receive接受者角色:该角色就是干活的角色，命令传递到这里是应该被执行的.</li>
-<li>Command命令角色：需要执行所有命令都在这里声明。</li>
-<li>Invoker调用者角色：接受到命令，并执行命令。</li>
-</ul>
-</li>
-</ul>
-<hr>
+            <h1 id="单例模式介绍"><a href="#单例模式介绍" class="headerlink" title="单例模式介绍"></a>单例模式介绍</h1><p>单例模式（Single Pattern）:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/06/設計模式之命令模式/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2018/12/04/設計模式之01單例模式/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -199,13 +187,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-05T08:15:21.000Z">2018-12-05</time>
+                <time class="level-item has-text-grey" datetime="2018-11-22T07:39:08.000Z">2018-11-22</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 791 个字)
+                    2 分钟 读完 (大约 242 个字)
                 </span>
                 
             </div>
@@ -213,39 +201,37 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/05/設計模式之中介者模式/">設計模式之中介者模式</a>
+                <a class="has-link-black-ter" href="/2018/11/22/代码扫描工具/">代码扫描工具</a>
             
         </h1>
         <div class="content">
-            <h1 id="中介者模式介绍"><a href="#中介者模式介绍" class="headerlink" title="中介者模式介绍"></a>中介者模式介绍</h1><ul>
-<li>定义<ul>
-<li>中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。</li>
-</ul>
-</li>
-<li>Mediator抽象中介者角色<ul>
-<li>抽象中介者角色定义统一的接口，用于各角色之间的通信。</li>
-</ul>
-</li>
-<li>ConcreteMediator具体中介者角色<ul>
-<li>具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。</li>
-</ul>
-</li>
-<li>Colleague同事角色<ul>
-<li>每一个同事角色都知道中介者角色，而且与其他的同事角色的通信的时候，一定要通过中介者角色协作。每个同事类的行为分为2种：一种是同事本身的行为，比如改变对象本身的状态，处理自己的行为等。这种行为叫做自发行为(Self-Method),与其他的同事类或者中介者没有任何的依赖；第二种是必须依赖中介者才能完成的任务的行为，叫做依赖方法。</li>
-</ul>
-</li>
-</ul>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>作为一个程序员,需要对自己的代码进行CR,提前找到自己代码中的坏味道或者漏洞;先介绍如下几种代码扫描工具
+</code></pre><hr>
+<h2 id="sonar使用步骤"><a href="#sonar使用步骤" class="headerlink" title="sonar使用步骤"></a>sonar使用步骤</h2><pre><code>1. 启动sona
+ 地址：E:\sonarqube-6.7.4\bin 选择对应的环境执行
+
+2. 登陆http://localhost:9000/
+
+3. 在工作空间执行
+         mvn sonar:sonar
+
+4. 对比文档进行修改    
+</code></pre><hr>
+<h2 id="FindBugs使用步骤"><a href="#FindBugs使用步骤" class="headerlink" title="FindBugs使用步骤"></a>FindBugs使用步骤</h2><pre><code>1. 如图下载FindBUgs插件
+</code></pre><p>   <img src="/2018/11/22/代码扫描工具/FindBugs.png" alt="FindBugs.png"></p>
+<ol start="2">
+<li>使用说明<br>邮件点击工程项目,然后点击FIndBugs执行扫描</li>
+</ol>
+<p>【提示】</p>
+<p>至此，findBugs安装完毕，但有个问题，在验证是否安装成功的时候发现，重新启动eclipse后并没有findBugs功能，经过查询分析，问题出在版本上，在线安装的是findBugs3.0的版本，这个版本对jdk的最低要求是jdk1.7。</p>
 <hr>
+<h2 id="P3C阿里插件"><a href="#P3C阿里插件" class="headerlink" title="P3C阿里插件"></a>P3C阿里插件</h2><ol>
+<li>如上述步骤下载插件</li>
+<li>使用方式和FindBugs一样</li>
+</ol>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/05/設計模式之中介者模式/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
@@ -262,19 +248,23 @@
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/0/">上一页</a>
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/page/4/">上一页</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">下一页</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/6/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
-            <li><a class="pagination-link is-current" href="/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            
+            <li><a class="pagination-link is-current" href="/page/5/">5</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/6/">6</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
             

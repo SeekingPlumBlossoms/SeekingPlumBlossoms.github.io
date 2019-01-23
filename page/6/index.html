@@ -9,7 +9,7 @@
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="宾哥部落格">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/page/6/index.html">
 <meta property="og:site_name" content="宾哥部落格">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
@@ -91,7 +91,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/">Home</a>
                 
                 <a class="navbar-item"
@@ -140,13 +140,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-06T07:19:09.000Z">2018-12-06</time>
+                <time class="level-item has-text-grey" datetime="2018-06-20T05:44:18.000Z">2018-06-20</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 431 个字)
+                    5 分钟 读完 (大约 799 个字)
                 </span>
                 
             </div>
@@ -154,30 +154,97 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/06/設計模式之命令模式/">設計模式之命令模式</a>
+                <a class="has-link-black-ter" href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
             
         </h1>
         <div class="content">
-            <h1 id="命令模式介绍"><a href="#命令模式介绍" class="headerlink" title="命令模式介绍"></a>命令模式介绍</h1><ul>
-<li>定义<ul>
-<li>命令模式是一个高内聚的模式，将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能。</li>
-</ul>
-</li>
-<li>角色<ul>
-<li>Receive接受者角色:该角色就是干活的角色，命令传递到这里是应该被执行的.</li>
-<li>Command命令角色：需要执行所有命令都在这里声明。</li>
-<li>Invoker调用者角色：接受到命令，并执行命令。</li>
-</ul>
-</li>
-</ul>
-<hr>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>SpringBoot整合HBase
+</code></pre><h1 id="废话不多说，开始步入正题！"><a href="#废话不多说，开始步入正题！" class="headerlink" title="废话不多说，开始步入正题！"></a>废话不多说，开始步入正题！</h1><h2 id="第一步，映入Maven依赖"><a href="#第一步，映入Maven依赖" class="headerlink" title="第一步，映入Maven依赖"></a>第一步，映入Maven依赖</h2><pre><code>    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+    &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
+    &lt;version&gt;1.3.0&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-data-hadoop&lt;/artifactId&gt;
+    &lt;version&gt;2.5.0.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="第二步，加入SpringBoot配置文件"><a href="#第二步，加入SpringBoot配置文件" class="headerlink" title="第二步，加入SpringBoot配置文件"></a>第二步，加入SpringBoot配置文件</h2><pre><code>hbase.zookeeper.quorum=ip
+hbase.zookeeper.port=2181
+</code></pre><h2 id="第三步，引用HbaseTemplate-测试类使用方式"><a href="#第三步，引用HbaseTemplate-测试类使用方式" class="headerlink" title="第三步，引用HbaseTemplate,测试类使用方式"></a>第三步，引用HbaseTemplate,测试类使用方式</h2><pre><code>@Autowired
+    private HbaseTemplate hbaseTemplate;
+    @Test
+    public void contextLoads() {
+
+    }
+    @Test
+    public void testPut() {
+        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;name&quot;, Bytes.toBytes(&quot;Alice&quot;));
+        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;phone&quot;, Bytes.toBytes(&quot;15620974206&quot;));
+    }
+    @Test
+    public void testQuery(){
+        List&lt;String&gt; rows = hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, &quot;phone&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result, int i) throws Exception {
+                return result.toString();
+            }
+        });
+        System.out.println(JSONArray.toJSONString(rows));
+        List&lt;String&gt; rowli=    hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result, int i) throws Exception {
+                return result.toString();
+            }
+        });
+        System.out.println(JSONArray.toJSONString(rowli));
+
+    }
+
+    //依据表名，行号，列族，列名获取数据
+    @Test
+    public void testCreateTable(){
+        if(hbaseTemplate.getConfiguration()==null){
+            System.out.println(&quot;为啥是空的呢&quot;);
+        }
+        String ls = hbaseTemplate.get(&quot;t&quot;, &quot;1&quot;,&quot;f&quot;, &quot;name&quot;, new RowMapper&lt;String&gt;() {
+            @Override
+            public String mapRow(Result result,int i)throws Exception{
+                List&lt;Cell&gt; cellList=result.listCells();
+                String res=&quot;&quot;;
+                for(Cell cell:cellList){
+                    res=Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
+                }
+                return res;
+            }
+        });
+        System.out.println(ls);
+    }
+</code></pre>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/06/設計模式之命令模式/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2018/06/20/SpringBoot整合HBase/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -199,13 +266,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-05T08:15:21.000Z">2018-12-05</time>
+                <time class="level-item has-text-grey" datetime="2018-06-05T06:29:10.000Z">2018-06-05</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 791 个字)
+                    1 分钟 读完 (大约 121 个字)
                 </span>
                 
             </div>
@@ -213,36 +280,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/05/設計模式之中介者模式/">設計模式之中介者模式</a>
+                <a class="has-link-black-ter" href="/2018/06/05/宾哥的技术之旅/">宾哥的技术之旅</a>
             
         </h1>
         <div class="content">
-            <h1 id="中介者模式介绍"><a href="#中介者模式介绍" class="headerlink" title="中介者模式介绍"></a>中介者模式介绍</h1><ul>
-<li>定义<ul>
-<li>中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。</li>
-</ul>
-</li>
-<li>Mediator抽象中介者角色<ul>
-<li>抽象中介者角色定义统一的接口，用于各角色之间的通信。</li>
-</ul>
-</li>
-<li>ConcreteMediator具体中介者角色<ul>
-<li>具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。</li>
-</ul>
-</li>
-<li>Colleague同事角色<ul>
-<li>每一个同事角色都知道中介者角色，而且与其他的同事角色的通信的时候，一定要通过中介者角色协作。每个同事类的行为分为2种：一种是同事本身的行为，比如改变对象本身的状态，处理自己的行为等。这种行为叫做自发行为(Self-Method),与其他的同事类或者中介者没有任何的依赖；第二种是必须依赖中介者才能完成的任务的行为，叫做依赖方法。</li>
-</ul>
-</li>
-</ul>
-<hr>
+            <p>今天我宾哥就是要干翻在座的各位渣渣！</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><blockquote>
+<p>子曰：不搞个个人技术博客还能叫程序员？</p>
+</blockquote>
+<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br></p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/05/設計模式之中介者模式/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2018/06/05/宾哥的技术之旅/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -262,19 +315,21 @@
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/0/">上一页</a>
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/page/5/">上一页</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">下一页</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/7/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
-            <li><a class="pagination-link is-current" href="/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
+            
+            <li><a class="pagination-link is-current" href="/page/6/">6</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
             

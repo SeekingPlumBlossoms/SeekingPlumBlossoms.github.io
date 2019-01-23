@@ -140,13 +140,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-06-20T05:44:18.000Z">2018-06-20</time>
+                <time class="level-item has-text-grey" datetime="2018-12-05T07:09:33.000Z">2018-12-05</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 799 个字)
+                    3 分钟 读完 (大约 403 个字)
                 </span>
                 
             </div>
@@ -154,97 +154,24 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/06/20/SpringBoot整合HBase/">SpringBoot整合HBase</a>
+                <a class="has-link-black-ter" href="/2018/12/05/設計模式之原型模式/">設計模式之原型模式</a>
             
         </h1>
         <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>SpringBoot整合HBase
-</code></pre><h1 id="废话不多说，开始步入正题！"><a href="#废话不多说，开始步入正题！" class="headerlink" title="废话不多说，开始步入正题！"></a>废话不多说，开始步入正题！</h1><h2 id="第一步，映入Maven依赖"><a href="#第一步，映入Maven依赖" class="headerlink" title="第一步，映入Maven依赖"></a>第一步，映入Maven依赖</h2><pre><code>    &lt;parent&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-        &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;
-        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
-    &lt;/parent&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
-    &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
-    &lt;version&gt;1.3.0&lt;/version&gt;
-    &lt;exclusions&gt;
-        &lt;exclusion&gt;
-            &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
-            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-        &lt;/exclusion&gt;
-    &lt;/exclusions&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-data-hadoop&lt;/artifactId&gt;
-    &lt;version&gt;2.5.0.RELEASE&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h2 id="第二步，加入SpringBoot配置文件"><a href="#第二步，加入SpringBoot配置文件" class="headerlink" title="第二步，加入SpringBoot配置文件"></a>第二步，加入SpringBoot配置文件</h2><pre><code>hbase.zookeeper.quorum=ip
-hbase.zookeeper.port=2181
-</code></pre><h2 id="第三步，引用HbaseTemplate-测试类使用方式"><a href="#第三步，引用HbaseTemplate-测试类使用方式" class="headerlink" title="第三步，引用HbaseTemplate,测试类使用方式"></a>第三步，引用HbaseTemplate,测试类使用方式</h2><pre><code>@Autowired
-    private HbaseTemplate hbaseTemplate;
-    @Test
-    public void contextLoads() {
-
-    }
-    @Test
-    public void testPut() {
-        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;name&quot;, Bytes.toBytes(&quot;Alice&quot;));
-        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;phone&quot;, Bytes.toBytes(&quot;15620974206&quot;));
-    }
-    @Test
-    public void testQuery(){
-        List&lt;String&gt; rows = hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, &quot;phone&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result, int i) throws Exception {
-                return result.toString();
-            }
-        });
-        System.out.println(JSONArray.toJSONString(rows));
-        List&lt;String&gt; rowli=    hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result, int i) throws Exception {
-                return result.toString();
-            }
-        });
-        System.out.println(JSONArray.toJSONString(rowli));
-
-    }
-
-    //依据表名，行号，列族，列名获取数据
-    @Test
-    public void testCreateTable(){
-        if(hbaseTemplate.getConfiguration()==null){
-            System.out.println(&quot;为啥是空的呢&quot;);
-        }
-        String ls = hbaseTemplate.get(&quot;t&quot;, &quot;1&quot;,&quot;f&quot;, &quot;name&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result,int i)throws Exception{
-                List&lt;Cell&gt; cellList=result.listCells();
-                String res=&quot;&quot;;
-                for(Cell cell:cellList){
-                    res=Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
-                }
-                return res;
-            }
-        });
-        System.out.println(ls);
-    }
-</code></pre>
+            <h1 id="原型模式介绍"><a href="#原型模式介绍" class="headerlink" title="原型模式介绍"></a>原型模式介绍</h1><ul>
+<li>原型模式的定义<ul>
+<li>原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。</li>
+</ul>
+</li>
+</ul>
+<hr>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/06/20/SpringBoot整合HBase/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2018/12/05/設計模式之原型模式/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -266,13 +193,13 @@ hbase.zookeeper.port=2181
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-06-05T06:29:10.000Z">2018-06-05</time>
+                <time class="level-item has-text-grey" datetime="2018-12-05T06:15:41.000Z">2018-12-05</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 121 个字)
+                    3 分钟 读完 (大约 415 个字)
                 </span>
                 
             </div>
@@ -280,73 +207,36 @@ hbase.zookeeper.port=2181
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/06/05/宾哥的技术之旅/">宾哥的技术之旅</a>
+                <a class="has-link-black-ter" href="/2018/12/05/設計模式之代理模式/">設計模式之代理模式</a>
             
         </h1>
         <div class="content">
-            <p>今天我宾哥就是要干翻在座的各位渣渣！</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><blockquote>
-<p>子曰：不搞个个人技术博客还能叫程序员？</p>
-</blockquote>
-<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br></p>
+            <h1 id="代理模式介绍"><a href="#代理模式介绍" class="headerlink" title="代理模式介绍"></a>代理模式介绍</h1><ul>
+<li>代理模式定义<ul>
+<li>代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。</li>
+</ul>
+</li>
+<li>Subject抽象主体角色<ul>
+<li>抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。</li>
+</ul>
+</li>
+<li>RealSubkect具体主题角色<ul>
+<li>也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。</li>
+</ul>
+</li>
+<li>Proxy代理主题角色<br>  *也叫做委托类、代理类。它负责对真实角色的应用，把所有抽象主题类定义的方法限制委托给真实的主题角色实现，并且在真实主题角色处理完毕前后做预处理和善后处理工作。</li>
+</ul>
+<hr>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/06/05/宾哥的技术之旅/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2018/12/05/設計模式之代理模式/#more">阅读更多</a>
                 </div>
             </div>
         </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-06-02T16:39:02.340Z">2018-06-03</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 121 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/06/03/hello-world/">Hello World</a>
-            
-        </h1>
-        <div class="content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        </div>
-        
         
         
     </div>
@@ -366,7 +256,7 @@ hbase.zookeeper.port=2181
         <div class="pagination-previous">
             <a class="is-flex-grow has-text-black-ter" href="/">上一页</a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
+        <div class="pagination-next">
             <a class="is-flex-grow has-text-black-ter" href="/page/3/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
@@ -374,6 +264,12 @@ hbase.zookeeper.port=2181
             <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
             
             <li><a class="pagination-link is-current" href="/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
+            
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
             
         </ul>
     </nav>
