@@ -140,6 +140,62 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-07T02:39:59.000Z">2019-03-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1622 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/07/分布式全局唯一ID生成策略/">分布式全局唯一ID生成策略</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="分布式系统的定义"><a href="#分布式系统的定义" class="headerlink" title="分布式系统的定义"></a>分布式系统的定义</h2><ul>
+<li>分布式系统就是对外是统一的入口，对内是有很多计算机服务组装的系统。</li>
+</ul>
+<h2 id="为什么需要一个全局唯一主键"><a href="#为什么需要一个全局唯一主键" class="headerlink" title="为什么需要一个全局唯一主键"></a>为什么需要一个全局唯一主键</h2><ul>
+<li>主要是用于某个记录的存储或者输出的时候，能找到唯一的记录，不能让数据错乱。数据库的唯一ID在单库单表的情况下可以使用，但是在使用分布式系统的时候，数据库的自增主键就不可以使用了.举个栗子：先有订单记录表1024张,如果使用数据库中的自增主键，那么就会有1024订单号相同的订单，这个肯定是不行的，所以需要分布式唯一的主键去确定订单号。</li>
+</ul>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/07/分布式全局唯一ID生成策略/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-03-07T01:35:35.000Z">2019-03-07</time>
                 
                 <div class="level-item">
@@ -173,57 +229,6 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/2019/03/07/动态获取枚举值/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-23T07:44:56.000Z">2019-01-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/java/">java</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 456 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/23/Long-getLong-与Long-valueOf-的区别/">Long.getLong()与Long.valueOf()的区别</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><font face="黑体">  最近在线上的日志出现了一些”java.lang.NullPointerException”,本着线上不应该出现这种空指针异常的问题,我去追踪了代码，记录下这个坑，防止后续继续踩坑.</font>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/01/23/Long-getLong-与Long-valueOf-的区别/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -303,7 +308,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -323,7 +328,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
@@ -431,7 +436,7 @@
                 <span class="level-item">java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li>
             </ul>
@@ -445,7 +450,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/java随笔/" style="font-size: 10px;">java随笔</a> <a href="/tags/事故/" style="font-size: 10px;">事故</a> <a href="/tags/技术心得/" style="font-size: 15px;">技术心得</a> <a href="/tags/排查工具/" style="font-size: 10px;">排查工具</a> <a href="/tags/設計模式/" style="font-size: 20px;">設計模式</a>
+        <a href="/tags/java随笔/" style="font-size: 10px;">java随笔</a> <a href="/tags/事故/" style="font-size: 10px;">事故</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/技术心得/" style="font-size: 15px;">技术心得</a> <a href="/tags/排查工具/" style="font-size: 10px;">排查工具</a> <a href="/tags/設計模式/" style="font-size: 20px;">設計模式</a>
     </div>
 </div>
 
@@ -459,6 +464,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/03/07/分布式全局唯一ID生成策略/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="分布式全局唯一ID生成策略">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-07T02:39:59.000Z">2019-03-07</time></div>
+                    <a href="/2019/03/07/分布式全局唯一ID生成策略/" class="has-link-black-ter is-size-6">分布式全局唯一ID生成策略</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/java/">java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -536,25 +560,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/12/05/設計模式之原型模式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="設計模式之原型模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-05T07:09:33.000Z">2018-12-05</time></div>
-                    <a href="/2018/12/05/設計模式之原型模式/" class="has-link-black-ter is-size-6">設計模式之原型模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -573,7 +578,7 @@
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -645,6 +650,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/事故/">
                         <span class="tag">事故</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分布式/">
+                        <span class="tag">分布式</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -695,6 +707,25 @@
         
         <article class="media">
             
+            <a href="/2019/03/07/分布式全局唯一ID生成策略/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="分布式全局唯一ID生成策略">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-07T02:39:59.000Z">2019-03-07</time></div>
+                    <a href="/2019/03/07/分布式全局唯一ID生成策略/" class="has-link-black-ter is-size-6">分布式全局唯一ID生成策略</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/java/">java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/03/07/动态获取枚举值/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="动态获取枚举值">
@@ -769,25 +800,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/12/05/設計模式之原型模式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="設計模式之原型模式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-05T07:09:33.000Z">2018-12-05</time></div>
-                    <a href="/2018/12/05/設計模式之原型模式/" class="has-link-black-ter is-size-6">設計模式之原型模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -806,7 +818,7 @@
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -878,6 +890,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/事故/">
                         <span class="tag">事故</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分布式/">
+                        <span class="tag">分布式</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
