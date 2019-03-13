@@ -2,19 +2,27 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>标签 - 宾哥部落格</title>
+<title>okHttp报SSLPeerUnverifiedException异常解决方案 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="keywords" content="okHttp,事故,排查工具,設計模式,技术心得,java随笔,分布式">
-<meta property="og:type" content="website">
-<meta property="og:title" content="宾哥部落格">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+    <meta name="description" content="前言最近在项目使用了okHttp进行网络通信，记录在使用okHttp对https进行请求是抛出SSLPeerUnverifiedException异常以及SSLHandshakeException异常问题的分析以及解决方式。">
+<meta name="keywords" content="okHttp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="okHttp报SSLPeerUnverifiedException异常解决方案">
+<meta property="og:url" content="http://yoursite.com/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/index.html">
 <meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="前言最近在项目使用了okHttp进行网络通信，记录在使用okHttp对https进行请求是抛出SSLPeerUnverifiedException异常以及SSLHandshakeException异常问题的分析以及解决方式。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/2.jpg">
+<meta property="og:updated_time" content="2019-03-13T03:49:24.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="宾哥部落格">
+<meta name="twitter:title" content="okHttp报SSLPeerUnverifiedException异常解决方案">
+<meta name="twitter:description" content="前言最近在项目使用了okHttp进行网络通信，记录在使用okHttp对https进行请求是抛出SSLPeerUnverifiedException异常以及SSLHandshakeException异常问题的分析以及解决方式。">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/3.jpg">
 
 
 
@@ -84,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="宾哥部落格" height="28">
+                <img src="/images/logo.svg" alt="okHttp报SSLPeerUnverifiedException异常解决方案" height="28">
             
             </a>
         </div>
@@ -101,7 +109,7 @@
                 <a class="navbar-item"
                 href="/categories">Categories</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/tags">Tags</a>
                 
                 <a class="navbar-item"
@@ -134,67 +142,150 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-13T01:38:02.000Z">2019-03-13</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/java随笔/">
-                        <span class="tag">java随笔</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/okHttp/">
-                        <span class="tag">okHttp</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/事故/">
-                        <span class="tag">事故</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/分布式/">
-                        <span class="tag">分布式</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/技术心得/">
-                        <span class="tag">技术心得</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/排查工具/">
-                        <span class="tag">排查工具</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/設計模式/">
-                        <span class="tag">設計模式</span>
-                        <span class="tag is-grey">9</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 485 个字)
+                </span>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                okHttp报SSLPeerUnverifiedException异常解决方案
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在项目使用了okHttp进行网络通信，记录在使用okHttp对https进行请求是抛出SSLPeerUnverifiedException异常以及SSLHandshakeException异常问题的分析以及解决方式。</p>
+<a id="more"></a>
+<h2 id="初始化OKHTTPClient客户端"><a href="#初始化OKHTTPClient客户端" class="headerlink" title="初始化OKHTTPClient客户端"></a>初始化OKHTTPClient客户端</h2><p><img src="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/3.jpg" alt="图片名称可省略.jpg"></p>
+<ul>
+<li><p>请求参数的处理</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FormBody.Builder formBody = <span class="hljs-keyword">new</span> FormBody.Builder();</span><br><span class="line">formBody.add(<span class="hljs-string">"key"</span>, value);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>url请求处理</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Request request = <span class="hljs-keyword">new</span> Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        .addHeader(<span class="hljs-string">"Content-Type"</span>, <span class="hljs-string">"application/x-www-form-urlencoded"</span>)</span><br><span class="line">        .post(formBody.build())</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回结果的处理</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Call call = okHttpClient.newCall(request);</span><br><span class="line">Response response = call.execute();</span><br><span class="line">String bodyString = response.body().string();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="SSLHandshakeException异常处理"><a href="#SSLHandshakeException异常处理" class="headerlink" title="SSLHandshakeException异常处理"></a>SSLHandshakeException异常处理</h2><ul>
+<li>此时直接发出https请求会返回以下错误<br><img src="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/1.jpg" alt="图片名称可省略.jpg"></li>
+<li><p>处理方法：对OKHTTPClient进行如下改造：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient okHttpClient = <span class="hljs-keyword">new</span> OkHttpClient()</span><br><span class="line">    .newBuilder()</span><br><span class="line">    .sslSocketFactory(OkHttpsUtils.createSSLSocketFactory(), <span class="hljs-keyword">new</span> TrustAllCerts())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误原因：<br>其中sslSocketFactory传入了2个参数，进行本地证书的初始化赋值的动作，对于Https请求需要对本地证书进行初始化。</p>
+</li>
+<li><p>以下是createSSLSocketFactory源码以及TrustAllCerts源码</p>
+<ul>
+<li><p>OkHttpsUtils.createSSLSocketFactory()：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OkHttpsUtils</span> </span>&#123;</span><br><span class="line">      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> SSLSocketFactory <span class="hljs-title">createSSLSocketFactory</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">             SSLSocketFactory ssfFactory = <span class="hljs-keyword">null</span>;</span><br><span class="line">            <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">                SSLContext sc = SSLContext.getInstance(<span class="hljs-string">"TLS"</span>);</span><br><span class="line">                sc.init(<span class="hljs-keyword">null</span>,<span class="hljs-keyword">new</span> TrustManager[]&#123;<span class="hljs-keyword">new</span> TrustAllCerts()&#125;, <span class="hljs-keyword">new</span> SecureRandom());</span><br><span class="line">                ssfFactory = sc.getSocketFactory();</span><br><span class="line">            &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                 e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">         <span class="hljs-keyword">return</span> ssfFactory;</span><br><span class="line">     &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TrustAllCerts源码</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TrustAllCerts</span>  <span class="hljs-keyword">implements</span> <span class="hljs-title">X509TrustManager</span> </span>&#123;</span><br><span class="line"><span class="hljs-meta">@Override</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkClientTrusted</span><span class="hljs-params">(X509Certificate[] x509Certificates, String s)</span> <span class="hljs-keyword">throws</span> CertificateException </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Override</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkServerTrusted</span><span class="hljs-params">(X509Certificate[] x509Certificates, String s)</span> <span class="hljs-keyword">throws</span> CertificateException </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Override</span></span><br><span class="line"><span class="hljs-keyword">public</span> X509Certificate[] getAcceptedIssuers() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> X509Certificate[<span class="hljs-number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="SSLPeerUnverifiedException异常处理"><a href="#SSLPeerUnverifiedException异常处理" class="headerlink" title="SSLPeerUnverifiedException异常处理"></a>SSLPeerUnverifiedException异常处理</h2><ul>
+<li>经过上述步骤后,继续请求会出现如下错误：<br><img src="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/2.jpg" alt="图片名称可省略.jpg"></li>
+<li><p>解决方法:对OKHTTPClient进行如下改造：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient okHttpClient = <span class="hljs-keyword">new</span> OkHttpClient()</span><br><span class="line">    .newBuilder()</span><br><span class="line">    .sslSocketFactory(OkHttpsUtils.createSSLSocketFactory(), <span class="hljs-keyword">new</span> TrustAllCerts())</span><br><span class="line">    .hostnameVerifier(<span class="hljs-keyword">new</span> TrustAllHostnameVerifier())</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误原因：<br>验证对方的证书不通过</p>
+</li>
+<li><p>TrustAllHostnameVerifier源码</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TrustAllHostnameVerifier</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">HostnameVerifier</span> </span>&#123;</span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">verify</span><span class="hljs-params">(String s, SSLSession sslSession)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以上的方式是直接不验证对方的证书。具体okHttps内容可以参考这个文章<br><a href="https://blog.csdn.net/lmj623565791/article/details/48129405" target="_blank" rel="noopener">https://blog.csdn.net/lmj623565791/article/details/48129405</a></p>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/okHttp/">okHttp</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/07/分布式全局唯一ID生成策略/">
+                <span class="level-item">分布式全局唯一ID生成策略</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -880,7 +971,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="宾哥部落格" height="28">
+                    <img src="/images/logo.svg" alt="okHttp报SSLPeerUnverifiedException异常解决方案" height="28">
                 
                 </a>
                 <p class="is-size-7">
