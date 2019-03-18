@@ -2,23 +2,25 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>SpringBoot整合HBase - 宾哥部落格</title>
+<title>docker下删除两个id相同的镜像 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="前言SpringBoot整合HBase 废话不多说，开始步入正题！第一步，映入Maven依赖    &amp;lt;parent&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;">
-<meta name="keywords" content="技术心得">
+    <meta name="description" content="前言今天在删除废弃docker镜像的时候,有2个相同镜像Id的容器在启动，在执行命令docker rmi +镜像Id 失败 镜像如下图所示： 执行命令出现如下错误： Error response from daemon: conflict: unable to delete 1e3cf999044d (must be forced) - image is referenced in one or">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot整合HBase">
-<meta property="og:url" content="http://yoursite.com/2018/06/20/SpringBoot整合HBase/index.html">
+<meta property="og:title" content="docker下删除两个id相同的镜像">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/docker下删除两个id相同的镜像/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="前言SpringBoot整合HBase 废话不多说，开始步入正题！第一步，映入Maven依赖    &amp;lt;parent&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;">
+<meta property="og:description" content="前言今天在删除废弃docker镜像的时候,有2个相同镜像Id的容器在启动，在执行命令docker rmi +镜像Id 失败 镜像如下图所示： 执行命令出现如下错误： Error response from daemon: conflict: unable to delete 1e3cf999044d (must be forced) - image is referenced in one or">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-20T06:18:32.415Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/18/docker下删除两个id相同的镜像/1.jpg">
+<meta property="og:updated_time" content="2019-03-18T05:46:44.296Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot整合HBase">
-<meta name="twitter:description" content="前言SpringBoot整合HBase 废话不多说，开始步入正题！第一步，映入Maven依赖    &amp;lt;parent&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;">
+<meta name="twitter:title" content="docker下删除两个id相同的镜像">
+<meta name="twitter:description" content="前言今天在删除废弃docker镜像的时候,有2个相同镜像Id的容器在启动，在执行命令docker rmi +镜像Id 失败 镜像如下图所示： 执行命令出现如下错误： Error response from daemon: conflict: unable to delete 1e3cf999044d (must be forced) - image is referenced in one or">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/18/docker下删除两个id相同的镜像/1.jpg">
 
 
 
@@ -88,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="SpringBoot整合HBase" height="28">
+                <img src="/images/logo.svg" alt="docker下删除两个id相同的镜像" height="28">
             
             </a>
         </div>
@@ -144,13 +146,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-06-20T05:44:18.000Z">2018-06-20</time>
+                <time class="level-item has-text-grey" datetime="2019-03-18T05:34:22.000Z">2019-03-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/docker/">docker</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 799 个字)
+                    1 分钟 读完 (大约 175 个字)
                 </span>
                 
             </div>
@@ -158,228 +164,26 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                SpringBoot整合HBase
+                docker下删除两个id相同的镜像
             
         </h1>
         <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>SpringBoot整合HBase
-</code></pre><h1 id="废话不多说，开始步入正题！"><a href="#废话不多说，开始步入正题！" class="headerlink" title="废话不多说，开始步入正题！"></a>废话不多说，开始步入正题！</h1><h2 id="第一步，映入Maven依赖"><a href="#第一步，映入Maven依赖" class="headerlink" title="第一步，映入Maven依赖"></a>第一步，映入Maven依赖</h2><pre><code>    &lt;parent&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-        &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;
-        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
-    &lt;/parent&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
-    &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
-    &lt;version&gt;1.3.0&lt;/version&gt;
-    &lt;exclusions&gt;
-        &lt;exclusion&gt;
-            &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
-            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-        &lt;/exclusion&gt;
-    &lt;/exclusions&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-data-hadoop&lt;/artifactId&gt;
-    &lt;version&gt;2.5.0.RELEASE&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h2 id="第二步，加入SpringBoot配置文件"><a href="#第二步，加入SpringBoot配置文件" class="headerlink" title="第二步，加入SpringBoot配置文件"></a>第二步，加入SpringBoot配置文件</h2><pre><code>hbase.zookeeper.quorum=ip
-hbase.zookeeper.port=2181
-</code></pre><h2 id="第三步，引用HbaseTemplate-测试类使用方式"><a href="#第三步，引用HbaseTemplate-测试类使用方式" class="headerlink" title="第三步，引用HbaseTemplate,测试类使用方式"></a>第三步，引用HbaseTemplate,测试类使用方式</h2><pre><code>@Autowired
-    private HbaseTemplate hbaseTemplate;
-    @Test
-    public void contextLoads() {
-
-    }
-    @Test
-    public void testPut() {
-        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;name&quot;, Bytes.toBytes(&quot;Alice&quot;));
-        hbaseTemplate.put(&quot;t&quot;, &quot;1&quot;, &quot;f&quot;, &quot;phone&quot;, Bytes.toBytes(&quot;15620974206&quot;));
-    }
-    @Test
-    public void testQuery(){
-        List&lt;String&gt; rows = hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, &quot;phone&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result, int i) throws Exception {
-                return result.toString();
-            }
-        });
-        System.out.println(JSONArray.toJSONString(rows));
-        List&lt;String&gt; rowli=    hbaseTemplate.find(&quot;t&quot;, &quot;f&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result, int i) throws Exception {
-                return result.toString();
-            }
-        });
-        System.out.println(JSONArray.toJSONString(rowli));
-
-    }
-
-    //依据表名，行号，列族，列名获取数据
-    @Test
-    public void testCreateTable(){
-        if(hbaseTemplate.getConfiguration()==null){
-            System.out.println(&quot;为啥是空的呢&quot;);
-        }
-        String ls = hbaseTemplate.get(&quot;t&quot;, &quot;1&quot;,&quot;f&quot;, &quot;name&quot;, new RowMapper&lt;String&gt;() {
-            @Override
-            public String mapRow(Result result,int i)throws Exception{
-                List&lt;Cell&gt; cellList=result.listCells();
-                String res=&quot;&quot;;
-                for(Cell cell:cellList){
-                    res=Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
-                }
-                return res;
-            }
-        });
-        System.out.println(ls);
-    }
-</code></pre><a id="more"></a>
-<h2 id="将使用原生的ConnectionFactory-createConnection进行调用HBASE"><a href="#将使用原生的ConnectionFactory-createConnection进行调用HBASE" class="headerlink" title="将使用原生的ConnectionFactory.createConnection进行调用HBASE"></a>将使用原生的ConnectionFactory.createConnection进行调用HBASE</h2><pre><code>import com.hispeed.hbase.label.entity.R;
-import org.apache.hadoop.hbase.*;
-import org.apache.hadoop.hbase.client.*;
-import org.apache.hadoop.hbase.client.coprocessor.AggregationClient;
-import org.apache.hadoop.hbase.client.coprocessor.LongColumnInterpreter;
-import org.apache.hadoop.hbase.filter.FilterBase;
-import org.apache.hadoop.hbase.util.Bytes;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.hadoop.hbase.HbaseTemplate;
-import org.springframework.stereotype.Component;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-@Component
-public class Hbase {
-
-
-    protected Logger logger = LoggerFactory.getLogger(getClass());
-
-    private  Connection connection;
-
-    public Hbase(HbaseTemplate hbaseTemplate){
-        try {
-            connection = ConnectionFactory.createConnection(hbaseTemplate.getConfiguration());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public boolean createTable(String tableName, String familyName) {
-        try {
-            logger.info(&quot;检查表{}是否存在&quot;, tableName);
-            if (connection.getAdmin().tableExists(TableName.valueOf(tableName))) {
-                logger.info(&quot;表{}已存在&quot;, tableName);
-                return true;
-            }
-            HTableDescriptor hTableDescriptor = new HTableDescriptor(TableName.valueOf(tableName));
-            HColumnDescriptor hColumnDescriptor = new HColumnDescriptor(familyName);
-            hTableDescriptor.addFamily(hColumnDescriptor);
-            connection.getAdmin().createTable(hTableDescriptor);
-            logger.info(&quot;表{}已创建&quot;, tableName);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    public R insertData(String tableName, String familyName, String rowKey, Map&lt;String, String&gt; map) {
-        try {
-            if (!connection.getAdmin().tableExists(TableName.valueOf(tableName))) {
-                logger.info(&quot;表{}不存在&quot;, tableName);
-                return R.error(&quot;101&quot;, &quot;表不存在&quot;);
-            }
-            //HTable继承Table
-            HTable hTable = (HTable) connection.getTable(TableName.valueOf(tableName));
-            Put put = new Put(rowKey.getBytes(), rowKey.length());
-            for (Map.Entry&lt;String, String&gt; entry : map.entrySet()) {
-                KeyValue kv = new KeyValue(rowKey.getBytes(), 0, rowKey.getBytes().length, familyName.getBytes(), 0,
-                        familyName.getBytes().length, entry.getKey().getBytes(), 0, entry.getKey().getBytes().length, System.currentTimeMillis(),
-                        KeyValue.Type.Put, entry.getValue().getBytes(), 0, entry.getValue().getBytes().length);
-                put.add(kv);
-            }
-            hTable.put(put);
-            logger.info(&quot;插入成功&quot;);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return R.error(&quot;999&quot;, &quot;插入HBase数据异常&quot;);
-        }
-        return R.ok();
-    }
-
-    public &lt;T extends FilterBase&gt;  List&lt;Map&lt;String,String &gt;&gt; queryResult(T filter, int count, String tableName,String familyName) {
-        Scan scan = new Scan();
-        scan.setFilter(filter);
-        try {
-            if (!connection.getAdmin().tableExists(TableName.valueOf(tableName))) {
-                logger.info(&quot;表{}不存在&quot;, tableName);
-                return null;
-            }
-            HTable hTable = (HTable) connection.getTable(TableName.valueOf(tableName));
-            ResultScanner scanner=hTable.getScanner(scan);
-            List&lt;Map&lt;String,String &gt;&gt; list=new ArrayList&lt;&gt;();
-            int ct=0;
-            for (Result result : scanner) {
-                Map&lt;String,String&gt; map=new HashMap();
-                List&lt;Cell&gt; cellList=result.listCells();
-                for(Cell cell : cellList){
-                    String key= Bytes.toString(cell.getQualifierArray(),cell.getQualifierOffset(),cell.getQualifierLength());
-                    String value= Bytes.toString(cell.getValueArray(),cell.getValueOffset(),cell.getValueLength());
-                    map.put(key,value);
-                }
-                list.add(map);
-                logger.info(&quot;查询数据的索引为&quot;+ct);
-                if(list.size()&gt;=count){
-                    break;
-                }
-                ct++;
-            }
-            scanner.close();
-            return list;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-    public &lt;T extends FilterBase&gt;  long  query(T filter ,String tableName,String familyName){
-        long rowCount = 0;
-        Scan scan = new Scan();
-        scan.setFilter(filter);
-        scan.addFamily(Bytes.toBytes(familyName));
-        AggregationClient ac = new AggregationClient(connection.getConfiguration());
-        try {
-            rowCount = ac.rowCount(TableName.valueOf(tableName), new LongColumnInterpreter(), scan);
-        }catch (Throwable throwable){
-            logger.info(throwable.getMessage(), throwable);
-        }
-        return rowCount;
-    }
-    public boolean isClose(){
-        try {
-            connection.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-}
-</code></pre><blockquote>
-<p>宾曰：感谢踏雪大佬的指导，学如逆水行舟，不进则退</p>
-</blockquote>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="今天在删除废弃docker镜像的时候-有2个相同镜像Id的容器在启动，在执行命令docker-rmi-镜像Id-失败"><a href="#今天在删除废弃docker镜像的时候-有2个相同镜像Id的容器在启动，在执行命令docker-rmi-镜像Id-失败" class="headerlink" title="今天在删除废弃docker镜像的时候,有2个相同镜像Id的容器在启动，在执行命令docker rmi +镜像Id 失败"></a>今天在删除废弃docker镜像的时候,有2个相同镜像Id的容器在启动，在执行命令docker rmi +镜像Id 失败</h2><ul>
+<li>镜像如下图所示：<br><img src="/2019/03/18/docker下删除两个id相同的镜像/1.jpg" alt="镜像列表"></li>
+<li>执行命令出现如下错误：<ul>
+<li>Error response from daemon: conflict: unable to delete 1e3cf999044d (must be forced) - image is referenced in one or more repositories</li>
+</ul>
+</li>
+<li>错误原因：<ul>
+<li>有2个相同1e3cf999044d的镜像，所以不能删除</li>
+</ul>
+</li>
+<li>删除的办法：使用repository和tag进行操作的,执行如下命令<ul>
+<li>docker rmi repository/tag 进行删除， repository/tag是上图中标红部分</li>
+</ul>
+</li>
+</ul>
+<p>  友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
         </div>
         
@@ -387,7 +191,7 @@ public class Hbase {
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/技术心得/">技术心得</a>
+                    <a class="has-link-grey -link" href="/tags/docker/">docker</a>
                 </div>
             </div>
         </div>
@@ -404,17 +208,10 @@ public class Hbase {
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/22/代码扫描工具/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">代码扫描工具</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/06/05/宾哥的技术之旅/">
-                <span class="level-item">宾哥的技术之旅</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/15/com-mysql-cj-jdbc-Driver与com-mysql-jdbc-Driver区别/">
+                <span class="level-item">com.mysql.cj.jdbc.Driver与com.mysql.jdbc.Driver区别</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -1095,7 +892,7 @@ public class Hbase {
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="SpringBoot整合HBase" height="28">
+                    <img src="/images/logo.svg" alt="docker下删除两个id相同的镜像" height="28">
                 
                 </a>
                 <p class="is-size-7">
