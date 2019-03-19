@@ -2,18 +2,27 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>宾哥部落格</title>
+<title>Nacos之部署 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="宾哥部落格">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+    <meta name="description" content="一、什么是NacosNacos是阿里巴巴开源的一款支持服务注册与发现，配置管理以及微服务管理的组件。  Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构 (例如微服务范式、云原生范式) 的服">
+<meta name="keywords" content="nacos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nacos之部署">
+<meta property="og:url" content="http://yoursite.com/2019/03/19/Nacos之部署/index.html">
 <meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="一、什么是NacosNacos是阿里巴巴开源的一款支持服务注册与发现，配置管理以及微服务管理的组件。  Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构 (例如微服务范式、云原生范式) 的服">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/Nacos之部署/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/Nacos之部署/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/19/Nacos之部署/3.jpg">
+<meta property="og:updated_time" content="2019-03-19T09:19:41.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="宾哥部落格">
+<meta name="twitter:title" content="Nacos之部署">
+<meta name="twitter:description" content="一、什么是NacosNacos是阿里巴巴开源的一款支持服务注册与发现，配置管理以及微服务管理的组件。  Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构 (例如微服务范式、云原生范式) 的服">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/19/Nacos之部署/1.jpg">
 
 
 
@@ -83,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="宾哥部落格" height="28">
+                <img src="/images/logo.svg" alt="Nacos之部署" height="28">
             
             </a>
         </div>
@@ -133,20 +142,23 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    <div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-05T07:09:33.000Z">2018-12-05</time>
+                <time class="level-item has-text-grey" datetime="2019-03-19T05:47:44.000Z">2019-03-19</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 403 个字)
+                    4 分钟 读完 (大约 537 个字)
                 </span>
                 
             </div>
@@ -154,27 +166,72 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/05/設計模式之原型模式/">設計模式之原型模式</a>
+                Nacos之部署
             
         </h1>
         <div class="content">
-            <h1 id="原型模式介绍"><a href="#原型模式介绍" class="headerlink" title="原型模式介绍"></a>原型模式介绍</h1><ul>
-<li>原型模式的定义<ul>
-<li>原型模式(PrototypePattern):用原型实例指定创建对象的种类，并且通过考呗这些原型创建新的对象。</li>
-</ul>
+            <h2 id="一、什么是Nacos"><a href="#一、什么是Nacos" class="headerlink" title="一、什么是Nacos"></a>一、什么是Nacos</h2><p>Nacos是阿里巴巴开源的一款支持服务注册与发现，配置管理以及微服务管理的组件。</p>
+<blockquote>
+<p>Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构 (例如微服务范式、云原生范式) 的服务基础设施。</p>
+</blockquote>
+<p>Nacos gitHub : <a href="https://github.com/alibaba/nacos" target="_blank" rel="noopener">https://github.com/alibaba/nacos</a></p>
+<p>Nocos 文档 ：<a href="https://nacos.io/zh-cn/docs/what-is-nacos.html" target="_blank" rel="noopener">https://nacos.io/zh-cn/docs/what-is-nacos.html</a><br><a id="more"></a></p>
+<h2 id="二、开始搭建Nacos"><a href="#二、开始搭建Nacos" class="headerlink" title="二、开始搭建Nacos"></a>二、开始搭建Nacos</h2><ol>
+<li><p>去GitHub地址：<a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">https://github.com/alibaba/nacos/releases</a> 下载</p>
+<ol>
+<li><p>下面以 <strong>1.0.0-RC1(Mar 15, 2019)</strong> 为例：</p>
+<p> 页面的底部有如下下载地址：<br> <img src="/2019/03/19/Nacos之部署/1.jpg" alt=""></p>
 </li>
+<li><p>任选其中一个连接进行下载</p>
+<p> 本文以nacos-server-1.0.0-rc1.zip为例</p>
+</li>
+<li><p>解压本地到本地，解压，进入bin目录</p>
+</li>
+<li><p>如果是windows启动，则cmd下面执行，startup.cmd即启动Nacos</p>
+</li>
+<li><p>如果是linux启动，则执行startup.sh即行</p>
+</li>
+</ol>
+</li>
+<li><p>本地运行服务Nocas</p>
+<ol>
+<li>导入工程项目：下载地址 <a href="mailto:*git@github.com" target="_blank" rel="noopener">*git@github.com</a>:alibaba/nacos.git*:<br><img src="/2019/03/19/Nacos之部署/2.jpg" alt="工程目录"></li>
+<li><p>新建数据库名称为Nacos,配置在 nacos-default.properties</p>
+<p> 文件路径：console目录下<br> 修改内容：</p>
+ <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.num=<span class="hljs-number">1</span></span><br><span class="line">db.url.0=jdbc:mysql:<span class="hljs-comment">//localhost:3306/nacoss?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true</span></span><br><span class="line">#db.url.1=jdbc:mysql://11.163.152.91:3306/diamond_devtest?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true</span><br><span class="line">db.user=root</span><br><span class="line">db.password=<span class="hljs-number">123456</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在新建Nacos数据库中执行sql</p>
+<p> 文件路径：config目录下</p>
+<p> 文件名：nacos-db.sql</p>
+</li>
+<li><p>配置cluster.conf文件内容：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#it is ip</span><br><span class="line">#example</span><br><span class="line"><span class="hljs-number">172.30</span>.83.85（本机IP）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行console下的Nacos方法：<br><img src="/2019/03/19/Nacos之部署/3.jpg" alt="执行结果"></p>
+</li>
+<li><p>登陆地址：<a href="http://172.30.83.85:8848/nacos/index.html" target="_blank" rel="noopener">http://172.30.83.85:8848/nacos/index.html</a></p>
+<p> 初始账号：admin</p>
+<p> 初始密码：admin</p>
+<p><strong>注意：Nacos需要使用JDK8</strong></p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>今天只是总结了Nacos的搭建方式，后续会更新springBoot结合Nacos作为服务中心和配置中心的使用</li>
 </ul>
-<hr>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/05/設計模式之原型模式/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/nacos/">nacos</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -184,100 +241,21 @@
 
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-05T06:15:41.000Z">2018-12-05</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 415 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/05/設計模式之代理模式/">設計模式之代理模式</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="代理模式介绍"><a href="#代理模式介绍" class="headerlink" title="代理模式介绍"></a>代理模式介绍</h1><ul>
-<li>代理模式定义<ul>
-<li>代理模式(ProxyPattern):为其他对象提供一种代理以控制对这个对象的访问。</li>
-</ul>
-</li>
-<li>Subject抽象主体角色<ul>
-<li>抽象主题类可以是抽象类也可以是接口，是一个最普通的业务类型定义，无特殊要求。</li>
-</ul>
-</li>
-<li>RealSubkect具体主题角色<ul>
-<li>也叫做被委托的角色、被代理角色。它才是冤大头，是业务逻辑的具体执行者。</li>
-</ul>
-</li>
-<li>Proxy代理主题角色<br>  *也叫做委托类、代理类。它负责对真实角色的应用，把所有抽象主题类定义的方法限制委托给真实的主题角色实现，并且在真实主题角色处理完毕前后做预处理和善后处理工作。</li>
-</ul>
-<hr>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/05/設計模式之代理模式/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/5/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/18/docker下删除两个id相同的镜像/">
+                <span class="level-item">docker下删除两个id相同的镜像</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/7/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
-            
-            <li><a class="pagination-link is-current" href="/page/6/">6</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/11/">11</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
 </div>
+
+
 </div>
                 
 
@@ -986,7 +964,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="宾哥部落格" height="28">
+                    <img src="/images/logo.svg" alt="Nacos之部署" height="28">
                 
                 </a>
                 <p class="is-size-7">
