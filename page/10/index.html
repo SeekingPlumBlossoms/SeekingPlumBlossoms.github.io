@@ -140,6 +140,69 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-22T07:39:08.000Z">2018-11-22</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 242 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/11/22/代码扫描工具/">代码扫描工具</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>作为一个程序员,需要对自己的代码进行CR,提前找到自己代码中的坏味道或者漏洞;先介绍如下几种代码扫描工具
+</code></pre><hr>
+<h2 id="sonar使用步骤"><a href="#sonar使用步骤" class="headerlink" title="sonar使用步骤"></a>sonar使用步骤</h2><pre><code>1. 启动sona
+ 地址：E:\sonarqube-6.7.4\bin 选择对应的环境执行
+
+2. 登陆http://localhost:9000/
+
+3. 在工作空间执行
+         mvn sonar:sonar
+
+4. 对比文档进行修改    
+</code></pre><hr>
+<h2 id="FindBugs使用步骤"><a href="#FindBugs使用步骤" class="headerlink" title="FindBugs使用步骤"></a>FindBugs使用步骤</h2><pre><code>1. 如图下载FindBUgs插件
+</code></pre><p>   <img src="/2018/11/22/代码扫描工具/FindBugs.png" alt="FindBugs.png"></p>
+<ol start="2">
+<li>使用说明<br>邮件点击工程项目,然后点击FIndBugs执行扫描</li>
+</ol>
+<p>【提示】</p>
+<p>至此，findBugs安装完毕，但有个问题，在验证是否安装成功的时候发现，重新启动eclipse后并没有findBugs功能，经过查询分析，问题出在版本上，在线安装的是findBugs3.0的版本，这个版本对jdk的最低要求是jdk1.7。</p>
+<hr>
+<h2 id="P3C阿里插件"><a href="#P3C阿里插件" class="headerlink" title="P3C阿里插件"></a>P3C阿里插件</h2><ol>
+<li>如上述步骤下载插件</li>
+<li>使用方式和FindBugs一样</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2018-06-20T05:44:18.000Z">2018-06-20</time>
                 
                 
@@ -260,57 +323,6 @@ hbase.zookeeper.port=2181
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-06-05T06:29:10.000Z">2018-06-05</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 121 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/06/05/宾哥的技术之旅/">宾哥的技术之旅</a>
-            
-        </h1>
-        <div class="content">
-            <p>今天我宾哥就是要干翻在座的各位渣渣！</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><blockquote>
-<p>子曰：不搞个个人技术博客还能叫程序员？</p>
-</blockquote>
-<p><strong>鲁迅说：子说的对</strong><br><em>我怎么斜了？</em><br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/06/05/宾哥的技术之旅/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -377,7 +389,7 @@ hbase.zookeeper.port=2181
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -482,7 +494,7 @@ hbase.zookeeper.port=2181
                 <span class="level-item">中间件</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -499,6 +511,25 @@ hbase.zookeeper.port=2181
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/03/20/Nacos之基于springBoot配置中心的整合/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Nacos之基于springBoot配置中心的整合">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-20T01:18:14.000Z">2019-03-20</time></div>
+                    <a href="/2019/03/20/Nacos之基于springBoot配置中心的整合/" class="has-link-black-ter is-size-6">Nacos之基于springBoot配置中心的整合</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -576,25 +607,6 @@ hbase.zookeeper.port=2181
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="okHttp报SSLPeerUnverifiedException异常解决方案">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T01:38:02.000Z">2019-03-13</time></div>
-                    <a href="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/" class="has-link-black-ter is-size-6">okHttp报SSLPeerUnverifiedException异常解决方案</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/java/">java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -613,7 +625,7 @@ hbase.zookeeper.port=2181
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -699,7 +711,7 @@ hbase.zookeeper.port=2181
                 <div class="control">
                     <a class="tags has-addons" href="/tags/nacos/">
                         <span class="tag">nacos</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -777,6 +789,25 @@ hbase.zookeeper.port=2181
         
         <article class="media">
             
+            <a href="/2019/03/20/Nacos之基于springBoot配置中心的整合/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Nacos之基于springBoot配置中心的整合">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-20T01:18:14.000Z">2019-03-20</time></div>
+                    <a href="/2019/03/20/Nacos之基于springBoot配置中心的整合/" class="has-link-black-ter is-size-6">Nacos之基于springBoot配置中心的整合</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/03/19/Nacos之部署/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Nacos之部署">
@@ -851,25 +882,6 @@ hbase.zookeeper.port=2181
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="okHttp报SSLPeerUnverifiedException异常解决方案">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T01:38:02.000Z">2019-03-13</time></div>
-                    <a href="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/" class="has-link-black-ter is-size-6">okHttp报SSLPeerUnverifiedException异常解决方案</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/java/">java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -888,7 +900,7 @@ hbase.zookeeper.port=2181
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -974,7 +986,7 @@ hbase.zookeeper.port=2181
                 <div class="control">
                     <a class="tags has-addons" href="/tags/nacos/">
                         <span class="tag">nacos</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

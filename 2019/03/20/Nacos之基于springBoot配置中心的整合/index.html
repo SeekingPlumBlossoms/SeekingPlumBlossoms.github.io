@@ -2,23 +2,25 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>設計模式之中介者模式 - 宾哥部落格</title>
+<title>Nacos之基于springBoot配置中心的整合 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="中介者模式介绍 定义 中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。   Mediator抽象中介者角色 抽象中介者角色定义统一的接口，用于各角色之间的通信。   ConcreteMediator具体中介者角色 具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。   Colleagu">
-<meta name="keywords" content="設計模式">
+    <meta name="description" content="序接入上篇的内容，本次主要说明Nacos作为配置中心的用法,实现动态刷新获取值。">
+<meta name="keywords" content="nacos">
 <meta property="og:type" content="article">
-<meta property="og:title" content="設計模式之中介者模式">
-<meta property="og:url" content="http://yoursite.com/2018/12/05/設計模式之中介者模式/index.html">
+<meta property="og:title" content="Nacos之基于springBoot配置中心的整合">
+<meta property="og:url" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot配置中心的整合/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="中介者模式介绍 定义 中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。   Mediator抽象中介者角色 抽象中介者角色定义统一的接口，用于各角色之间的通信。   ConcreteMediator具体中介者角色 具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。   Colleagu">
+<meta property="og:description" content="序接入上篇的内容，本次主要说明Nacos作为配置中心的用法,实现动态刷新获取值。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-06T07:18:00.464Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot配置中心的整合/1.jpg">
+<meta property="og:updated_time" content="2019-03-20T06:04:51.162Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="設計模式之中介者模式">
-<meta name="twitter:description" content="中介者模式介绍 定义 中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。   Mediator抽象中介者角色 抽象中介者角色定义统一的接口，用于各角色之间的通信。   ConcreteMediator具体中介者角色 具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。   Colleagu">
+<meta name="twitter:title" content="Nacos之基于springBoot配置中心的整合">
+<meta name="twitter:description" content="序接入上篇的内容，本次主要说明Nacos作为配置中心的用法,实现动态刷新获取值。">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot配置中心的整合/1.jpg">
 
 
 
@@ -88,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="設計模式之中介者模式" height="28">
+                <img src="/images/logo.svg" alt="Nacos之基于springBoot配置中心的整合" height="28">
             
             </a>
         </div>
@@ -144,13 +146,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-05T08:15:21.000Z">2018-12-05</time>
+                <time class="level-item has-text-grey" datetime="2019-03-20T01:18:14.000Z">2019-03-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 791 个字)
+                    4 分钟 读完 (大约 588 个字)
                 </span>
                 
             </div>
@@ -158,56 +164,44 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                設計模式之中介者模式
+                Nacos之基于springBoot配置中心的整合
             
         </h1>
         <div class="content">
-            <h1 id="中介者模式介绍"><a href="#中介者模式介绍" class="headerlink" title="中介者模式介绍"></a>中介者模式介绍</h1><ul>
-<li>定义<ul>
-<li>中介者模式:用一个中介对象封装一系列的对象交互，中介者使个对象不需要显示地互相交互，从而使其耦合松散，而且可以独立地改变它们之间的交互。</li>
-</ul>
-</li>
-<li>Mediator抽象中介者角色<ul>
-<li>抽象中介者角色定义统一的接口，用于各角色之间的通信。</li>
-</ul>
-</li>
-<li>ConcreteMediator具体中介者角色<ul>
-<li>具体中介者角色通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。</li>
-</ul>
-</li>
-<li>Colleague同事角色<ul>
-<li>每一个同事角色都知道中介者角色，而且与其他的同事角色的通信的时候，一定要通过中介者角色协作。每个同事类的行为分为2种：一种是同事本身的行为，比如改变对象本身的状态，处理自己的行为等。这种行为叫做自发行为(Self-Method),与其他的同事类或者中介者没有任何的依赖；第二种是必须依赖中介者才能完成的任务的行为，叫做依赖方法。</li>
-</ul>
-</li>
-</ul>
-<hr>
+            <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>接入上篇的内容，本次主要说明Nacos作为配置中心的用法,实现动态刷新获取值。</p>
 <a id="more"></a>
-<h1 id="中介者模式的应用"><a href="#中介者模式的应用" class="headerlink" title="中介者模式的应用"></a>中介者模式的应用</h1><h2 id="1-中介者模式的优点"><a href="#1-中介者模式的优点" class="headerlink" title="1.中介者模式的优点"></a>1.中介者模式的优点</h2><ul>
-<li>中介者模式的优点就是减少类间的依赖，把原有的一对多的依赖变成了一对一的依赖，同事类只依赖中介者，减少了依赖，当然同事也降低了类间的耦合。</li>
-</ul>
-<hr>
-<h2 id="2-中介者模式的缺点"><a href="#2-中介者模式的缺点" class="headerlink" title="2.中介者模式的缺点"></a>2.中介者模式的缺点</h2><ul>
-<li>中介者模式的缺点就是中介者会膨胀得很大，而且逻辑复杂，原本N个对象直接的相互依赖关系转换为中介者和同事类的依赖关系，同事类越多，中介者的逻辑就越多。</li>
-</ul>
-<hr>
-<h2 id="3-中介者模式的使用场景"><a href="#3-中介者模式的使用场景" class="headerlink" title="3.中介者模式的使用场景"></a>3.中介者模式的使用场景</h2><ul>
-<li>N个对象之间产生了相互依赖的关系(N&gt;2)。</li>
-<li>多个对象有依赖关系，但是依赖的行为尚不能确定或者发生改变的可能，在这种情况下一般建议采用中介者模式，降低变更引起的风险扩散。</li>
-<li>产品开发。把中介者模式应用到产品中，可以提升产品的性能和扩展性，但是对于项目开发就未必，因为项目是以交付投产为目标，而产品则是以稳定、高效、扩展为宗旨。</li>
-</ul>
-<hr>
-<h2 id="4-中介者模式案例"><a href="#4-中介者模式案例" class="headerlink" title="4.中介者模式案例"></a>4.中介者模式案例</h2><ul>
-<li>MVC框架<ul>
-<li>MVC框架：其中的C(Controller)就是一个中介者，叫做前端控制器，它的作用就是把M(Model，业务逻辑)和V(View,视图)隔离开，协调M和V协调工作，把M的运行结果和V代表的视图融合成一个前端可以展示的页面，减少M和V的依赖。</li>
+<h2 id="开始接入Nacos作为配置中心"><a href="#开始接入Nacos作为配置中心" class="headerlink" title="开始接入Nacos作为配置中心"></a>开始接入Nacos作为配置中心</h2><ol>
+<li>新建springBoot2.X版本，引入以下依赖</li>
+</ol>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.alibaba.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;nacos-discovery-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;0.2.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>在application.properties引入<strong>server-addr</strong>地址</p>
+<p> 因为我的Nacos本地启动所以配置信息如下</p>
+ <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nacos.config.server-addr=localhost:<span class="hljs-number">8848</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在启动类PivasApplication上加上NacosPropertySource和EnableNacosConfig注解</p>
+</li>
+</ol>
+<ul>
+<li><p>配置信息如下</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> yebin</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-meta">@NacosPropertySource</span>(dataId = <span class="hljs-string">"com.yb.data"</span>, groupId = <span class="hljs-string">"yb"</span>, autoRefreshed = <span class="hljs-keyword">true</span>)</span><br><span class="line"><span class="hljs-meta">@RestController</span></span><br><span class="line"><span class="hljs-meta">@EnableNacosConfig</span>()</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PivasApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SpringApplication.run(PivasApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">    * key=hello 默认值是dd autoRefreshed表示是否自动刷新</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    <span class="hljs-meta">@NacosValue</span>(value = <span class="hljs-string">"$&#123;hello:dd&#125;"</span>, autoRefreshed = <span class="hljs-keyword">true</span>)</span><br><span class="line">    <span class="hljs-keyword">private</span> String hello;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">"/test"</span>)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">test</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"hello "</span> + hello;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>名称解释：</p>
+<ul>
+<li>引用阿里云的定义：<blockquote>
+<p><em>dataId</em>: Nacos 中的某个配置集的 ID。配置集 ID 是组织划分配置的维度之一。Data ID 通常用于组织划分系统的配置集。一个系统或者应用可以包含多个配置集，每个配置集都可以被一个有意义的名称标识。Data ID 通常采用类 Java 包（如 com.taobao.tc.refund.log.level）的命名规则保证全局唯一性。此命名规则非强制。</p>
+<p><em>group</em>: Nacos 中的一组配置集，是组织配置的维度之一。通过一个有意义的字符串（如 Buy 或 Trade ）对配置集进行分组，从而区分 Data ID 相同的配置集。当您在 Nacos 上创建一个配置时，如果未填写配置分组的名称，则配置分组的名称默认采用 DEFAULT_GROUP 。配置分组的常见场景：不同的应用或组件使用了相同的配置类型，如 database_url 配置和 MQ_topic 配置。</p>
+</blockquote>
+</li>
 </ul>
 </li>
-<li>中介服务</li>
-<li>媒体网关</li>
-<li>机场调度中心</li>
+<li><p>在Nacos后台配置进行配置<br>  <img src="/2019/03/20/Nacos之基于springBoot配置中心的整合/1.jpg" alt="后台配置"></p>
+</li>
+<li><p>验证成果:<br>访问如下地址 ：<a href="http://localhost:18080/test" target="_blank" rel="noopener">http://localhost:18080/test</a> 页面出现hello world表示成功</p>
+</li>
 </ul>
-<hr>
-<p>github示例:<a href="https://github.com/SeekingPlumBlossoms/MediatorPattern.git" target="_blank" rel="noopener">单例模式</a></p>
-<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整合期间，出现了数据一致取不到的问题，最后发现没有@EnableNacosConfig()导致，有兴趣可以看下里面的配置项。后续会出具体Nacos作为注册中心的整合.</p>
+<p>  友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
         </div>
         
@@ -215,7 +209,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/設計模式/">設計模式</a>
+                    <a class="has-link-grey -link" href="/tags/nacos/">nacos</a>
                 </div>
             </div>
         </div>
@@ -232,17 +226,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/12/06/設計模式之命令模式/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">設計模式之命令模式</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/12/05/設計模式之原型模式/">
-                <span class="level-item">設計模式之原型模式</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/19/Nacos之部署/">
+                <span class="level-item">Nacos之部署</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -959,7 +946,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="設計模式之中介者模式" height="28">
+                    <img src="/images/logo.svg" alt="Nacos之基于springBoot配置中心的整合" height="28">
                 
                 </a>
                 <p class="is-size-7">
