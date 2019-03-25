@@ -2,23 +2,18 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>Android手机支付宝客户端刷新session问题 - 宾哥部落格</title>
+<title>标签: redis - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="表述问题: 支付宝android客户端在H5请求服务后端接口时，无法维持会话，导致后端服务器一直在重复获取用户信息，猜测原因:支付宝Android客户端内置浏览器内核问题。   解决方案 前端改造 前端使用JSONP的方式请求后端 在回调的方法中获取Auth_code以及后端返回的sessionId 后续每次请求都需要带上sessionId以保证会话的唯一性   后端改造  处理sessionId">
-<meta name="keywords" content="session">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android手机支付宝客户端刷新session问题">
-<meta property="og:url" content="http://yoursite.com/2019/03/13/Android手机支付宝客户端刷新session问题/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="宾哥部落格">
+<meta property="og:url" content="http://yoursite.com/tags/redis/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="表述问题: 支付宝android客户端在H5请求服务后端接口时，无法维持会话，导致后端服务器一直在重复获取用户信息，猜测原因:支付宝Android客户端内置浏览器内核问题。   解决方案 前端改造 前端使用JSONP的方式请求后端 在回调的方法中获取Auth_code以及后端返回的sessionId 后续每次请求都需要带上sessionId以保证会话的唯一性   后端改造  处理sessionId">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-18T09:33:02.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android手机支付宝客户端刷新session问题">
-<meta name="twitter:description" content="表述问题: 支付宝android客户端在H5请求服务后端接口时，无法维持会话，导致后端服务器一直在重复获取用户信息，猜测原因:支付宝Android客户端内置浏览器内核问题。   解决方案 前端改造 前端使用JSONP的方式请求后端 在回调的方法中获取Auth_code以及后端返回的sessionId 后续每次请求都需要带上sessionId以保证会话的唯一性   后端改造  处理sessionId">
+<meta name="twitter:title" content="宾哥部落格">
 
 
 
@@ -88,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Android手机支付宝客户端刷新session问题" height="28">
+                <img src="/images/logo.svg" alt="宾哥部落格" height="28">
             
             </a>
         </div>
@@ -139,22 +134,33 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">redis</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-13T08:15:56.000Z">2019-03-13</time>
+                <time class="level-item has-text-grey" datetime="2019-03-25T01:41:03.000Z">2019-03-25</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 161 个字)
+                    13 分钟 读完 (大约 2001 个字)
                 </span>
                 
             </div>
@@ -162,44 +168,25 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Android手机支付宝客户端刷新session问题
+                <a class="has-link-black-ter" href="/2019/03/25/redis为什么是单线程的/">redis为什么是单线程的</a>
             
         </h1>
         <div class="content">
-            <h2 id="表述问题"><a href="#表述问题" class="headerlink" title="表述问题:"></a>表述问题:</h2><ul>
-<li>支付宝android客户端在H5请求服务后端接口时，无法维持会话，导致后端服务器一直在重复获取用户信息，猜测原因:支付宝Android客户端内置浏览器内核问题。</li>
-</ul>
-<hr>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
-<li>前端改造<ol>
-<li>前端使用JSONP的方式请求后端</li>
-<li>在回调的方法中获取Auth_code以及后端返回的sessionId</li>
-<li>后续每次请求都需要带上sessionId以保证会话的唯一性</li>
-</ol>
-</li>
-<li><p>后端改造</p>
-<ol>
-<li><p>处理sessionId从header中获取</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 使用Header进行传输</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Bean</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> HttpSessionIdResolver <span class="hljs-title">httpSessionIdResolver</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HeaderHttpSessionIdResolver(<span class="hljs-string">"x-auth-token"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li></li>
-</ol>
-</li>
-</ol>
-
+            <h1 id="一、缓存基础概念"><a href="#一、缓存基础概念" class="headerlink" title="一、缓存基础概念"></a>一、缓存基础概念</h1><ul>
+<li>二八定律<ul>
+<li>巴莱多定律（也叫二八定律）是19世纪末20世纪初意大利经济学家巴莱多发现的。他认为，在任何一组东西中，最重要的只占其中一小部分，约20%，其余80%尽管是多数，却是次要的，因此又称二八定律</li></ul></li></ul>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/session/">session</a>
+                <a class="button is-size-7 is-light" href="/2019/03/25/redis为什么是单线程的/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
@@ -207,26 +194,7 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/15/com-mysql-cj-jdbc-Driver与com-mysql-jdbc-Driver区别/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">com.mysql.cj.jdbc.Driver与com.mysql.jdbc.Driver区别</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/">
-                <span class="level-item">okHttp报SSLPeerUnverifiedException异常解决方案</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
+
 
 
 </div>
@@ -815,7 +783,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Android手机支付宝客户端刷新session问题" height="28">
+                    <img src="/images/logo.svg" alt="宾哥部落格" height="28">
                 
                 </a>
                 <p class="is-size-7">

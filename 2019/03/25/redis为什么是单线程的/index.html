@@ -2,23 +2,23 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>Android手机支付宝客户端刷新session问题 - 宾哥部落格</title>
+<title>redis为什么是单线程的 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="表述问题: 支付宝android客户端在H5请求服务后端接口时，无法维持会话，导致后端服务器一直在重复获取用户信息，猜测原因:支付宝Android客户端内置浏览器内核问题。   解决方案 前端改造 前端使用JSONP的方式请求后端 在回调的方法中获取Auth_code以及后端返回的sessionId 后续每次请求都需要带上sessionId以保证会话的唯一性   后端改造  处理sessionId">
-<meta name="keywords" content="session">
+    <meta name="description" content="一、缓存基础概念 二八定律 巴莱多定律（也叫二八定律）是19世纪末20世纪初意大利经济学家巴莱多发现的。他认为，在任何一组东西中，最重要的只占其中一小部分，约20%，其余80%尽管是多数，却是次要的，因此又称二八定律">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android手机支付宝客户端刷新session问题">
-<meta property="og:url" content="http://yoursite.com/2019/03/13/Android手机支付宝客户端刷新session问题/index.html">
+<meta property="og:title" content="redis为什么是单线程的">
+<meta property="og:url" content="http://yoursite.com/2019/03/25/redis为什么是单线程的/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="表述问题: 支付宝android客户端在H5请求服务后端接口时，无法维持会话，导致后端服务器一直在重复获取用户信息，猜测原因:支付宝Android客户端内置浏览器内核问题。   解决方案 前端改造 前端使用JSONP的方式请求后端 在回调的方法中获取Auth_code以及后端返回的sessionId 后续每次请求都需要带上sessionId以保证会话的唯一性   后端改造  处理sessionId">
+<meta property="og:description" content="一、缓存基础概念 二八定律 巴莱多定律（也叫二八定律）是19世纪末20世纪初意大利经济学家巴莱多发现的。他认为，在任何一组东西中，最重要的只占其中一小部分，约20%，其余80%尽管是多数，却是次要的，因此又称二八定律">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-18T09:33:02.694Z">
+<meta property="og:updated_time" content="2019-03-25T03:11:12.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android手机支付宝客户端刷新session问题">
-<meta name="twitter:description" content="表述问题: 支付宝android客户端在H5请求服务后端接口时，无法维持会话，导致后端服务器一直在重复获取用户信息，猜测原因:支付宝Android客户端内置浏览器内核问题。   解决方案 前端改造 前端使用JSONP的方式请求后端 在回调的方法中获取Auth_code以及后端返回的sessionId 后续每次请求都需要带上sessionId以保证会话的唯一性   后端改造  处理sessionId">
+<meta name="twitter:title" content="redis为什么是单线程的">
+<meta name="twitter:description" content="一、缓存基础概念 二八定律 巴莱多定律（也叫二八定律）是19世纪末20世纪初意大利经济学家巴莱多发现的。他认为，在任何一组东西中，最重要的只占其中一小部分，约20%，其余80%尽管是多数，却是次要的，因此又称二八定律">
 
 
 
@@ -88,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Android手机支付宝客户端刷新session问题" height="28">
+                <img src="/images/logo.svg" alt="redis为什么是单线程的" height="28">
             
             </a>
         </div>
@@ -144,17 +144,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-13T08:15:56.000Z">2019-03-13</time>
+                <time class="level-item has-text-grey" datetime="2019-03-25T01:41:03.000Z">2019-03-25</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 161 个字)
+                    13 分钟 读完 (大约 2001 个字)
                 </span>
                 
             </div>
@@ -162,30 +162,103 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Android手机支付宝客户端刷新session问题
+                redis为什么是单线程的
             
         </h1>
         <div class="content">
-            <h2 id="表述问题"><a href="#表述问题" class="headerlink" title="表述问题:"></a>表述问题:</h2><ul>
-<li>支付宝android客户端在H5请求服务后端接口时，无法维持会话，导致后端服务器一直在重复获取用户信息，猜测原因:支付宝Android客户端内置浏览器内核问题。</li>
+            <h1 id="一、缓存基础概念"><a href="#一、缓存基础概念" class="headerlink" title="一、缓存基础概念"></a>一、缓存基础概念</h1><ul>
+<li>二八定律<ul>
+<li>巴莱多定律（也叫二八定律）是19世纪末20世纪初意大利经济学家巴莱多发现的。他认为，在任何一组东西中，最重要的只占其中一小部分，约20%，其余80%尽管是多数，却是次要的，因此又称二八定律<a id="more"></a></li>
+</ul>
+</li>
+<li>热数据<ul>
+<li>Redis混合存储实例将所有的Key都认为是热数据，以少量的内存为代价保证所有Key的访问请求的性能是高效且一致的。而对于Value部分，在内存不足的情况下，实例本身会根据最近访问时间，访问频度，Value大小等维度选取出部分value作为冷数据后台异步存储到磁盘上直到内存小于制定阈值为止。</li>
+</ul>
+</li>
+<li>冷数据<ul>
+<li>当内存不足时的情况下，实例会按照最近访问时间，访问频度，value大小等维度计算出value的权重，将权重最低的value存储到磁盘上并从内存中删除。</li>
+</ul>
+</li>
+<li>缓存雪崩<ul>
+<li>当缓存服务器重启或者大量缓存集中在某一个时间段失效，这样在失效的时候，也会给后端系统(比如DB)带来很大压力，造成数据库后端故障，从而引起应用服务器雪崩。</li>
+</ul>
+</li>
+<li>缓存穿透<ul>
+<li>缓存穿透，是指查询一个数据库一定不存在的数据。举例：查询出不存在的数据，如果不放入空数据，会导致一直查询数据库，给数据库造成压力。</li>
+</ul>
+</li>
+<li>缓存击穿<ul>
+<li>缓存击穿，是指一个key非常热点，在不停的扛着大并发，大并发集中对这一个点进行访问，当这个key在失效的瞬间，持续的大并发就穿破缓存，直接请求数据库，就像在一个屏障上凿开了一个洞。</li>
+</ul>
+</li>
+<li>缓存预热<ul>
+<li>缓存预热就是系统上线后，提前将相关的缓存数据直接加载到缓存系统。避免在用户请求的时候，先查询数据库，然后再将数据缓存的问题！用户直接查询事先被预热的缓存数据！</li>
+</ul>
+</li>
+<li>缓存更新<ul>
+<li>更新缓存的设计模式有四种：Cache aside, Read through, Write through, Write behind caching<ul>
+<li>Cache aside<ul>
+<li>失效：应用程序先从cache取数据，没有得到，则从数据库中取数据，成功后，放到缓存中。</li>
+<li>命中：应用程序从cache中取数据，取到后返回</li>
+<li>更新：先把数据存到数据库中，成功后，再让缓存失效。</li>
+</ul>
+</li>
+<li>Read through<ul>
+<li>Read Through 是在查询操作中更新缓存，也就是说，当缓存失效的时候（过期或LRU换出），Cache Aside是由调用方负责把数据加载入缓存，而Read Through则用缓存服务自己来加载，从而对应用方是透明的。</li>
+</ul>
+</li>
+<li>Write Through<ul>
+<li>Write Through 在更新数据时发生。当有数据更新的时候，如果没有命中缓存，直接更新数据库，然后返回。如果命中了缓存，则更新缓存，然后再由Cache自己更新数据库（这是一个同步操作）</li>
+</ul>
+</li>
+<li>Write Behind Caching Pattern<ul>
+<li>俗称write back，在更新数据的时候，只更新缓存，不更新数据库，而我们的缓存会异步地批量更新数据库。这个设计的好处就是让数据的I/O操作飞快无比，因为异步（比如消息队列），write back还可以合并对同一个数据的多次操作，所以性能的提高是相当可观的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缓存降级<ul>
+<li>当访问量剧增、服务出现问题（如响应时间慢或不响应）或非核心服务影响到核心流程的性能时，仍然需要保证服务还是可用的，即使是有损服务。系统可以根据一些关键数据进行自动降级，也可以配置开关实现人工降级。</li>
+</ul>
+</li>
 </ul>
 <hr>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
-<li>前端改造<ol>
-<li>前端使用JSONP的方式请求后端</li>
-<li>在回调的方法中获取Auth_code以及后端返回的sessionId</li>
-<li>后续每次请求都需要带上sessionId以保证会话的唯一性</li>
-</ol>
+<h1 id="二、redis简介"><a href="#二、redis简介" class="headerlink" title="二、redis简介"></a>二、redis简介</h1><h2 id="reids介绍"><a href="#reids介绍" class="headerlink" title="reids介绍"></a>reids介绍</h2><p>reids是一个可以用于数据库、缓存和消息中间件的开源内存数据存储的系统</p>
+<h2 id="redis常用数据类型"><a href="#redis常用数据类型" class="headerlink" title="redis常用数据类型"></a>redis常用数据类型</h2><ul>
+<li>其中常见的数据结构类型有：String、List、Set、Hash、ZSet这5种<h2 id="redis工作模式"><a href="#redis工作模式" class="headerlink" title="redis工作模式"></a>redis工作模式</h2></li>
+<li>硬盘数据库工作模式<ul>
+<li>内存存储索引，数据库存储key</li>
+</ul>
 </li>
-<li><p>后端改造</p>
-<ol>
-<li><p>处理sessionId从header中获取</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * 使用Header进行传输</span></span><br><span class="line"><span class="hljs-comment"> *</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@Bean</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> HttpSessionIdResolver <span class="hljs-title">httpSessionIdResolver</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HeaderHttpSessionIdResolver(<span class="hljs-string">"x-auth-token"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>内存数据库工作模式<ul>
+<li>value全部存储在内存中<h2 id="HA（High-Availability）"><a href="#HA（High-Availability）" class="headerlink" title="HA（High Availability）"></a>HA（High Availability）</h2></li>
+</ul>
 </li>
-<li></li>
-</ol>
+<li>Redis 内置了复制（Replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（Transactions） 和不同级别的磁盘持久化（Persistence），并通过 Redis哨兵（Sentinel）和自动分区（Cluster）提供高可用性（High Availability）。</li>
+</ul>
+<h1 id="三、Redis为什么这么快"><a href="#三、Redis为什么这么快" class="headerlink" title="三、Redis为什么这么快"></a>三、Redis为什么这么快</h1><h2 id="redis有多快"><a href="#redis有多快" class="headerlink" title="redis有多快"></a>redis有多快</h2><pre><code>Redis采用的是基于内存的采用的是单进程单线程模型的 KV 数据库，由C语言编写，官方提供的数据是可以达到100000+的QPS（每秒内查询次数）
+</code></pre><h2 id="redis快的原因"><a href="#redis快的原因" class="headerlink" title="redis快的原因"></a>redis快的原因</h2><ol>
+<li><p>完全基于内存，绝大部分请求是纯粹的内存操作，非常快速。数据存在内存中，类似于HashMap，HashMap的优势就是查找和操作的时间复杂度都是O(1)；</p>
 </li>
+<li><p>数据结构简单，对数据操作也简单，Redis中的数据结构是专门进行设计的；</p>
+</li>
+<li><p>采用单线程，避免了不必要的上下文切换和竞争条件，也不存在多进程或者多线程导致的切换而消耗 CPU，不用去考虑各种锁的问题，不存在加锁释放锁操作，没有因为可能出现死锁而导致的性能消耗；</p>
+</li>
+<li><p>使用多路I/O复用模型，非阻塞IO:这里“多路”指的是多个网络连接，“复用”指的是复用同一个线程。</p>
+</li>
+<li><p>使用底层模型不同，它们之间底层实现方式以及与客户端之间通信的应用协议不一样，Redis直接自己构建了VM 机制 ，因为一般的系统调用系统函数的话，会浪费一定的时间去移动和请求；</p>
+<h1 id="四、为什么Redis是单线程"><a href="#四、为什么Redis是单线程" class="headerlink" title="四、为什么Redis是单线程"></a>四、为什么Redis是单线程</h1></li>
 </ol>
+<ul>
+<li>官方FAQ表示，因为Redis是基于内存的操作，CPU不是Redis的瓶颈，Redis的瓶颈最有可能是机器内存的大小或者网络带宽。既然单线程容易实现，而且CPU不会成为瓶颈，那就顺理成章地采用单线程的方案了（毕竟采用多线程会有很多麻烦！）。<h1 id="五、扩展"><a href="#五、扩展" class="headerlink" title="五、扩展"></a>五、扩展</h1>1、单进程多线程模型：MySQL、Memcached、Oracle（Windows版本）；</li>
+</ul>
+<p>2、多进程模型：Oracle（Linux版本）；</p>
+<p>3、Nginx有两类进程，一类称为Master进程(相当于管理进程)，另一类称为Worker进程（实际工作进程）。启动方式有两种：</p>
+<p>（1）单进程启动：此时系统中仅有一个进程，该进程既充当Master进程的角色，也充当Worker进程的角色。</p>
+<p>（2）多进程启动：此时系统有且仅有一个Master进程，至少有一个Worker进程工作。</p>
+<p>（3）Master进程主要进行一些全局性的初始化工作和管理Worker的工作；事件处理是在Worker中进行的。</p>
 
         </div>
         
@@ -193,7 +266,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/session/">session</a>
+                    <a class="has-link-grey -link" href="/tags/redis/">redis</a>
                 </div>
             </div>
         </div>
@@ -210,17 +283,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/15/com-mysql-cj-jdbc-Driver与com-mysql-jdbc-Driver区别/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">com.mysql.cj.jdbc.Driver与com.mysql.jdbc.Driver区别</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/">
-                <span class="level-item">okHttp报SSLPeerUnverifiedException异常解决方案</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/20/Nacos之基于springBoot注册中心的整合/">
+                <span class="level-item">Nacos之基于springBoot注册中心的整合</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -815,7 +881,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Android手机支付宝客户端刷新session问题" height="28">
+                    <img src="/images/logo.svg" alt="redis为什么是单线程的" height="28">
                 
                 </a>
                 <p class="is-size-7">
