@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="宾哥部落格">
 <meta property="og:description" content="一、缓存基础概念 二八定律 巴莱多定律（也叫二八定律）是19世纪末20世纪初意大利经济学家巴莱多发现的。他认为，在任何一组东西中，最重要的只占其中一小部分，约20%，其余80%尽管是多数，却是次要的，因此又称二八定律">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-25T03:11:12.834Z">
+<meta property="og:updated_time" content="2019-03-25T03:14:35.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis为什么是单线程的">
 <meta name="twitter:description" content="一、缓存基础概念 二八定律 巴莱多定律（也叫二八定律）是19世纪末20世纪初意大利经济学家巴莱多发现的。他认为，在任何一组东西中，最重要的只占其中一小部分，约20%，其余80%尽管是多数，却是次要的，因此又称二八定律">
@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 2001 个字)
+                    13 分钟 读完 (大约 2014 个字)
                 </span>
                 
             </div>
@@ -238,8 +238,8 @@
 </li>
 <li>Redis 内置了复制（Replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（Transactions） 和不同级别的磁盘持久化（Persistence），并通过 Redis哨兵（Sentinel）和自动分区（Cluster）提供高可用性（High Availability）。</li>
 </ul>
-<h1 id="三、Redis为什么这么快"><a href="#三、Redis为什么这么快" class="headerlink" title="三、Redis为什么这么快"></a>三、Redis为什么这么快</h1><h2 id="redis有多快"><a href="#redis有多快" class="headerlink" title="redis有多快"></a>redis有多快</h2><pre><code>Redis采用的是基于内存的采用的是单进程单线程模型的 KV 数据库，由C语言编写，官方提供的数据是可以达到100000+的QPS（每秒内查询次数）
-</code></pre><h2 id="redis快的原因"><a href="#redis快的原因" class="headerlink" title="redis快的原因"></a>redis快的原因</h2><ol>
+<h1 id="三、Redis为什么这么快"><a href="#三、Redis为什么这么快" class="headerlink" title="三、Redis为什么这么快"></a>三、Redis为什么这么快</h1><h2 id="redis有多快"><a href="#redis有多快" class="headerlink" title="redis有多快"></a>redis有多快</h2><p><strong>Redis采用的是基于内存的采用的是单进程单线程模型的 KV 数据库，由C语言编写，官方提供的数据是可以达到100000+的QPS（每秒内查询次数）</strong></p>
+<h2 id="redis快的原因"><a href="#redis快的原因" class="headerlink" title="redis快的原因"></a>redis快的原因</h2><ol>
 <li><p>完全基于内存，绝大部分请求是纯粹的内存操作，非常快速。数据存在内存中，类似于HashMap，HashMap的优势就是查找和操作的时间复杂度都是O(1)；</p>
 </li>
 <li><p>数据结构简单，对数据操作也简单，Redis中的数据结构是专门进行设计的；</p>
@@ -259,6 +259,7 @@
 <p>（1）单进程启动：此时系统中仅有一个进程，该进程既充当Master进程的角色，也充当Worker进程的角色。</p>
 <p>（2）多进程启动：此时系统有且仅有一个Master进程，至少有一个Worker进程工作。</p>
 <p>（3）Master进程主要进行一些全局性的初始化工作和管理Worker的工作；事件处理是在Worker中进行的。</p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
 
         </div>
         
