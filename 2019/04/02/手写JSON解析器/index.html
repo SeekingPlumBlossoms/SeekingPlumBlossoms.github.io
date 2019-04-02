@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>手写JSON解析器 - 宾哥部落格</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="一、JSON定义 JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。">
+<meta name="keywords" content="json">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手写JSON解析器">
+<meta property="og:url" content="http://yoursite.com/2019/04/02/手写JSON解析器/index.html">
+<meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="一、JSON定义 JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-02T03:54:09.288Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手写JSON解析器">
+<meta name="twitter:description" content="一、JSON定义 JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="手写JSON解析器" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-02T02:01:08.000Z">2019-04-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1555 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                手写JSON解析器
+            
+        </h1>
+        <div class="content">
+            <h2 id="一、JSON定义"><a href="#一、JSON定义" class="headerlink" title="一、JSON定义"></a>一、JSON定义</h2><ul>
+<li>JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。</li>
+</ul>
+<hr>
+<a id="more"></a>
+<h2 id="二、JSON解析器"><a href="#二、JSON解析器" class="headerlink" title="二、JSON解析器"></a>二、JSON解析器</h2><h3 id="2-1-思路解析"><a href="#2-1-思路解析" class="headerlink" title="2.1 思路解析"></a>2.1 思路解析</h3><ul>
+<li>定义一个枚举类存储JSON字符串里面需要特殊处理的类，例如：{}，“”等.</li>
+<li>定义一个类存储JSON字符串的每个位置已经对应上述的类型.</li>
+<li>定义数据去存储第二部产生的类对象</li>
+<li>依据第三步产生的数组依据每个类型去循环处理数据</li>
+<li>需要特殊处理String,既可以作为key也可以作为value</li>
+<li>定义JSONOBJECT对象，内部存储用map<h3 id="2-2具体操作如下"><a href="#2-2具体操作如下" class="headerlink" title="2.2具体操作如下"></a>2.2具体操作如下</h3></li>
+<li>分析JSON储存数据格式以及需要特殊处理的符号，整理如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">token</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">NULL</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">NUMBER</td>
+<td style="text-align:center">数字</td>
+</tr>
+<tr>
+<td style="text-align:center">STRING</td>
+<td style="text-align:center">字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">BOOLEAN</td>
+<td style="text-align:center">true/false</td>
+</tr>
+<tr>
+<td style="text-align:center">SEP_COLON</td>
+<td style="text-align:center">:</td>
+</tr>
+<tr>
+<td style="text-align:center">SEP_COMMA</td>
+<td style="text-align:center">,</td>
+</tr>
+<tr>
+<td style="text-align:center">BEGIN_OBJECT</td>
+<td style="text-align:center">{</td>
+</tr>
+<tr>
+<td style="text-align:center">END_OBJECT</td>
+<td style="text-align:center">}</td>
+</tr>
+<tr>
+<td style="text-align:center">BEGIN_ARRAY</td>
+<td style="text-align:center">[</td>
+</tr>
+<tr>
+<td style="text-align:center">END_ARRAY</td>
+<td style="text-align:center">]</td>
+</tr>
+<tr>
+<td style="text-align:center">END_DOCUMENT</td>
+<td style="text-align:center">表示JSON数据结束</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>依据上面处理的逻辑定义如下枚举类</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> TokenTypeEnum &#123;</span><br><span class="line">    <span class="hljs-comment">/**object开始的编号**/</span></span><br><span class="line">    BEGIN_OBJECT(<span class="hljs-number">1</span>),</span><br><span class="line">    <span class="hljs-comment">/**object结束的编号**/</span></span><br><span class="line">    END_OBJECT(<span class="hljs-number">2</span>),</span><br><span class="line">    <span class="hljs-comment">/**数组开始的编号**/</span></span><br><span class="line">    BEGIN_ARRAY(<span class="hljs-number">4</span>),</span><br><span class="line">    <span class="hljs-comment">/**数组结束的编号**/</span></span><br><span class="line">    END_ARRAY(<span class="hljs-number">8</span>),</span><br><span class="line">    <span class="hljs-comment">/**null的编号**/</span></span><br><span class="line">    NULL(<span class="hljs-number">16</span>),</span><br><span class="line">    <span class="hljs-comment">/**数字的编号**/</span></span><br><span class="line">    NUMBER(<span class="hljs-number">32</span>),</span><br><span class="line">    <span class="hljs-comment">/**string的编号**/</span></span><br><span class="line">    STRING(<span class="hljs-number">64</span>),</span><br><span class="line">    <span class="hljs-comment">/**Boolean的编号**/</span></span><br><span class="line">    BOOLEAN(<span class="hljs-number">128</span>),</span><br><span class="line">    <span class="hljs-comment">/**每个类型的编号**/</span></span><br><span class="line">    SEP_COLON(<span class="hljs-number">256</span>),</span><br><span class="line">    <span class="hljs-comment">/**编号**/</span></span><br><span class="line">    SEP_COMMA(<span class="hljs-number">512</span>),</span><br><span class="line">    <span class="hljs-comment">/**文档编号**/</span></span><br><span class="line">    END_DOCUMENT(<span class="hljs-number">1024</span>);</span><br><span class="line">    <span class="hljs-comment">/**每个类型的编号**/</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> code;</span><br><span class="line"></span><br><span class="line">    TokenTypeEnum(<span class="hljs-keyword">int</span> code) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.code = code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getTokenCode</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义基础处理类</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.json.demo.tokenizer;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> yebin</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@className</span> Token</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@description</span> 存储对应字符串</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2019/4/1 16:25</span></span><br><span class="line"><span class="hljs-comment"> **/</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Token</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> TokenTypeEnum tokenType;</span><br><span class="line">    <span class="hljs-keyword">private</span> String value;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Token</span><span class="hljs-params">(TokenTypeEnum tokenType, String value)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.tokenType = tokenType;</span><br><span class="line">        <span class="hljs-keyword">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> TokenTypeEnum <span class="hljs-title">getTokenType</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> tokenType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTokenType</span><span class="hljs-params">(TokenTypeEnum tokenType)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.tokenType = tokenType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getValue</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(String value)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Token&#123;"</span> +</span><br><span class="line">                <span class="hljs-string">"tokenType="</span> + tokenType +</span><br><span class="line">                <span class="hljs-string">", value='"</span> + value + <span class="hljs-string">'\''</span> +</span><br><span class="line">                <span class="hljs-string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义数组</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.json.demo.tokenizer;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> yebin</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@className</span> TokenList</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@description</span> 存储解析流</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2019/4/1 16:30</span></span><br><span class="line"><span class="hljs-comment"> **/</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TokenList</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> List&lt;Token&gt; tokens = <span class="hljs-keyword">new</span> ArrayList&lt;Token&gt;();</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(Token token)</span> </span>&#123;</span><br><span class="line">        tokens.add(token);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Token <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> index &lt; tokens.size() ? tokens.get(index) : <span class="hljs-keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Token <span class="hljs-title">peekPrevious</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> index - <span class="hljs-number">1</span> &lt; <span class="hljs-number">0</span> ? <span class="hljs-keyword">null</span> : tokens.get(index - <span class="hljs-number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Token <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> tokens.get(index++);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasMore</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> index &lt; tokens.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"TokenList&#123;"</span> +</span><br><span class="line">                <span class="hljs-string">"tokens="</span> + tokens +</span><br><span class="line">                <span class="hljs-string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义处理类</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.json.demo.tokenizer;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.json.demo.exception.JsonParseException;</span><br><span class="line"><span class="hljs-keyword">import</span> jdk.nashorn.internal.parser.TokenType;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> yebin</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@className</span> Tokenizer</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@description</span> 词法解析</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2019/4/1 16:35</span></span><br><span class="line"><span class="hljs-comment"> **/</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tokenizer</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> ReaderChar readerChar;</span><br><span class="line">    <span class="hljs-keyword">private</span> TokenList tokenList;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> TokenList <span class="hljs-title">getTokenStream</span><span class="hljs-params">(ReaderChar readerChar)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.readerChar = readerChar;</span><br><span class="line">        tokenList = <span class="hljs-keyword">new</span> TokenList();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 词法解析，获取token流</span></span><br><span class="line">        tokenizer();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> tokenList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 将JSON文件解析成token流</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">tokenizer</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Token token;</span><br><span class="line">        <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">            token = start();</span><br><span class="line">            tokenList.add(token);</span><br><span class="line">        &#125; <span class="hljs-keyword">while</span> (token.getTokenType() != TokenTypeEnum.END_DOCUMENT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 解析过程的具体实现方法</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> JsonParseException</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> Token <span class="hljs-title">start</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException, JsonParseException </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">char</span> ch;</span><br><span class="line">        <span class="hljs-comment">//先读一个字符，若为空白符（ASCII码在[0, 20H]上）则接着读，直到刚读的字符非空白符</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!readerChar.hasMore()) &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.END_DOCUMENT, <span class="hljs-keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ch = readerChar.next();</span><br><span class="line">            <span class="hljs-keyword">if</span> (!isWhiteSpace(ch)) &#123;</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">switch</span> (ch) &#123;</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">'&#123;'</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.BEGIN_OBJECT, String.valueOf(ch));</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">'&#125;'</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.END_OBJECT, String.valueOf(ch));</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">'['</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.BEGIN_ARRAY, String.valueOf(ch));</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">']'</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.END_ARRAY, String.valueOf(ch));</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">','</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.SEP_COMMA, String.valueOf(ch));</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">':'</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.SEP_COLON, String.valueOf(ch));</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">'n'</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> readNull();</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">'t'</span>:</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">'f'</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> readBoolean();</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">'"'</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> readString();</span><br><span class="line">            <span class="hljs-keyword">case</span> <span class="hljs-string">'-'</span>:</span><br><span class="line">                <span class="hljs-keyword">return</span> readNumber();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> readNumber();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Illegal character"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**       以下方法用来判断所属数据类型是否合法          */</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 判断一个字符是否属于空白字符</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isWhiteSpace</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> (ch == <span class="hljs-string">' '</span> || ch == <span class="hljs-string">'\t'</span> || ch == <span class="hljs-string">'\r'</span> || ch == <span class="hljs-string">'\n'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> Token <span class="hljs-title">readString</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> ch = readerChar.next();</span><br><span class="line">            <span class="hljs-comment">// 处理转义字符</span></span><br><span class="line">            <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'\\'</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!isEscape()) &#123;</span><br><span class="line">                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Invalid escape character"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                sb.append(<span class="hljs-string">'\\'</span>);</span><br><span class="line">                ch = readerChar.peek();</span><br><span class="line">                sb.append(ch);</span><br><span class="line">                <span class="hljs-comment">// 处理 Unicode 编码，形如 \u4e2d。且只支持 \u0000 ~ \uFFFF 范围内的编码</span></span><br><span class="line">                <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'u'</span>) &#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) &#123;</span><br><span class="line">                        ch = readerChar.next();</span><br><span class="line">                        <span class="hljs-keyword">if</span> (isHex(ch)) &#123;</span><br><span class="line">                            sb.append(ch);</span><br><span class="line">                        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Invalid character"</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-comment">// 碰到另一个双引号，则认为字符串解析结束，返回 Token</span></span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'"'</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.STRING, sb.toString());</span><br><span class="line">                <span class="hljs-comment">// 传入的 JSON 字符串不允许换行</span></span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'\r'</span> || ch == <span class="hljs-string">'\n'</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Invalid character"</span>);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                sb.append(ch);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 判断是否有乱传转义字符</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEscape</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">char</span> ch = readerChar.next();</span><br><span class="line">        <span class="hljs-keyword">return</span> (ch == <span class="hljs-string">'"'</span> || ch == <span class="hljs-string">'\\'</span> || ch == <span class="hljs-string">'u'</span> || ch == <span class="hljs-string">'r'</span></span><br><span class="line">                || ch == <span class="hljs-string">'n'</span> || ch == <span class="hljs-string">'b'</span> || ch == <span class="hljs-string">'t'</span> || ch == <span class="hljs-string">'f'</span> || ch == <span class="hljs-string">'/'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 判断是否是十六进制数</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> ch</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isHex</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> ((ch &gt;= <span class="hljs-string">'0'</span> &amp;&amp; ch &lt;= <span class="hljs-string">'9'</span>) || (<span class="hljs-string">'a'</span> &lt;= ch &amp;&amp; ch &lt;= <span class="hljs-string">'f'</span>)</span><br><span class="line">                || (<span class="hljs-string">'A'</span> &lt;= ch &amp;&amp; ch &lt;= <span class="hljs-string">'F'</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 判断是否是整数</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> Token <span class="hljs-title">readNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">char</span> ch = readerChar.peek();</span><br><span class="line">        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="hljs-comment">// 处理负数</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'-'</span>) &#123;</span><br><span class="line">            sb.append(ch);</span><br><span class="line">            ch = readerChar.next();</span><br><span class="line">            <span class="hljs-comment">// 处理 -0.xxxx</span></span><br><span class="line">            <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'0'</span>) &#123;</span><br><span class="line">                sb.append(ch);</span><br><span class="line">                sb.append(readFracAndExp());</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (isDigitOneToNine(ch)) &#123;</span><br><span class="line">                <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">                    sb.append(ch);</span><br><span class="line">                    ch = readerChar.next();</span><br><span class="line">                &#125; <span class="hljs-keyword">while</span> (isDigit(ch));</span><br><span class="line"></span><br><span class="line">                <span class="hljs-keyword">if</span> (ch != (<span class="hljs-keyword">char</span>) -<span class="hljs-number">1</span>) &#123;</span><br><span class="line">                    readerChar.back();</span><br><span class="line">                    sb.append(readFracAndExp());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Invalid minus number"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'0'</span>) &#123;    <span class="hljs-comment">// 处理小数</span></span><br><span class="line">            sb.append(ch);</span><br><span class="line">            sb.append(readFracAndExp());</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">                sb.append(ch);</span><br><span class="line">                ch = readerChar.next();</span><br><span class="line">            &#125; <span class="hljs-keyword">while</span> (isDigit(ch));</span><br><span class="line">            <span class="hljs-keyword">if</span> (ch != (<span class="hljs-keyword">char</span>) -<span class="hljs-number">1</span>) &#123;</span><br><span class="line">                readerChar.back();</span><br><span class="line">                sb.append(readFracAndExp());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.NUMBER, sb.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 判断是否是指数</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> ch</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isExp</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> ch == <span class="hljs-string">'e'</span> || ch == <span class="hljs-string">'E'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 判断范围[0,9]</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> ch</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isDigit</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> ch &gt;= <span class="hljs-string">'0'</span> &amp;&amp; ch &lt;= <span class="hljs-string">'9'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 判断范围[1,9]</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> ch</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isDigitOneToNine</span><span class="hljs-params">(<span class="hljs-keyword">char</span> ch)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> ch &gt;= <span class="hljs-string">'1'</span> &amp;&amp; ch &lt;= <span class="hljs-string">'9'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> String <span class="hljs-title">readFracAndExp</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="hljs-keyword">char</span> ch = readerChar.next();</span><br><span class="line">        <span class="hljs-keyword">if</span> (ch ==  <span class="hljs-string">'.'</span>) &#123;</span><br><span class="line">            sb.append(ch);</span><br><span class="line">            ch = readerChar.next();</span><br><span class="line">            <span class="hljs-keyword">if</span> (!isDigit(ch)) &#123;</span><br><span class="line">                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Invalid frac"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">                sb.append(ch);</span><br><span class="line">                ch = readerChar.next();</span><br><span class="line">            &#125; <span class="hljs-keyword">while</span> (isDigit(ch));</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (isExp(ch)) &#123;    <span class="hljs-comment">// 处理科学计数法</span></span><br><span class="line">                sb.append(ch);</span><br><span class="line">                sb.append(readExp());</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (ch != (<span class="hljs-keyword">char</span>) -<span class="hljs-number">1</span>) &#123;</span><br><span class="line">                    readerChar.back();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (isExp(ch)) &#123;</span><br><span class="line">            sb.append(ch);</span><br><span class="line">            sb.append(readExp());</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            readerChar.back();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 处理指数形式的数据</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> String <span class="hljs-title">readExp</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="hljs-keyword">char</span> ch = readerChar.next();</span><br><span class="line">        <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">'+'</span> || ch ==<span class="hljs-string">'-'</span>) &#123;</span><br><span class="line">            sb.append(ch);</span><br><span class="line">            ch = readerChar.next();</span><br><span class="line">            <span class="hljs-keyword">if</span> (isDigit(ch)) &#123;</span><br><span class="line">                <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">                    sb.append(ch);</span><br><span class="line">                    ch = readerChar.next();</span><br><span class="line">                &#125; <span class="hljs-keyword">while</span> (isDigit(ch));</span><br><span class="line"></span><br><span class="line">                <span class="hljs-keyword">if</span> (ch != (<span class="hljs-keyword">char</span>) -<span class="hljs-number">1</span>) &#123;    <span class="hljs-comment">// 读取结束，不用回退</span></span><br><span class="line">                    readerChar.back();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"e or E"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"e or E"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 判断是否是true or false</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> IOException</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> Token <span class="hljs-title">readBoolean</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (readerChar.peek() == <span class="hljs-string">'t'</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!(readerChar.next() == <span class="hljs-string">'r'</span> &amp;&amp; readerChar.next() == <span class="hljs-string">'u'</span> &amp;&amp; readerChar.next() == <span class="hljs-string">'e'</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Invalid json string"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.BOOLEAN, <span class="hljs-string">"true"</span>);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!(readerChar.next() == <span class="hljs-string">'a'</span> &amp;&amp; readerChar.next() == <span class="hljs-string">'l'</span></span><br><span class="line">                    &amp;&amp; readerChar.next() == <span class="hljs-string">'s'</span> &amp;&amp; readerChar.next() == <span class="hljs-string">'e'</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Invalid json string"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.BOOLEAN, <span class="hljs-string">"false"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 词法分析器在读取字符n后，期望后面的三个字符分别是u,l,l，与 n 组成词 null。</span></span><br><span class="line"><span class="hljs-comment">     * 如果满足期望，则返回类型为 NULL 的 Token，否则报异常。</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> Token <span class="hljs-title">readNull</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!(readerChar.next() == <span class="hljs-string">'u'</span> &amp;&amp; readerChar.next() == <span class="hljs-string">'l'</span> &amp;&amp; readerChar.next() == <span class="hljs-string">'l'</span>)) &#123;</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> JsonParseException(<span class="hljs-string">"Invalid json string"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token(TokenTypeEnum.NULL, <span class="hljs-string">"null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>具体逻辑地址</p>
+</li>
+</ul>
+<p><a href="https://github.com/SeekingPlumBlossoms/notation.git" target="_blank" rel="noopener">github地址</a></p>
+<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/json/">json</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/25/java多线程锁机制/">
+                <span class="level-item">java多线程锁机制</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="宾哥部落格">
+                    
+                    <p class="is-size-4 is-block">
+                        宾哥部落格
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        一个有态度的程序猿
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/SeekingPlumBlossoms">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/SeekingPlumBlossoms">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="http://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="http://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/docker/">
+            <span class="level-start">
+                <span class="level-item">docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/java/">
+            <span class="level-start">
+                <span class="level-item">java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/中间件/">
+            <span class="level-start">
+                <span class="level-item">中间件</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-02T02:01:08.000Z">2019-04-02</time></div>
+                    <a href="/2019/04/02/手写JSON解析器/" class="has-link-black-ter is-size-6">手写JSON解析器</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/java/">java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-25T06:22:43.000Z">2019-03-25</time></div>
+                    <a href="/2019/03/25/java多线程锁机制/" class="has-link-black-ter is-size-6">java多线程锁机制</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/java/">java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-25T01:41:03.000Z">2019-03-25</time></div>
+                    <a href="/2019/03/25/深入浅出redis/" class="has-link-black-ter is-size-6">深入浅出redis</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-20T07:30:15.000Z">2019-03-20</time></div>
+                    <a href="/2019/03/20/Nacos之基于springBoot注册中心的整合/" class="has-link-black-ter is-size-6">Nacos之基于springBoot注册中心的整合</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-20T01:18:14.000Z">2019-03-20</time></div>
+                    <a href="/2019/03/20/Nacos之基于springBoot配置中心的整合/" class="has-link-black-ter is-size-6">Nacos之基于springBoot配置中心的整合</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JDBC/">
+                        <span class="tag">JDBC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/docker/">
+                        <span class="tag">docker</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/java随笔/">
+                        <span class="tag">java随笔</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/json/">
+                        <span class="tag">json</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nacos/">
+                        <span class="tag">nacos</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/okHttp/">
+                        <span class="tag">okHttp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/redis/">
+                        <span class="tag">redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/session/">
+                        <span class="tag">session</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/thread/">
+                        <span class="tag">thread</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/事故/">
+                        <span class="tag">事故</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分布式/">
+                        <span class="tag">分布式</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/技术心得/">
+                        <span class="tag">技术心得</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/排查工具/">
+                        <span class="tag">排查工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/設計模式/">
+                        <span class="tag">設計模式</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JDBC/">
+                        <span class="tag">JDBC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/docker/">
+                        <span class="tag">docker</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/java随笔/">
+                        <span class="tag">java随笔</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/json/">
+                        <span class="tag">json</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nacos/">
+                        <span class="tag">nacos</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/okHttp/">
+                        <span class="tag">okHttp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/redis/">
+                        <span class="tag">redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/session/">
+                        <span class="tag">session</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/thread/">
+                        <span class="tag">thread</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/事故/">
+                        <span class="tag">事故</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分布式/">
+                        <span class="tag">分布式</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/技术心得/">
+                        <span class="tag">技术心得</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/排查工具/">
+                        <span class="tag">排查工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/設計模式/">
+                        <span class="tag">設計模式</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="手写JSON解析器" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
