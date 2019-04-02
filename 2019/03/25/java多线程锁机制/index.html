@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、什么是线程锁我的理解是：多个线程在使用共享资源时,需要将资源进行锁定，让线程依次有序的进行获取资源。这个将资源进行锁定的动作就是加锁。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/03/25/java多线程锁机制/1.png">
-<meta property="og:updated_time" content="2019-03-25T07:32:15.114Z">
+<meta property="og:updated_time" content="2019-03-25T09:08:38.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程锁机制">
 <meta name="twitter:description" content="一、什么是线程锁我的理解是：多个线程在使用共享资源时,需要将资源进行锁定，让线程依次有序的进行获取资源。这个将资源进行锁定的动作就是加锁。">
@@ -190,9 +190,11 @@
 </li>
 <li>重量级锁<ul>
 <li>定义：升级为重量级锁时，锁标志的状态值变为“10”，此时Mark Word中存储的是指向重量级锁的指针，此时等待锁的线程都会进入阻塞状态。</li>
-<li>特点： 重量级锁是将除了拥有锁的线程以外的线程都阻塞。<h2 id="四、死锁"><a href="#四、死锁" class="headerlink" title="四、死锁"></a>四、死锁</h2></li>
+<li>特点： 重量级锁是将除了拥有锁的线程以外的线程都阻塞。</li>
 </ul>
 </li>
+</ol>
+<h2 id="四、死锁"><a href="#四、死锁" class="headerlink" title="四、死锁"></a>四、死锁</h2><ol>
 <li>什么是死锁</li>
 </ol>
 <p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。是操作系统层面的一个错误，是进程死锁的简称，最早在 1965 年由 Dijkstra 在研究银行家算法时提出的，它是计算机操作系统乃至整个并发程序设计领域最难处理的问题之一。</p>
@@ -243,8 +245,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/25/redis为什么是单线程的/">
-                <span class="level-item">redis为什么是单线程的</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/25/深入浅出redis/">
+                <span class="level-item">深入浅出redis</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -432,7 +434,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-25T01:41:03.000Z">2019-03-25</time></div>
-                    <a href="/2019/03/25/redis为什么是单线程的/" class="has-link-black-ter is-size-6">redis为什么是单线程的</a>
+                    <a href="/2019/03/25/深入浅出redis/" class="has-link-black-ter is-size-6">深入浅出redis</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
                     </p>
