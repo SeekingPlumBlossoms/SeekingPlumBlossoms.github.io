@@ -16,8 +16,9 @@
 <meta property="og:description" content="序接入上篇的内容，本次主要说明Nacos作为注册中心的用法,并且是使用dubbo使用注解的方式进行访问。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot注册中心的整合/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot注册中心的整合/4.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot注册中心的整合/5.png">
-<meta property="og:updated_time" content="2019-03-25T03:51:54.382Z">
+<meta property="og:updated_time" content="2019-04-02T05:27:57.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nacos之基于springBoot注册中心的整合">
 <meta name="twitter:description" content="序接入上篇的内容，本次主要说明Nacos作为注册中心的用法,并且是使用dubbo使用注解的方式进行访问。">
@@ -157,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 579 个字)
+                    4 分钟 读完 (大约 583 个字)
                 </span>
                 
             </div>
@@ -189,7 +190,13 @@
 <hr>
 <ul>
 <li><p>如果出现以下错误</p>
-<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalStateException: No such extension com.alibaba.dubbo.registry.RegistryFactory by name nacos </span><br><span class="line">~~~ </span><br><span class="line">这个错误的意思是：Dubbo的注册协议找不到Nacos类型的实现类。原因分析如下:dubbo2.5.6没有引入注册到Nacos实现类</span><br><span class="line">  ![](./Nacos之基于springBoot注册中心的整合/<span class="hljs-number">4</span>.png)</span><br><span class="line"></span><br><span class="line">需要加入新jar</span><br><span class="line">~~~java</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;dubbo-registry-nacos&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;0.0.1&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalStateException: No such extension com.alibaba.dubbo.registry.RegistryFactory by name nacos</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这个错误的意思是：Dubbo的注册协议找不到Nacos类型的实现类。原因分析如下:dubbo2.5.6没有引入注册到Nacos实现类</p>
+<p>  <img src="/2019/03/20/Nacos之基于springBoot注册中心的整合/4.png" alt="原因分析"></p>
+</li>
+<li><p>需要加入新jar</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;dubbo-registry-nacos&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;0.0.1&lt;/version&gt;</span><br><span class="line"> &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 <p>问题解决！！！</p>
 </li>
 </ul>
