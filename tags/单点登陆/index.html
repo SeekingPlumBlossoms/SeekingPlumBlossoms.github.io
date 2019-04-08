@@ -2,25 +2,18 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>Nacos之基于springBoot配置中心的整合 - 宾哥部落格</title>
+<title>标签: 单点登陆 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="序接入上篇的内容，本次主要说明Nacos作为配置中心的用法,实现动态刷新获取值。">
-<meta name="keywords" content="nacos">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Nacos之基于springBoot配置中心的整合">
-<meta property="og:url" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot配置中心的整合/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="宾哥部落格">
+<meta property="og:url" content="http://yoursite.com/tags/单点登陆/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="序接入上篇的内容，本次主要说明Nacos作为配置中心的用法,实现动态刷新获取值。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot配置中心的整合/1.jpg">
-<meta property="og:updated_time" content="2019-03-22T07:10:26.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nacos之基于springBoot配置中心的整合">
-<meta name="twitter:description" content="序接入上篇的内容，本次主要说明Nacos作为配置中心的用法,实现动态刷新获取值。">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot配置中心的整合/1.jpg">
+<meta name="twitter:title" content="宾哥部落格">
 
 
 
@@ -90,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Nacos之基于springBoot配置中心的整合" height="28">
+                <img src="/images/logo.svg" alt="宾哥部落格" height="28">
             
             </a>
         </div>
@@ -141,22 +134,33 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">单点登陆</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-20T01:18:14.000Z">2019-03-20</time>
+                <time class="level-item has-text-grey" datetime="2019-04-08T03:05:37.000Z">2019-04-08</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 588 个字)
+                    8 分钟 读完 (大约 1230 个字)
                 </span>
                 
             </div>
@@ -164,58 +168,23 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Nacos之基于springBoot配置中心的整合
+                <a class="has-link-black-ter" href="/2019/04/08/单点登录原理与简单实现/">单点登录原理与简单实现</a>
             
         </h1>
         <div class="content">
-            <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>接入上篇的内容，本次主要说明Nacos作为配置中心的用法,实现动态刷新获取值。</p>
-<a id="more"></a>
-<h2 id="开始接入Nacos作为配置中心"><a href="#开始接入Nacos作为配置中心" class="headerlink" title="开始接入Nacos作为配置中心"></a>开始接入Nacos作为配置中心</h2><ol>
-<li>新建springBoot2.X版本，引入以下依赖</li>
-</ol>
-<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.alibaba.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;nacos-discovery-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;0.2.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><p>在application.properties引入<strong>server-addr</strong>地址</p>
-<p> 因为我的Nacos本地启动所以配置信息如下</p>
- <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nacos.config.server-addr=localhost:<span class="hljs-number">8848</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在启动类PivasApplication上加上NacosPropertySource和EnableNacosConfig注解</p>
-</li>
-</ol>
-<ul>
-<li><p>配置信息如下</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> yebin</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-meta">@NacosPropertySource</span>(dataId = <span class="hljs-string">"com.yb.data"</span>, groupId = <span class="hljs-string">"yb"</span>, autoRefreshed = <span class="hljs-keyword">true</span>)</span><br><span class="line"><span class="hljs-meta">@RestController</span></span><br><span class="line"><span class="hljs-meta">@EnableNacosConfig</span>()</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PivasApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SpringApplication.run(PivasApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">    * key=hello 默认值是dd autoRefreshed表示是否自动刷新</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">    <span class="hljs-meta">@NacosValue</span>(value = <span class="hljs-string">"$&#123;hello:dd&#125;"</span>, autoRefreshed = <span class="hljs-keyword">true</span>)</span><br><span class="line">    <span class="hljs-keyword">private</span> String hello;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">"/test"</span>)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">test</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"hello "</span> + hello;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>名称解释：</p>
-<ul>
-<li>引用阿里云的定义：<blockquote>
-<p><em>dataId</em>: Nacos 中的某个配置集的 ID。配置集 ID 是组织划分配置的维度之一。Data ID 通常用于组织划分系统的配置集。一个系统或者应用可以包含多个配置集，每个配置集都可以被一个有意义的名称标识。Data ID 通常采用类 Java 包（如 com.taobao.tc.refund.log.level）的命名规则保证全局唯一性。此命名规则非强制。</p>
-<p><em>group</em>: Nacos 中的一组配置集，是组织配置的维度之一。通过一个有意义的字符串（如 Buy 或 Trade ）对配置集进行分组，从而区分 Data ID 相同的配置集。当您在 Nacos 上创建一个配置时，如果未填写配置分组的名称，则配置分组的名称默认采用 DEFAULT_GROUP 。配置分组的常见场景：不同的应用或组件使用了相同的配置类型，如 database_url 配置和 MQ_topic 配置。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>在Nacos后台配置进行配置<br>  <img src="/2019/03/20/Nacos之基于springBoot配置中心的整合/1.jpg" alt="后台配置"></p>
-</li>
-<li><p>验证成果:<br>访问如下地址 ：<a href="http://localhost:18080/test" target="_blank" rel="noopener">http://localhost:18080/test</a> 页面出现hello world表示成功</p>
-</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整合期间，出现了数据一致取不到的问题，最后发现没有@EnableNacosConfig()导致，有兴趣可以看下里面的配置项。后续会出具体Nacos作为注册中心的整合.</p>
-<p>  友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-
+            <h2 id="一、单系统登录机制"><a href="#一、单系统登录机制" class="headerlink" title="一、单系统登录机制"></a>一、单系统登录机制</h2><h3 id="1-http无状态协议"><a href="#1-http无状态协议" class="headerlink" title="1.http无状态协议"></a>1.http无状态协议</h3><p>传统的web应用采用B/S结构,采用http或者https进行通信。服务器端会独立处理每次浏览器发送的请求，每次请求之间互不干涉。实际如下图：<br></p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/nacos/">nacos</a>
+                <a class="button is-size-7 is-light" href="/2019/04/08/单点登录原理与简单实现/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
@@ -223,26 +192,7 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/20/Nacos之基于springBoot注册中心的整合/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Nacos之基于springBoot注册中心的整合</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/19/Nacos之部署/">
-                <span class="level-item">Nacos之部署</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
+
 
 
 </div>
@@ -895,7 +845,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Nacos之基于springBoot配置中心的整合" height="28">
+                    <img src="/images/logo.svg" alt="宾哥部落格" height="28">
                 
                 </a>
                 <p class="is-size-7">
