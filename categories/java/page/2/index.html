@@ -151,6 +151,62 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-07T02:39:59.000Z">2019-03-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1622 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/07/分布式全局唯一ID生成策略/">分布式全局唯一ID生成策略</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="分布式系统的定义"><a href="#分布式系统的定义" class="headerlink" title="分布式系统的定义"></a>分布式系统的定义</h2><ul>
+<li>分布式系统就是对外是统一的入口，对内是有很多计算机服务组装的系统。</li>
+</ul>
+<h2 id="为什么需要一个全局唯一主键"><a href="#为什么需要一个全局唯一主键" class="headerlink" title="为什么需要一个全局唯一主键"></a>为什么需要一个全局唯一主键</h2><ul>
+<li>主要是用于某个记录的存储或者输出的时候，能找到唯一的记录，不能让数据错乱。数据库的唯一ID在单库单表的情况下可以使用，但是在使用分布式系统的时候，数据库的自增主键就不可以使用了.举个栗子：先有订单记录表1024张,如果使用数据库中的自增主键，那么就会有1024订单号相同的订单，这个肯定是不行的，所以需要分布式唯一的主键去确定订单号。</li>
+</ul>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/07/分布式全局唯一ID生成策略/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-03-07T01:35:35.000Z">2019-03-07</time>
                 
                 <div class="level-item">
@@ -310,7 +366,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        31
+                        32
                     </p>
                 </div>
             </div>
@@ -330,7 +386,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        19
                     </p>
                 </div>
             </div>
@@ -407,7 +463,7 @@
                 <span class="level-item">java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/中间件/">
@@ -429,6 +485,19 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-03T01:59:32.000Z">2019-06-03</time></div>
+                    <a href="/2019/06/03/基于环形队列的高效延迟消息实现/" class="has-link-black-ter is-size-6">基于环形队列的高效延迟消息实现</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/java/">java</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -482,19 +551,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-08T03:05:37.000Z">2019-04-08</time></div>
-                    <a href="/2019/04/08/单点登录原理与简单实现/" class="has-link-black-ter is-size-6">单点登录原理与简单实现</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/java/">java</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -509,6 +565,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -645,6 +712,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/json/">
                         <span class="tag">json</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/message/">
+                        <span class="tag">message</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -751,6 +825,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/05/">
                 <span class="level-start">
                     <span class="level-item">五月 2019</span>
@@ -885,6 +970,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/json/">
                         <span class="tag">json</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/message/">
+                        <span class="tag">message</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
