@@ -2,18 +2,23 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>归档: 2018/12 - 宾哥部落格</title>
+<title>JDK提供的四种线程池 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="宾哥部落格">
-<meta property="og:url" content="http://yoursite.com/archives/2018/12/index.html">
+    <meta name="description" content="序本文为了梳理下线程池的概念以及基础的使用。">
+<meta name="keywords" content="线程池">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDK提供的四种线程池">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/JDK提供的四种线程池/index.html">
 <meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="序本文为了梳理下线程池的概念以及基础的使用。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-05T05:52:46.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="宾哥部落格">
+<meta name="twitter:title" content="JDK提供的四种线程池">
+<meta name="twitter:description" content="序本文为了梳理下线程池的概念以及基础的使用。">
 
 
 
@@ -83,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="宾哥部落格" height="28">
+                <img src="/images/logo.svg" alt="JDK提供的四种线程池" height="28">
             
             </a>
         </div>
@@ -133,151 +138,94 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        十二月 2018
-        </h3>
-        <div class="timeline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-03T03:27:52.000Z">2019-06-03</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-06T07:19:09.000Z">2018-12-06</time>
-                        <a href="/2018/12/06/設計模式之命令模式/" class="has-link-black-ter is-size-6">設計模式之命令模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-05T08:15:21.000Z">2018-12-05</time>
-                        <a href="/2018/12/05/設計模式之中介者模式/" class="has-link-black-ter is-size-6">設計模式之中介者模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-05T07:09:33.000Z">2018-12-05</time>
-                        <a href="/2018/12/05/設計模式之原型模式/" class="has-link-black-ter is-size-6">設計模式之原型模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1932 个字)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-05T06:15:41.000Z">2018-12-05</time>
-                        <a href="/2018/12/05/設計模式之代理模式/" class="has-link-black-ter is-size-6">設計模式之代理模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-05T05:50:10.000Z">2018-12-05</time>
-                        <a href="/2018/12/05/設計模式之建造者模式/" class="has-link-black-ter is-size-6">設計模式之建造者模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-04T14:49:56.000Z">2018-12-04</time>
-                        <a href="/2018/12/04/設計模式之模板方法模式/" class="has-link-black-ter is-size-6">設計模式之模板方法模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-04T14:31:37.000Z">2018-12-04</time>
-                        <a href="/2018/12/04/設計模式之抽象工厂模式/" class="has-link-black-ter is-size-6">設計模式之抽象工厂模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-04T03:22:25.000Z">2018-12-04</time>
-                        <a href="/2018/12/04/設計模式之工厂方法模式/" class="has-link-black-ter is-size-6">設計模式之工厂方法模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-04T01:13:24.000Z">2018-12-04</time>
-                        <a href="/2018/12/04/設計模式之01單例模式/" class="has-link-black-ter is-size-6">設計模式之單例模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                JDK提供的四种线程池
+            
+        </h1>
+        <div class="content">
+            <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>本文为了梳理下线程池的概念以及基础的使用。<br><a id="more"></a></p>
+<h2 id="一、什么是线程"><a href="#一、什么是线程" class="headerlink" title="一、什么是线程"></a>一、什么是线程</h2><h3 id="1-1线程的定义"><a href="#1-1线程的定义" class="headerlink" title="1.1线程的定义"></a>1.1线程的定义</h3><p>线程(Thread):操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。</p>
+<h3 id="1-2线程的状态"><a href="#1-2线程的状态" class="headerlink" title="1.2线程的状态"></a>1.2线程的状态</h3><ol>
+<li>新线程态（New Thread)<br>产生一个Thread对象就生成一个新线程。当线程处于”新线程”状态时，仅仅是一个空线程对象，它还没有分配到系统资源。因此只能启动或终止它。任何其他操作都会引发异常。例如，一个线程调用了new方法之后，并在调用start方法之前的处于新线程状态，可以调用start和stop方法。</li>
+<li>可运行态（Runnable)<br>start（）方法产生运行线程所必须的资源，调度线程执行，并且调用线程的run（）方法。在这时线程处于可运行态。该状态不称为运行态是因为这时的线程并不总是一直占用处理机。特别是对于只有一个处理机的PC而言，任何时刻只能有一个处于可运行态的线程占用处理机。Java通过调度来实现多线程对处理机的共享。注意，如果线程处于Runnable状态，它也有可能不在运行，这是因为还有优先级和调度问题。</li>
+<li>阻塞/非运行态（Not Runnable)<br>当以下事件发生时，线程进入非运行态。<ul>
+<li>suspend()方法被调用；</li>
+<li>sleep()方法被调用；</li>
+<li>线程使用wait()来等待条件变量；</li>
+<li>线程处于I/O请求的等待。</li>
+</ul>
+</li>
+<li>死亡态（Dead)<br>当run（）方法返回，或别的线程调用stop（）方法，线程进入死亡态。通常Applet使用它的stop（）方法来终止它产生的所有线程</li>
+</ol>
+<h2 id="二、什么是线程池"><a href="#二、什么是线程池" class="headerlink" title="二、什么是线程池"></a>二、什么是线程池</h2><p>线程池是一种典型的“空间换时间”的应用案例。在线程池中维护一定数量的线程池，在每次有有请求过来的时候，不需要每次都去创建新的线程，而是从线程池中选出可用的线程,这样做的代价是线程即使是空闲的时候也会占用系统的资源。</p>
+<h2 id="三、为什么用线程池"><a href="#三、为什么用线程池" class="headerlink" title="三、为什么用线程池"></a>三、为什么用线程池</h2><ul>
+<li>线程池内线程可以重复使用</li>
+<li>减少创建和销毁线程所带来的系统资源的开销</li>
+<li>提升吞吐量，提升了性能</li>
+</ul>
+<h2 id="四、JDK提供的四种线程池使用方式"><a href="#四、JDK提供的四种线程池使用方式" class="headerlink" title="四、JDK提供的四种线程池使用方式"></a>四、JDK提供的四种线程池使用方式</h2><h3 id="4-1固定线程数的线程池（newFixedThreadPool）"><a href="#4-1固定线程数的线程池（newFixedThreadPool）" class="headerlink" title="4.1固定线程数的线程池（newFixedThreadPool）"></a>4.1固定线程数的线程池（newFixedThreadPool）</h3><p>这种线程池里面的线程被设计成存放固定数量的线程，具体线程数可以考虑为CPU核数*N（N可大可小，取决于并发的线程数，计算机可用的硬件资源等）。以下是获取CPU核数：</p>
+<blockquote>
+<p> int processors = Runtime.getRuntime().availableProcessors();</p>
+</blockquote>
+<p>FixedThreadPool 是通过 java.util.concurrent.Executors 创建的 ThreadPoolExecutor 实例。这个实例会复用 固定数量的线程处理一个共享的无边界队列 。任何时间点，最多有 nThreads 个线程会处于活动状态执行任务。如果当所有线程都是活动时，有多的任务被提交过来，那么它会一致在队列中等待直到有线程可用。如果任何线程在执行过程中因为错误而中止，新的线程会替代它的位置来执行后续的任务。所有线程都会一致存于线程池中，直到显式的执行 ExecutorService.shutdown() 关闭。由于阻塞队列使用了LinkedBlockingQueue，是一个无界队列，因此永远不可能拒绝任务。LinkedBlockingQueue在入队列和出队列时使用的是不同的Lock，意味着他们之间不存在互斥关系，在多CPU情况下，他们能正在在同一时刻既消费，又生产，真正做到并行。因此这种线程池不会拒绝任务，而且不会开辟新的线程，也不会因为线程的长时间不使用而销毁线程。这是典型的生产者—-消费者问题，这种线程池适合用在稳定且固定的并发场景.</p>
+<h3 id="4-2缓存的线程池（newCachedThreadPool）"><a href="#4-2缓存的线程池（newCachedThreadPool）" class="headerlink" title="4.2缓存的线程池（newCachedThreadPool）"></a>4.2缓存的线程池（newCachedThreadPool）</h3><p>核心池大小为0，线程池最大线程数目为最大整型，这意味着所有的任务一提交就会加入到阻塞队列中。当线程池中的线程60s没有执行任务就终止，阻塞队列为SynchronousQueue。SynchronousQueue的take操作需要put操作等待，put操作需要take操作等待，否则会阻塞（线程池的阻塞队列不能存储，所以当目前线程处理忙碌状态时，所以开辟新的线程来处理请求），线程进入wait set。总结下来：①这是一个可以无限扩大的线程池；②适合处理执行时间比较小的任务；③线程空闲时间超过60s就会被杀死，所以长时间处于空闲状态的时候，这种线程池几乎不占用资源；④阻塞队列没有存储空间，只要请求到来，就必须找到一条空闲线程去处理这个请求，找不到则在线程池新开辟一条线程。如果主线程提交任务的速度远远大于CachedThreadPool的处理速度，则CachedThreadPool会不断地创建新线程来执行任务，这样有可能会导致系统耗尽CPU和内存资源，所以在使用该线程池是，一定要注意控制并发的任务数，否则创建大量的线程可能导致严重的性能问题。</p>
+<h3 id="4-3单个线程的线程池（newSingleThreadExecutor）"><a href="#4-3单个线程的线程池（newSingleThreadExecutor）" class="headerlink" title="4.3单个线程的线程池（newSingleThreadExecutor）"></a>4.3单个线程的线程池（newSingleThreadExecutor）</h3><p>SingleThreadExecutor是使用单个worker线程的Executor，作为单一worker线程的线程池，SingleThreadExecutor把corePool和maximumPoolSize均被设置为1，和FixedThreadPool一样使用的是无界队列LinkedBlockingQueue,所以带来的影响和FixedThreadPool一样。对于newSingleThreadExecutor()来说，也是当线程运行时抛出异常的时候会有新的线程加入线程池替他完成接下来的任务。创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行，所以这个比较适合那些需要按序执行任务的场景。比如：一些不太重要的收尾，日志等工作可以放到单线程的线程中去执行。日志记录一般情况会比较慢（数据量大一般可能不写入数据库），顺序执行会拖慢整个接口，堆积更多请求，还可能会对数据库造成影响（事务在开启中），所以日志记录完全可以扔到单线程的线程中去，一条条的处理，也可以认为是一个单消费者的生产者消费者模式。</p>
+<h3 id="4-4固定个数的线程池（newScheduledThreadPool）"><a href="#4-4固定个数的线程池（newScheduledThreadPool）" class="headerlink" title="4.4固定个数的线程池（newScheduledThreadPool）"></a>4.4固定个数的线程池（newScheduledThreadPool）</h3><p>相当于第一个固定线程的问题,此线程可以执行延时任务，也可以执行带有返回值的任务。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/线程池/">线程池</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/03/基于环形队列的高效延迟消息实现/">
+                <span class="level-item">基于环形队列的高效延迟消息实现</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
 </div>
 
@@ -1046,7 +994,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="宾哥部落格" height="28">
+                    <img src="/images/logo.svg" alt="JDK提供的四种线程池" height="28">
                 
                 </a>
                 <p class="is-size-7">
