@@ -2,23 +2,18 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>分布式全局唯一ID生成策略 - 宾哥部落格</title>
+<title>归档: 2019 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="分布式系统的定义 分布式系统就是对外是统一的入口，对内是有很多计算机服务组装的系统。  为什么需要一个全局唯一主键 主要是用于某个记录的存储或者输出的时候，能找到唯一的记录，不能让数据错乱。数据库的唯一ID在单库单表的情况下可以使用，但是在使用分布式系统的时候，数据库的自增主键就不可以使用了.举个栗子：先有订单记录表1024张,如果使用数据库中的自增主键，那么就会有1024订单号相同的订单，这个肯">
-<meta name="keywords" content="分布式">
-<meta property="og:type" content="article">
-<meta property="og:title" content="分布式全局唯一ID生成策略">
-<meta property="og:url" content="http://yoursite.com/2019/03/07/分布式全局唯一ID生成策略/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="宾哥部落格">
+<meta property="og:url" content="http://yoursite.com/archives/2019/page/3/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="分布式系统的定义 分布式系统就是对外是统一的入口，对内是有很多计算机服务组装的系统。  为什么需要一个全局唯一主键 主要是用于某个记录的存储或者输出的时候，能找到唯一的记录，不能让数据错乱。数据库的唯一ID在单库单表的情况下可以使用，但是在使用分布式系统的时候，数据库的自增主键就不可以使用了.举个栗子：先有订单记录表1024张,如果使用数据库中的自增主键，那么就会有1024订单号相同的订单，这个肯">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-07T08:46:00.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式全局唯一ID生成策略">
-<meta name="twitter:description" content="分布式系统的定义 分布式系统就是对外是统一的入口，对内是有很多计算机服务组装的系统。  为什么需要一个全局唯一主键 主要是用于某个记录的存储或者输出的时候，能找到唯一的记录，不能让数据错乱。数据库的唯一ID在单库单表的情况下可以使用，但是在使用分布式系统的时候，数据库的自增主键就不可以使用了.举个栗子：先有订单记录表1024张,如果使用数据库中的自增主键，那么就会有1024订单号相同的订单，这个肯">
+<meta name="twitter:title" content="宾哥部落格">
 
 
 
@@ -88,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="分布式全局唯一ID生成策略" height="28">
+                <img src="/images/logo.svg" alt="宾哥部落格" height="28">
             
             </a>
         </div>
@@ -138,145 +133,60 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="tag is-link">
+        2019
+        </h3>
+        <div class="timeline">
+        
+            <article class="media">
+                
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-01-23T07:44:56.000Z">2019-01-23</time>
+                        <a href="/2019/01/23/Long-getLong-与Long-valueOf-的区别/" class="has-link-black-ter is-size-6">Long.getLong()与Long.valueOf()的区别</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
+        </div>
+    </div>
+</div>
+
+
+
     
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-07T02:39:59.000Z">2019-03-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/java/">java</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1622 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                分布式全局唯一ID生成策略
-            
-        </h1>
-        <div class="content">
-            <h2 id="分布式系统的定义"><a href="#分布式系统的定义" class="headerlink" title="分布式系统的定义"></a>分布式系统的定义</h2><ul>
-<li>分布式系统就是对外是统一的入口，对内是有很多计算机服务组装的系统。</li>
-</ul>
-<h2 id="为什么需要一个全局唯一主键"><a href="#为什么需要一个全局唯一主键" class="headerlink" title="为什么需要一个全局唯一主键"></a>为什么需要一个全局唯一主键</h2><ul>
-<li>主要是用于某个记录的存储或者输出的时候，能找到唯一的记录，不能让数据错乱。数据库的唯一ID在单库单表的情况下可以使用，但是在使用分布式系统的时候，数据库的自增主键就不可以使用了.举个栗子：先有订单记录表1024张,如果使用数据库中的自增主键，那么就会有1024订单号相同的订单，这个肯定是不行的，所以需要分布式唯一的主键去确定订单号。</li>
-</ul>
-<a id="more"></a>
-<h2 id="分布式唯一主键的需求"><a href="#分布式唯一主键的需求" class="headerlink" title="分布式唯一主键的需求"></a>分布式唯一主键的需求</h2><ol>
-<li>最基本也是最重要的：全局唯一，不可重复</li>
-<li>有一定的连续性:数据库存储使用的是B-TREE数据结构存储，我们要尽量保证ID是有序的增长</li>
-<li>主键上需要能看到数据的记录位置</li>
-</ol>
-<h2 id="分布式唯一主键生成的方式"><a href="#分布式唯一主键生成的方式" class="headerlink" title="分布式唯一主键生成的方式"></a>分布式唯一主键生成的方式</h2><h3 id="1-UUID生成唯一主键"><a href="#1-UUID生成唯一主键" class="headerlink" title="1.UUID生成唯一主键"></a>1.UUID生成唯一主键</h3><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UUID.randomUUID()</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>优点</strong><ol>
-<li>使用方便，性能高，无网络或者IO消耗.</li>
-</ol>
-</li>
-<li><strong>缺点</strong><ol>
-<li>无法作为DB主键使用，但是可以对于分布式链路追踪ID可以适用</li>
-<li>长度太长：36位</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h3 id="2-使用Redis生成唯一的主键"><a href="#2-使用Redis生成唯一的主键" class="headerlink" title="2.使用Redis生成唯一的主键"></a>2.使用Redis生成唯一的主键</h3><ul>
-<li>使用redis的原子incr操作，保证实现主键递增；</li>
-<li><strong>优点</strong><ol>
-<li>不依赖数据库，性能高</li>
-<li>主键自然增长，能均匀分布到数据库中</li>
-</ol>
-</li>
-<li><strong>缺点</strong><ol>
-<li>需要引入redis并且需要维护自增的主键key,自增到什么长度数据合适(需要考虑)</li>
-<li>对于redis性能有要求</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h3 id="3-数据库自增ID机制"><a href="#3-数据库自增ID机制" class="headerlink" title="3.数据库自增ID机制"></a>3.数据库自增ID机制</h3><ul>
-<li>依据插入数据库返回的数据主键进行计算出主键,即是需要逻辑的索引库，库的作用就是获取序列。</li>
-<li><strong>优点</strong><ol>
-<li>简单有序。充分利用数据库的自增</li>
-</ol>
-</li>
-<li><strong>缺点</strong><ol>
-<li>生成ID需要读写数据库</li>
-<li>对数据库的性能保障有要求</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h3 id="4-SnowFlake雪花算法"><a href="#4-SnowFlake雪花算法" class="headerlink" title="4.SnowFlake雪花算法"></a>4.SnowFlake雪花算法</h3><ul>
-<li><strong>优点</strong><ol>
-<li>简单高效,不依赖外部组件</li>
-<li>按照时间有序递增</li>
-<li>12位序列：毫秒内的计数，12位的计数顺序号支持每个节点每毫秒(同一机器，同一时间截)产生4096个ID序号</li>
-</ol>
-</li>
-<li><strong>缺点</strong><ol>
-<li>依赖机器的时钟，如果时钟回拨，会造成ID重复</li>
-<li>分布式环境下，机器时钟不是同步，会出现ID不是递增的情况</li>
-</ol>
-</li>
-<li>附带SnowFlake雪花算法(Java)<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Twitter_Snowflake&lt;br&gt;</span></span><br><span class="line"><span class="hljs-comment"> * SnowFlake的结构如下(每部分用-分开):&lt;br&gt;</span></span><br><span class="line"><span class="hljs-comment"> * 0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000 &lt;br&gt;</span></span><br><span class="line"><span class="hljs-comment"> * 1位标识，由于long基本类型在Java中是带符号的，最高位是符号位，正数是0，负数是1，所以id一般是正数，最高位是0&lt;br&gt;</span></span><br><span class="line"><span class="hljs-comment"> * 41位时间截(毫秒级)，注意，41位时间截不是存储当前时间的时间截，而是存储时间截的差值（当前时间截 - 开始时间截)</span></span><br><span class="line"><span class="hljs-comment"> * 得到的值），这里的的开始时间截，一般是我们的id生成器开始使用的时间，由我们程序来指定的（如下下面程序IdWorker类的startTime属性）。</span></span><br><span class="line"><span class="hljs-comment"> * 41位的时间截，可以使用69年，年T = (1L &lt;&lt; 41) / (1000L * 60 * 60 * 24 * 365) = 69&lt;br&gt;</span></span><br><span class="line"><span class="hljs-comment"> * 10位的数据机器位，可以部署在1024个节点，包括5位datacenterId和5位workerId&lt;br&gt;</span></span><br><span class="line"><span class="hljs-comment"> * 12位序列，毫秒内的计数，12位的计数顺序号支持每个节点每毫秒(同一机器，同一时间截)产生4096个ID序号&lt;br&gt;</span></span><br><span class="line"><span class="hljs-comment"> * 加起来刚好64位，为一个Long型。&lt;br&gt;</span></span><br><span class="line"><span class="hljs-comment"> * SnowFlake的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分)，并且效率较高，</span></span><br><span class="line"><span class="hljs-comment"> * 经测试，SnowFlake每秒能够产生26万ID左右。</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SnowflakeIdWorker</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// ==============================Fields===========================================</span></span><br><span class="line">    <span class="hljs-comment">/** 开始时间截 (2015-01-01) */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> twepoch = <span class="hljs-number">1420041600000L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 机器id所占的位数 */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> workerIdBits = <span class="hljs-number">5L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 数据标识id所占的位数 */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> datacenterIdBits = <span class="hljs-number">5L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 支持的最大机器id，结果是31 (这个移位算法可以很快的计算出几位二进制数所能表示的最大十进制数) */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> maxWorkerId = -<span class="hljs-number">1L</span> ^ (-<span class="hljs-number">1L</span> &lt;&lt; workerIdBits);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 支持的最大数据标识id，结果是31 */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> maxDatacenterId = -<span class="hljs-number">1L</span> ^ (-<span class="hljs-number">1L</span> &lt;&lt; datacenterIdBits);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 序列在id中占的位数 */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> sequenceBits = <span class="hljs-number">12L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 机器ID向左移12位 */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> workerIdShift = sequenceBits;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 数据标识id向左移17位(12+5) */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> datacenterIdShift = sequenceBits + workerIdBits;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 时间截向左移22位(5+5+12) */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095) */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> sequenceMask = -<span class="hljs-number">1L</span> ^ (-<span class="hljs-number">1L</span> &lt;&lt; sequenceBits);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 工作机器ID(0~31) */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> workerId;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 数据中心ID(0~31) */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> datacenterId;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 毫秒内序列(0~4095) */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> sequence = <span class="hljs-number">0L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/** 上次生成ID的时间截 */</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> lastTimestamp = -<span class="hljs-number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//==============================Constructors=====================================</span></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 构造函数</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> workerId 工作ID (0~31)</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> datacenterId 数据中心ID (0~31)</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">SnowflakeIdWorker</span><span class="hljs-params">(<span class="hljs-keyword">long</span> workerId, <span class="hljs-keyword">long</span> datacenterId)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (workerId &gt; maxWorkerId || workerId &lt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(String.format(<span class="hljs-string">"worker Id can't be greater than %d or less than 0"</span>, maxWorkerId));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (datacenterId &gt; maxDatacenterId || datacenterId &lt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(String.format(<span class="hljs-string">"datacenter Id can't be greater than %d or less than 0"</span>, maxDatacenterId));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">this</span>.workerId = workerId;</span><br><span class="line">        <span class="hljs-keyword">this</span>.datacenterId = datacenterId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// ==============================Methods==========================================</span></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 获得下一个ID (该方法是线程安全的)</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> SnowflakeId</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">long</span> <span class="hljs-title">nextId</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">long</span> timestamp = timeGen();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (timestamp &lt; lastTimestamp) &#123;</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(</span><br><span class="line">                    String.format(<span class="hljs-string">"Clock moved backwards.  Refusing to generate id for %d milliseconds"</span>, lastTimestamp - timestamp));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//如果是同一时间生成的，则进行毫秒内序列</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (lastTimestamp == timestamp) &#123;</span><br><span class="line">            sequence = (sequence + <span class="hljs-number">1</span>) &amp; sequenceMask;</span><br><span class="line">            <span class="hljs-comment">//毫秒内序列溢出</span></span><br><span class="line">            <span class="hljs-keyword">if</span> (sequence == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                <span class="hljs-comment">//阻塞到下一个毫秒,获得新的时间戳</span></span><br><span class="line">                timestamp = tilNextMillis(lastTimestamp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">//时间戳改变，毫秒内序列重置</span></span><br><span class="line">        <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            sequence = <span class="hljs-number">0L</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//上次生成ID的时间截</span></span><br><span class="line">        lastTimestamp = timestamp;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//移位并通过或运算拼到一起组成64位的ID</span></span><br><span class="line">        <span class="hljs-keyword">return</span> ((timestamp - twepoch) &lt;&lt; timestampLeftShift) <span class="hljs-comment">//</span></span><br><span class="line">                | (datacenterId &lt;&lt; datacenterIdShift) <span class="hljs-comment">//</span></span><br><span class="line">                | (workerId &lt;&lt; workerIdShift) <span class="hljs-comment">//</span></span><br><span class="line">                | sequence;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 阻塞到下一个毫秒，直到获得新的时间戳</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> lastTimestamp 上次生成ID的时间截</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 当前时间戳</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">long</span> <span class="hljs-title">tilNextMillis</span><span class="hljs-params">(<span class="hljs-keyword">long</span> lastTimestamp)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">long</span> timestamp = timeGen();</span><br><span class="line">        <span class="hljs-keyword">while</span> (timestamp &lt;= lastTimestamp) &#123;</span><br><span class="line">            timestamp = timeGen();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> timestamp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 返回以毫秒为单位的当前时间</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 当前时间(毫秒)</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">long</span> <span class="hljs-title">timeGen</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> System.currentTimeMillis();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//==============================Test=============================================</span></span><br><span class="line">    <span class="hljs-comment">/** 测试 */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SnowflakeIdWorker idWorker = <span class="hljs-keyword">new</span> SnowflakeIdWorker(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">long</span> id = idWorker.nextId();</span><br><span class="line">            System.out.println(Long.toBinaryString(id));</span><br><span class="line">            System.out.println(id);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/分布式/">分布式</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
 <div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/13/okHttp报SSLPeerUnverifiedException异常解决方案/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">okHttp报SSLPeerUnverifiedException异常解决方案</span>
-            </a>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2019/page/2/">上一页</a>
         </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/07/动态获取枚举值/">
-                <span class="level-item">动态获取枚举值</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2019/page/4/">下一页</a>
         </div>
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/archives/2019/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/archives/2019/page/2/">2</a></li>
+            
+            <li><a class="pagination-link is-current" href="/archives/2019/page/3/">3</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
 </div>
                 
 
@@ -1063,7 +973,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="分布式全局唯一ID生成策略" height="28">
+                    <img src="/images/logo.svg" alt="宾哥部落格" height="28">
                 
                 </a>
                 <p class="is-size-7">
