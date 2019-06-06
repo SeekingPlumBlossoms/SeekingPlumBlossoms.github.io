@@ -2,25 +2,23 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>深入理解Java虚拟机笔记---内存区域 - 宾哥部落格</title>
+<title>深入理解Java虚拟机笔记---理解GC日志 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="Java虚拟机在执行Java程序过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有自各的用途，以及创建及销毁时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范(第2版)》规定，Java虚拟机管理的内存区域包括以下几个运行时数据区域，如下图:">
+    <meta name="description" content="阅读GC日志是处理JAVA虚拟机内存问题的基础技能，他只是一些人为确定的规则，没有太多的技术含量。但是不能说它不重要。。。">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解Java虚拟机笔记---内存区域">
-<meta property="og:url" content="http://yoursite.com/2019/06/05/深入理解Java虚拟机笔记-内存区域/index.html">
+<meta property="og:title" content="深入理解Java虚拟机笔记---理解GC日志">
+<meta property="og:url" content="http://yoursite.com/2019/06/06/深入理解Java虚拟机笔记-理解GC日志/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="Java虚拟机在执行Java程序过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有自各的用途，以及创建及销毁时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范(第2版)》规定，Java虚拟机管理的内存区域包括以下几个运行时数据区域，如下图:">
+<meta property="og:description" content="阅读GC日志是处理JAVA虚拟机内存问题的基础技能，他只是一些人为确定的规则，没有太多的技术含量。但是不能说它不重要。。。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/06/05/深入理解Java虚拟机笔记-内存区域/1.png">
-<meta property="og:updated_time" content="2019-06-05T09:17:05.028Z">
+<meta property="og:updated_time" content="2019-06-06T07:50:01.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解Java虚拟机笔记---内存区域">
-<meta name="twitter:description" content="Java虚拟机在执行Java程序过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有自各的用途，以及创建及销毁时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范(第2版)》规定，Java虚拟机管理的内存区域包括以下几个运行时数据区域，如下图:">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/05/深入理解Java虚拟机笔记-内存区域/1.png">
+<meta name="twitter:title" content="深入理解Java虚拟机笔记---理解GC日志">
+<meta name="twitter:description" content="阅读GC日志是处理JAVA虚拟机内存问题的基础技能，他只是一些人为确定的规则，没有太多的技术含量。但是不能说它不重要。。。">
 
 
 
@@ -90,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="深入理解Java虚拟机笔记---内存区域" height="28">
+                <img src="/images/logo.svg" alt="深入理解Java虚拟机笔记---理解GC日志" height="28">
             
             </a>
         </div>
@@ -146,7 +144,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-05T06:00:01.000Z">2019-06-05</time>
+                <time class="level-item has-text-grey" datetime="2019-06-06T06:04:12.000Z">2019-06-06</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
@@ -156,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    16 分钟 读完 (大约 2353 个字)
+                    7 分钟 读完 (大约 1100 个字)
                 </span>
                 
             </div>
@@ -164,29 +162,100 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                深入理解Java虚拟机笔记---内存区域
+                深入理解Java虚拟机笔记---理解GC日志
             
         </h1>
         <div class="content">
-            <p>Java虚拟机在执行Java程序过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有自各的用途，以及创建及销毁时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范(第2版)》规定，Java虚拟机管理的内存区域包括以下几个运行时数据区域，如下图:<br><a id="more"></a><br><img src="/2019/06/05/深入理解Java虚拟机笔记-内存区域/1.png" alt=""></p>
-<h2 id="1-程序计数器-Program-Counter-Register"><a href="#1-程序计数器-Program-Counter-Register" class="headerlink" title="1.程序计数器(Program Counter Register)"></a>1.程序计数器(Program Counter Register)</h2><p><strong>程序计数器是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的行号指示器。</strong></p>
-<p>字节码解释器工作时就是通过改为这个计数器的值来选取下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。</p>
-<p>由于Java虚拟机的多线程是通过线程轮流切换CPU时间片的方式来实现的，所以在任何一个时刻，一个处理器(对于多核处理器来说是一个内核)只会行一条线程中的指令。因此为了线各切换后能够恢复到正确的执行位置，每条线程都需要一个独立的程序计数器，为线程所私有。</p>
-<p>如果当前线程执行的是一个Java方法，这个计数器是下在执行的虚拟机字节码的地址；如果执行的是一个Native方法，这个计数器的值为空(UndefinedD)，计算器必须要能容纳方法的返回地址或者具体平台的本地指针。此区域是唯一一个在Java虚拟机器中没有规定任何OutOfMemoryError的区域。</p>
-<h2 id="2-Java虚拟机栈"><a href="#2-Java虚拟机栈" class="headerlink" title="2.Java虚拟机栈"></a>2.Java虚拟机栈</h2><p>与程序计数器一样，Java虚拟机栈(Java Virtual Machine Stacks)也是线程私有的，它的生命周期与线程相同。虚拟机栈描述的是Java方法执行的内存模型；每个方法被执行时都会在虚拟机栈中创建一个栈桢(Stack Frame)用于存储操作数栈、动态链接、局部变量表等信息。每一个方法从调用直至其执行完成的过程，就对应了一个栈桢在虚拟机栈中入栈与出栈的过程。</p>
-<p>虚拟机规范中说明了，Java虚拟机栈可以被实现为固定大小，也可以实现为根据计算动态扩展与收缩。如果被实现为固定大小，那么它需要被独立创建。Java虚拟机实现可能被给程序员与用户提供控制Java虚拟机栈的初始大小，当然，如果是动态扩展与收缩的实现，还可以控制虚拟机栈的最大与最小大小。</p>
-<p>虚拟机规范在这个区域规定了两种异常状况：如果线程请求栈深度超过虚拟机允许的深度，虚拟机将会抛出一个StackOverflowError错误；如果虚拟机栈可以动态扩展(当前大部分虚拟机都可以动态扩展，只不过Java虚拟机规范允许固定长度的虚拟机栈)，当扩展时无法申请到足够的内存或者在创建一条新的线程时没有足够的内存创建一个初始大小的虚拟机栈时，Java虚拟机将抛出OutOfMemoryError错误。</p>
-<h2 id="3-本地方法栈"><a href="#3-本地方法栈" class="headerlink" title="3.本地方法栈"></a>3.本地方法栈</h2><p>本地方法栈（Native Method Stack）与虚拟机栈所发挥的作用是非常相似的，它们之间的区别不过是虚拟机栈为虚拟机执行java方法（也就是字节码）服务，而本地方法栈则为虚拟机使用到的Native方法服务。在虚拟机规范中对本地方法栈使用的语言、使用方式与数据结构并没有强制的规定，因此具体的虚拟机可以自由的实现它。甚至有的虚拟机（譬如Sun HotSpot虚拟机）直接把本地方法栈和虚拟机合二为一。与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError和OutOfMemoryError异常。</p>
-<h2 id="4-java堆"><a href="#4-java堆" class="headerlink" title="4.java堆"></a>4.java堆</h2><p>对于大多数应用来说，Java堆(Java Heap)是Java虚拟机所管理的内在中最大的一块。Java堆是被所有线程共享的一块内在区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。虚拟机规范中的描述是：所有类的实例与数组对象都要在堆中分配。</p>
-<p>java堆是垃圾收集器管理的主要区域，因此很多时候也被称作“GC堆”（Garbage Collected Heap）。从内存回收的角度来看，由于现在收集器基本都采用分代手机算法，所以java堆中还可以细分为：新生代和老年代；在细致一点的有Eden空间、From Survivor空间、To Survivor空间等。从内存分配的角度来看，线程共享的java堆中可能划分出多个线程私有的分配缓冲区（Thread Local Allocation Beffer，TLAB）。不过无论如何划分，都与存放内容无关，无论哪个区域，存储的都任然是对象实例，进一步划分的目的是为了更好的回收内存，或者更快的分配内存。</p>
-<p>根据Java虚拟机规范的规定，java堆可以处于物理上不连续的内存空间中，只要逻辑上连续的即可。既可以实现固定大小的，也可以是可扩展的，不过当前主流的虚拟就都是按照可扩展来实现的（通过-Xmx 和 -Xms控制）。如果堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfmemoryError异常。</p>
-<h2 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5.方法区"></a>5.方法区</h2><p>方法区（Method Area）和java堆一样，都是各个线程共享的区域，它用于存储已虚拟机加载的类信息、常量、静态常量、即时编译器编译后的代码等数据。</p>
-<p>与Java堆一样，方法区不需要连续的内存和可以选择固定大小与可扩展收缩外，还可以选择不实现垃圾收集，因为方法区的垃圾收集效果不理想。当方法区无法满足内在分配要求时，将抛出OutOfMemory异常。</p>
-<h2 id="6-运行时常量池"><a href="#6-运行时常量池" class="headerlink" title="6.运行时常量池"></a>6.运行时常量池</h2><p>运行时常量池（Runtime Contant Pool）是方法区的一部分。class方法中除了有类的版本号、字段、方法、接口等描述信息，还有一项信息是常量表（Cantant Pool Table），用于存储编译期生成的各种字面量和符号引用，这部分内容将在类加载后存放到方法区的运行时常量池中。</p>
-<p>运行时常量池相对于class文件常量池的一个重要特征就是具备动态性，Java语言并不要求常量一定只能在编译期产生，也就是并非预置入class方法中的常量池中的内容才能进入到方法区的运行时常量池，程序运行期间也可以将新的常量放入常量池中，例如String类的intern()方法。</p>
-<p>运行时常量时是方法区的一部分，自然也会受到方法区内存大小的限制，当常量池无法再申请到内存时会抛出OutOfMemory异常。</p>
-<h2 id="7-直接内存"><a href="#7-直接内存" class="headerlink" title="7.直接内存"></a>7.直接内存</h2><p>直接内存(Direct Memory)并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用，而且也可能导致OutOfMemoryError错误出现。垃圾进行收集时，虚拟机虽然会对直接内存进行回收，但却不能像新生代与老年代那样，发现空间不足了就通知收集器进行垃圾回收，它只能等到老年代满了后FullGC时，然后”顺便”清理掉直接内存中废弃的对象。</p>
-<p>在JDK1.4中新加入了NIO，引入了一种基于通道(Channel)与缓冲区(Buffer)的I/O方法，它可以使用Native函数库直接分配堆外内存，然后通过一个存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中显著提高性能，因为避免了在Java堆和Native堆中来回复制数据。</p>
+            <p>阅读GC日志是处理JAVA虚拟机内存问题的基础技能，他只是一些人为确定的规则，没有太多的技术含量。但是不能说它不重要。。。<br><a id="more"></a></p>
+<h2 id="1-GC日志举例："><a href="#1-GC日志举例：" class="headerlink" title="1.GC日志举例："></a>1.GC日志举例：</h2><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[GC (System.gc()) [PSYoungGen: <span class="hljs-number">8029</span>K-&gt;<span class="hljs-number">840</span>K(<span class="hljs-number">76288</span>K)] <span class="hljs-number">8029</span>K-&gt;<span class="hljs-number">848</span>K(<span class="hljs-number">251392</span>K), <span class="hljs-number">0.0009744</span> secs] [Times: user=<span class="hljs-number">0.00</span> sys=<span class="hljs-number">0.00</span>, real=<span class="hljs-number">0.00</span> secs] </span><br><span class="line">[<span class="hljs-function">Full <span class="hljs-title">GC</span> <span class="hljs-params">(System.gc()</span>) [PSYoungGen: 840K-&gt;0<span class="hljs-title">K</span><span class="hljs-params">(<span class="hljs-number">76288</span>K)</span>] [ParOldGen: 8K-&gt;705<span class="hljs-title">K</span><span class="hljs-params">(<span class="hljs-number">175104</span>K)</span>] 848K-&gt;705<span class="hljs-title">K</span><span class="hljs-params">(<span class="hljs-number">251392</span>K)</span>, [Metaspace: 3401K-&gt;3401<span class="hljs-title">K</span><span class="hljs-params">(<span class="hljs-number">1056768</span>K)</span>], 0.0052885 secs] [Times: user</span>=<span class="hljs-number">0.02</span> sys=<span class="hljs-number">0.00</span>, real=<span class="hljs-number">0.01</span> secs]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>PSYoungGen:表示的使用的Parallel Scavenge收集器；</p>
+</li>
+<li><p>“[GC” 与 ”[Full GC“表示了这次垃圾收集的停顿的类型，而不是用来区分新生代GC还是老年代GC的。</p>
+</li>
+<li><p>8029K-&gt;840K(76288K):GC前该内存区域已使用容量-&gt;GC后该内存区域已使用容量(该内存区域总容量)</p>
+</li>
+<li><p>8029K-&gt;848K(251392K)：java堆的数据</p>
+</li>
+<li><p>0.0009744 secs：表示GC的时间</p>
+</li>
+<li><p>[Times: user=0.02 sys=0.00, real=0.01 secs]：这里面的user，sys和real与LInux的time命令所输出的时间含义一致，分别代表用户态消耗的CPU时间、内核态消耗CPU时间和操作从开始到结束所经过的墙钟时间。CPU时间和墙钟时间的区别是。墙钟时间包括各种非运算的等待耗时，例如等待磁盘IO，等待线程阻塞，而CPU时间不包括这些耗时，但当系统有多CPU或者多核的话，多线程操作会叠加这些CPU时间，所以有时会看到user或sys时间超过real时间是完全正常的。</p>
+</li>
+</ul>
+<h2 id="2-垃圾收集器参数总结"><a href="#2-垃圾收集器参数总结" class="headerlink" title="2.垃圾收集器参数总结"></a>2.垃圾收集器参数总结</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UseSerialGC</td>
+<td>虚拟机运行在Client模式下的默认值，打开此开关后，使用Serial+serial Old的收集器组合进行内存回收</td>
+</tr>
+<tr>
+<td>UseParNewGC</td>
+<td>打开此开关后，使用ParNew+Serial Old的收集器组合进行内存回收</td>
+</tr>
+<tr>
+<td>UseConcMarkSweepGC</td>
+<td>打开此开关后，使用ParNew + CMS + Serial Old的收集器组合进行内存回收。Serial Old收集器将作为CMS收集器出现Concurrent Mode Failure失败后的后备收集器使用。</td>
+</tr>
+<tr>
+<td>UseParallelGC</td>
+<td>虚拟机运行在Server模式下的默认值，打开此开关后，使用Parallel Scavenge + Serial Old的收集器组合进行内存回收</td>
+</tr>
+<tr>
+<td>UseParallelOldGC</td>
+<td>打开此开关后，使用Parallel Scavenge + ParallelOld的收集器组合进行内存回收</td>
+</tr>
+<tr>
+<td>SurvivorRation</td>
+<td>新生代中Eden区域与Survivor区域的容量比值，默认为8，代表Eden：Survivor=8:1</td>
+</tr>
+<tr>
+<td>MaxTenuringThreshold</td>
+<td>晋升到老年代的对象年龄。每个对象在坚持过一次Minor GC之后，年龄就增加1，当超过这个参数值时就进入老年代。</td>
+</tr>
+<tr>
+<td>UseAdaptiveSizePolicy</td>
+<td>动态调整Java堆中各个区域的大小以及进入老年代的年龄</td>
+</tr>
+<tr>
+<td>HandlePromotionFailure</td>
+<td>是否允许分配担保失败，即老年代的剩余空间不足以应付新生代的整个Eden和Survivor区的所有对象都存活的极端情况</td>
+</tr>
+<tr>
+<td>ParallelGCThreads</td>
+<td>设置并行GC时进行内存回收的线程数</td>
+</tr>
+<tr>
+<td>GCTimeRatio</td>
+<td>GC时间占总时间的比率，默认值为99，即允许1%的GC时间。仅在使用Parallel Scavenge收集器时生效</td>
+</tr>
+<tr>
+<td>MaxGCPauseMillis</td>
+<td>设置GC的最大停顿时间。仅在使用Parallel Scavenge收集器时生效</td>
+</tr>
+<tr>
+<td>CMSInitiatingOccupancyFraction</td>
+<td>设置CMS收集器在老年代空间被使用多少后触发垃圾收集。默认值为68%，仅在使用CMS收集器时生效</td>
+</tr>
+<tr>
+<td>UseCMSCompactAtFullCollection</td>
+<td>设置CMS收集器在完成垃圾收集后是否要进行一次内存碎片整理。仅在使用CMS收集器时生效</td>
+</tr>
+<tr>
+<td>CMSFullGCsBeforeCompaction</td>
+<td>设置CMS收集器在进行若干次垃圾收集后再启动一次内存碎片整理。仅在使用CMS收集器时生效</td>
+</tr>
+<tr>
+<td>UseCMSInitiatingOccupancyOnly</td>
+<td>我们用-XX+UseCMSInitiatingOccupancyOnly标志来命令JVM不基于运行时收集的数据来启动CMS垃圾收集周期。而是，当该标志被开启时，JVM通过CMSInitiatingOccupancyFraction的值进行每一次CMS收集，而不仅仅是第一次。然而，请记住大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志。</td>
+</tr>
+</tbody>
+</table>
 
         </div>
         
@@ -211,17 +280,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/05/深入理解Java虚拟机笔记-判断对象是否存活/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深入理解Java虚拟机笔记---判断对象是否存活</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/03/JDK提供的四种线程池/">
-                <span class="level-item">JDK提供的四种线程池</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/06/深入理解Java虚拟机笔记-垃圾收集器/">
+                <span class="level-item">深入理解Java虚拟机笔记---垃圾收集器</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -569,7 +631,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="深入理解Java虚拟机笔记---内存区域" height="28">
+                    <img src="/images/logo.svg" alt="深入理解Java虚拟机笔记---理解GC日志" height="28">
                 
                 </a>
                 <p class="is-size-7">
