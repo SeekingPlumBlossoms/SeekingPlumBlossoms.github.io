@@ -140,6 +140,58 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-15T05:46:01.000Z">2019-03-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 371 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/15/com-mysql-cj-jdbc-Driver与com-mysql-jdbc-Driver区别/">com.mysql.cj.jdbc.Driver与com.mysql.jdbc.Driver区别</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>springboot2.x整合myBatis时，工程正常运行，数据正常，但是在日志中出现了一个红红的东西:<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Loading <span class="hljs-class"><span class="hljs-keyword">class</span> `<span class="hljs-title">com</span>.<span class="hljs-title">mysql</span>.<span class="hljs-title">jdbc</span>.<span class="hljs-title">Driver</span>'. <span class="hljs-title">This</span> <span class="hljs-title">is</span> <span class="hljs-title">deprecated</span>. <span class="hljs-title">The</span> <span class="hljs-title">new</span> <span class="hljs-title">driver</span> <span class="hljs-title">class</span> <span class="hljs-title">is</span> `<span class="hljs-title">com</span>.<span class="hljs-title">mysql</span>.<span class="hljs-title">cj</span>.<span class="hljs-title">jdbc</span>.<span class="hljs-title">Driver</span>'. <span class="hljs-title">The</span> <span class="hljs-title">driver</span> <span class="hljs-title">is</span> <span class="hljs-title">automatically</span> <span class="hljs-title">registered</span> <span class="hljs-title">via</span> <span class="hljs-title">the</span> <span class="hljs-title">SPI</span> <span class="hljs-title">and</span> <span class="hljs-title">manual</span> <span class="hljs-title">loading</span> <span class="hljs-title">of</span> <span class="hljs-title">the</span> <span class="hljs-title">driver</span> <span class="hljs-title">class</span> <span class="hljs-title">is</span> <span class="hljs-title">generally</span> <span class="hljs-title">unnecessary</span>.</span></span><br></pre></td></tr></table></figure></p>
+<p>意思是说：com.mysql.jdbc.Driver这个数据库驱动已经过时，需要更换成新的驱动：com.mysql.cj.jdbc.Driver，本着工程一片绿的想法，我将驱动改成了com.mysql.cj.jdbc.Driver<br></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/15/com-mysql-cj-jdbc-Driver与com-mysql-jdbc-Driver区别/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-03-13T08:15:56.000Z">2019-03-13</time>
                 
                 <div class="level-item">
@@ -648,75 +700,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-05T05:50:10.000Z">2018-12-05</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 573 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/05/設計模式之建造者模式/">設計模式之建造者模式</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="建造者模式介绍"><a href="#建造者模式介绍" class="headerlink" title="建造者模式介绍"></a>建造者模式介绍</h1><ul>
-<li>定义<ul>
-<li>建造者模式(BuilderPattern):将一个复杂对象的构建与他的表示分离，使得同样的构建过程可以创建不同的表示。</li>
-</ul>
-</li>
-<li>Product产品类：<ul>
-<li>通常是为了实现模板方法模式，也就是有模板方法的基本方法。</li>
-</ul>
-</li>
-<li>Builder抽象建造者<ul>
-<li>规范产品的组建，一般是由子类实现。</li>
-</ul>
-</li>
-<li>ConcreteBuilder具体建造者<ul>
-<li>实现抽象类定义的所有方法，并且返回一个组建好的对象。</li>
-</ul>
-</li>
-<li>Director导演类<ul>
-<li>负责安排已有的模块的顺序，然后告诉Builder开始建造。</li>
-</ul>
-</li>
-</ul>
-<hr>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/05/設計模式之建造者模式/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -781,7 +764,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        38
+                        39
                     </p>
                 </div>
             </div>
@@ -870,7 +853,7 @@
                 <span class="level-item">JVM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
@@ -1025,7 +1008,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/学习笔记/">
                         <span class="tag">学习笔记</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
