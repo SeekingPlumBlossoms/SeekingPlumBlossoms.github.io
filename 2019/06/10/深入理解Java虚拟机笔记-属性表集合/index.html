@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>深入理解Java虚拟机笔记---属性表集合 - 宾哥部落格</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="在Class文件，字段表，方法表中都可以携带自己的属性表集合，以用于描述某些场景专有的信息。与Class文件中其它的数据项目要求的顺序、长度和内容不同，属性表集合的限制稍微宽松一些，不再要求各个属性表具有严格的顺序，并且只要不与已有的属性名重复，任何人实现的编译器都可以向属性表中写入自己定义的属性信息，Java虚拟机运行时会忽略掉它不认识的属性。为了能正确地解析Class文件，《Java虚拟机规范">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解Java虚拟机笔记---属性表集合">
+<meta property="og:url" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/index.html">
+<meta property="og:site_name" content="宾哥部落格">
+<meta property="og:description" content="在Class文件，字段表，方法表中都可以携带自己的属性表集合，以用于描述某些场景专有的信息。与Class文件中其它的数据项目要求的顺序、长度和内容不同，属性表集合的限制稍微宽松一些，不再要求各个属性表具有严格的顺序，并且只要不与已有的属性名重复，任何人实现的编译器都可以向属性表中写入自己定义的属性信息，Java虚拟机运行时会忽略掉它不认识的属性。为了能正确地解析Class文件，《Java虚拟机规范">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/深入理解Java虚拟机笔记-属性表集合11.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/12.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/13.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/14.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/15.png">
+<meta property="og:updated_time" content="2019-06-10T07:30:31.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解Java虚拟机笔记---属性表集合">
+<meta name="twitter:description" content="在Class文件，字段表，方法表中都可以携带自己的属性表集合，以用于描述某些场景专有的信息。与Class文件中其它的数据项目要求的顺序、长度和内容不同，属性表集合的限制稍微宽松一些，不再要求各个属性表具有严格的顺序，并且只要不与已有的属性名重复，任何人实现的编译器都可以向属性表中写入自己定义的属性信息，Java虚拟机运行时会忽略掉它不认识的属性。为了能正确地解析Class文件，《Java虚拟机规范">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-属性表集合/1.png">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="深入理解Java虚拟机笔记---属性表集合" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T07:11:56.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    25 分钟 读完 (大约 3788 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                深入理解Java虚拟机笔记---属性表集合
+            
+        </h1>
+        <div class="content">
+            <p>在Class文件，字段表，方法表中都可以携带自己的属性表集合，以用于描述某些场景专有的信息。与Class文件中其它的数据项目要求的顺序、长度和内容不同，属性表集合的限制稍微宽松一些，不再要求各个属性表具有严格的顺序，并且只要不与已有的属性名重复，任何人实现的编译器都可以向属性表中写入自己定义的属性信息，Java虚拟机运行时会忽略掉它不认识的属性。为了能正确地解析Class文件，《Java虚拟机规范(第二版)》中预定义了9荐虚拟机实现应当能识别的属性，具体如下表所示：<br><a id="more"></a><br><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/1.png" alt=""><br>对于每个属性，它的名称需要从常量池中引用一个CONSTANT_Utf8_info类型的常量表来表示，而属性值的结构则是完全自定义的，只要说明属性值所占用的位数长度即可。一个符合规则的属性表应该满足如下表定义的结构：<br><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/2.png" alt=""></p>
+<h2 id="1-Code属性"><a href="#1-Code属性" class="headerlink" title="1.Code属性"></a>1.Code属性</h2><p>Java程序方法体里的代码经过Javac编译器处理之后，最终变为字节码指令存储在Code属性内。Code属性出现在方法表的属性集合中，但并非所有方法都必须存在这个属性表，譬如接口或抽象类中的抽象方法就不存在Code属性，如果方法有Code属性表存在，那么它的结构如下表：<br><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/3.png" alt=""><br>attribute_name_index是一项指向CONSTANT_Utf8_info常量表的索引，常量值固定为“Code”，它代表了该属性的属性名称，attribute_length指示了属性值的长度，由于属性名称索引与属性长度一共是6个字节，所以属性值的长度固定为整个属性表的长度减去6个字节。<br>max_stack代表了操作数栈(Operand Stacks)的最大深度。在方法执行的任意时刻，操作数栈都不会超过这个深度。虚拟机运行的时候需要根据这个值来分配栈帧(Frame)中的操作数栈深度。<br>max_locals代表了局部变量表所需的存储空间。在这里，max_locals的单位是Slot，Slot是虚拟机为局部变量表分配内存所使用的最小单位。对于byte,char,float,int,shot,boolean,reference和returnAddress等长度不超过32位的数据类型，每个局部变量占1个Slot，而double与long这两种64位的数据类型而需要2个Slot来存放。方法参数(包括实例方法中的隐藏参数“this”)，显示异常处理器的参数(Exception Handler Parameter,即try-catch语句中catch块所定义的异常)，方法体中定义的局部变量都需要使用局部表来存放。另外，并不是在方法中使用了多个局部变量，就把这些局部变量所占的Slot之和作为max_locals的值，原因是局部变量表中的Slot可以重用，当代码执行超出一个局部变量的作用域时，这个局部变量所在的Slot就可以被其他局部变量所使用，编译器会根据变量的作用域来分类Slot并分配给各个变量使用，然后计算出max_locals的大小。</p>
+<p>code_length和code用来存储Java源程序编译后生成的字节码指令。code_length代表字节码长度，code是用于存储字节码指令的一系列字节流。既然名为字节码指令，那么每个指令就是一个u1类型的单字节，当虚拟机读取到code中的一个字节码时，就可相应地找出这个字节码代表的是什么指令，并且可以知道这条指令后面是否需要跟随参数，以及参数应该如何理解。<br>关于code_length还有一件值得注意的事情，虽然它是一个u4类型的长度值，理论上最大值可以达到2的32次方减1，但虚拟机规范中限制了一个方法不允许超过65535条字节码指令，如果超过这个限制，Javac编译器就会拒绝编译。一般来讲，只要我们写Java代码时不是刻意地编写超长的方法，就不会超过这个最大值限制。但是，在编译复杂的JSP文件中，可以会因为这个原因导致编译失败。<br>Code属性是Class文件中最重要的一个属性，如果表一个Java程序中的信息分为代码(Code，方法体里的Java代码)和元数据(Metadata，包括类、字段、方法定义及其它信息)两部分，那么在整个Class文件里，Code属性用于描述代码，其它的所有数据项目就都用于描述元数据。<br>在字节码指令之后的是这个方法的显示异常处理表，异常表对于Code属性表来说不是必须存在的。异常表的格式如下表：<br><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/4.png" alt=""><br>异常表它包含4个字段，这些字段的含义为：如果字节码从第start_pc到end_pc行之间(不包含第end_pc)行出现了类型为catch_type或其子类的异常(catch_type为指向一个CONSTANT_Class_info型常量的索引)，则转到第handler_pc行继续处理。当catch_type的值为0时，代表任何的异常情况都需要转向到handler_pc行行进行处理。异常表实际上是Java代码的一部分，编译器使用异常表而不是简单的跳转命令来实现Java异常及finally处理机制。注：字节码的“行”是一种形象的描述，指的是字节码相对于方法体开始的偏移量，而不是Java源代码的行号。</p>
+<h2 id="2-Exceptions属性"><a href="#2-Exceptions属性" class="headerlink" title="2.Exceptions属性"></a>2.Exceptions属性</h2><p>这里的Exceptions属性是在方法表中与Code属性平级的一项属性，而不是Code属性表中的异常属性表。Exceptions属性表的作是列举出方法中可能抛出的受查检(Checked Exception)，也就是在方法描述时在throws关键字后面列举的异常。它的结构如下表：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/5.png" alt=""></p>
+<p>此属性表中的number_of_exceptions项表示访求可能抛出number_of_exceptions种受检查异常，每一种受检查异常使用一个exception_index_table项表示，为指向常量池中CONSTANT_Class_info型常量表的索引，代表了该受检查异常的类型。</p>
+<h2 id="3-LineNumberTable属性"><a href="#3-LineNumberTable属性" class="headerlink" title="3.LineNumberTable属性"></a>3.LineNumberTable属性</h2><p>LineNumberTable属性用于描述Java源代码行号与字节码行号(字节码偏移量)之间的对应关系。它并不是运行时必须的属性，但默认会生成到Class文件之中，可以在Javac中使用-g:none或-g:lines选项来取消或要求生成这项信息。如果选择不生成LineNumberTable属性表，对程序运行产生的最主要的影响就是在抛出异常时，堆栈中将不会显示出错的行号，并且在调试程序的时候无法按照源码来设置断点。LineNumberTable属性表结构如下表：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/6.png" alt=""></p>
+<p>line_number_table是一个数量为line_number_table_length，类型为line_number_info的集合，line_number_info表包括了start_pc和line_number两个u2类型的数据项，前者是字节码行号，后者是Java源码行号。</p>
+<h2 id="4-LocalVariableTable属性"><a href="#4-LocalVariableTable属性" class="headerlink" title="4.LocalVariableTable属性"></a>4.LocalVariableTable属性</h2><p>LocalVariableTable属性表用于描述栈帧中局部变量表中的变量与Java源码中定义的变量之间的关系，它不是运行时必须的属性，默认也不会生成到Class文件之中，可以使用-g:none或-g:vars选项来取消或要求生成这项信息。如果没有生成这项属性，最大的影响就是当其它人引用这个方法时，所有参数名称都丢失，IDE可能会使用诸如arg0、arg1之类的占位符来替换原有的参数名称，这对程序运行没有影响，但是会给代码编写带来较大的不便，而且在调试期间无法根据参数名称从运行上下文件中获取参数值。LocalVariableTable属性表结构如下：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/7.png" alt=""></p>
+<p>其中local_variable_info项目代表了一个栈帧与源码中的局部变量的关联，结构如下：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/8.png" alt=""></p>
+<p>index是这个局部变量在栈帧局部变量表中的Slot位置。当这个变量的数据类型是64位时(double和long)，它占用的Slot为index和index+1两个位置。<br>在JDK1.5引入了泛型之后，LocalVariableTable属性增加了一个“姐妹”属性：LocalVaiableTypeTable，这个新增加的属性结构与LocalVariableTable属性非常相似，仅仅是把记录字段描述符的descript_index替换成了字段的特征签名(Singnature)，对于非泛型类型来说，描述符的参数化类型被擦除掉了，描述符就不能准确地描述泛型类型了，因此出现了LocalVariableTypeTable属性。</p>
+<h2 id="5-SourceFile属性"><a href="#5-SourceFile属性" class="headerlink" title="5.SourceFile属性"></a>5.SourceFile属性</h2><p>SourceFile属性用于记录这生成这个Class文件的源码文件名称。这个属性也是可选的，可以使用-g:none或-g:source选项来取消或要求生成这项信息。在Java中，对于大多数的类来说，类名和文件是一致的，但有一些特殊情况(如内部类)例外。如果不生成这项属性，当招聘异常时，堆栈中半不会显示出错误代码所属性文件名。这个属性是一个室长的属性，结构如下：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/9.png" alt=""></p>
+<p>sourcefile_index数据项是指向常量池中CONSTANT_Utf8_info型常量的索引，常量值是源文件的文件名。</p>
+<h2 id="6-ConstantValue属性"><a href="#6-ConstantValue属性" class="headerlink" title="6.ConstantValue属性"></a>6.ConstantValue属性</h2><p>ConstantValue属性的作用是通知虚拟机自动为静态变量赋值。只有被static关键字修饰的变量才可以使用这项属性。在Java程序里类类似“int x = 123“和”static int x = 123”这样的变量定义非常常见，但虚拟机对这两种变量赋值的方法和时刻有所不同。对于非static类型的变量(也就是实例变量)的赋值是在实例构造器方法中进行的；对于类变量，则有两种式可以选择：赋值在类构造器方法中进行，或者使用ConstantValue属性来赋值。目前Sun Javac编译器的选择是：如果同时使用final和static来修改一个变量，并且这个变量的数据类型是基本类型或java.lang.String的话，就生成ConstantValue属性来进行初始化，如果这个变量没有被final修饰，或者并非基本类型或字符串，则选择在类构造器中进行初始化。ConstantValue属性表结构如下：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/10.png" alt=""></p>
+<p>ConstantValue属性是一个定长属性，它的attribute_length数据项值必须为2。constantvalue_index数据项代表了常量池中一个字面常量的引用，根据字段类型不同，字面量可以是CONSTANT_Long_info,CONSTANT_Float_info,CONSTANT_Double_info,CONSTANT_Integer_info和CONSTANT_String_info常量中的一种。</p>
+<h2 id="7-InnerClasses属性"><a href="#7-InnerClasses属性" class="headerlink" title="7.InnerClasses属性"></a>7.InnerClasses属性</h2><p>InnerClasses属性表用于记录内部类与宿主类之间的关联。如果一个类中定义了内部类，那么编译器将会为它及它所包含的内部类生成InnerClasses属性表。表结构如下：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/深入理解Java虚拟机笔记-属性表集合11.png" alt=""></p>
+<p>数据项number_of_classes代表需要记录多少个内部类信息，每一个内部类的类的信息都由一个inner_class_info表进行描述。inner_class_info表结构如下：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/12.png" alt=""></p>
+<p>inner_class_info_index和outer_class_info_index都是指向常量池中CONSTANT_Class_infon常量的索引，分别代表了内部类和宿主类的符号引用。inner_name_index是指向常量池中CONSTANT_Utf8_info型常量的索引，代表这个内部类的名称，如果是匿名内部类，则这项值为0。inner_class_access_flags是内部类的访问标志，类型于类的access_flags，它的取值范围如下表：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/13.png" alt=""></p>
+<h2 id="8-Deprecated及Synthetic属性"><a href="#8-Deprecated及Synthetic属性" class="headerlink" title="8.Deprecated及Synthetic属性"></a>8.Deprecated及Synthetic属性</h2><p>Deprecated及Synthetic属性都属性于标志类型的布尔值属性，只存在有和没有的区别，没有属性值的概念。<br>Deprecated属性用于表示某个类，字段或方法，已经被程序作者定为不再推荐使用，它可以通过代码中使用@Deprecated注解进行设置。<br>Synthetic属代表此字段或方法并不是由Java源码直接产生的，而是由编译器自行添加的，在JDK1.5之后，标识一个类，字段或方法是编译器自动产生的，也可以设置它们访问标志中的ACC_SYNTHETIC标志位，其中最典型的就是Bridge Method。所有非用户代码生产的类，方法及字段都应当至少设置Synthetic属性和ACC_SYNTHETIC标志位中的一项，唯一的例外是实例构造器“”方法和类构造器“&lt;clinit”方法。</p>
+<p>Deprecated及Synthetic属性表结构如下：</p>
+<p><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/14.png" alt=""></p>
+<p>其中attribute_length数据项的值必须为0，因为没有任何属性值需要设置。</p>
+<p>在JDK1.5和JDK1.6中一共增加了10项属性，具体如下：<br><img src="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/15.png" alt=""></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/学习笔记/">学习笔记</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/10/深入理解Java虚拟机笔记-方法表集合/">
+                <span class="level-item">深入理解Java虚拟机笔记---方法表集合</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="宾哥部落格">
+                    
+                    <p class="is-size-4 is-block">
+                        宾哥部落格
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        一个有态度的程序猿
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        47
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        21
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/SeekingPlumBlossoms">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/SeekingPlumBlossoms">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="http://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="http://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/JVM/">
+            <span class="level-start">
+                <span class="level-item">JVM</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/docker/">
+            <span class="level-start">
+                <span class="level-item">docker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/java/">
+            <span class="level-start">
+                <span class="level-item">java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/中间件/">
+            <span class="level-start">
+                <span class="level-item">中间件</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CAP/">
+                        <span class="tag">CAP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JDBC/">
+                        <span class="tag">JDBC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Mybatis/">
+                        <span class="tag">Mybatis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SpringMVC/">
+                        <span class="tag">SpringMVC</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/docker/">
+                        <span class="tag">docker</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/java随笔/">
+                        <span class="tag">java随笔</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/json/">
+                        <span class="tag">json</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/message/">
+                        <span class="tag">message</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nacos/">
+                        <span class="tag">nacos</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/okHttp/">
+                        <span class="tag">okHttp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/redis/">
+                        <span class="tag">redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/session/">
+                        <span class="tag">session</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/thread/">
+                        <span class="tag">thread</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/事故/">
+                        <span class="tag">事故</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分布式/">
+                        <span class="tag">分布式</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/单点登陆/">
+                        <span class="tag">单点登陆</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/学习笔记/">
+                        <span class="tag">学习笔记</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/技术心得/">
+                        <span class="tag">技术心得</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/排查工具/">
+                        <span class="tag">排查工具</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/线程池/">
+                        <span class="tag">线程池</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/設計模式/">
+                        <span class="tag">設計模式</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="深入理解Java虚拟机笔记---属性表集合" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

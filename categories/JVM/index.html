@@ -151,6 +151,363 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T07:11:56.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    25 分钟 读完 (大约 3788 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/">深入理解Java虚拟机笔记---属性表集合</a>
+            
+        </h1>
+        <div class="content">
+            <p>在Class文件，字段表，方法表中都可以携带自己的属性表集合，以用于描述某些场景专有的信息。与Class文件中其它的数据项目要求的顺序、长度和内容不同，属性表集合的限制稍微宽松一些，不再要求各个属性表具有严格的顺序，并且只要不与已有的属性名重复，任何人实现的编译器都可以向属性表中写入自己定义的属性信息，Java虚拟机运行时会忽略掉它不认识的属性。为了能正确地解析Class文件，《Java虚拟机规范(第二版)》中预定义了9荐虚拟机实现应当能识别的属性，具体如下表所示：<br></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-属性表集合/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T07:07:52.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 589 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-方法表集合/">深入理解Java虚拟机笔记---方法表集合</a>
+            
+        </h1>
+        <div class="content">
+            <p>方法表的结构与字段表一样，依次包含了访问标志(access_flags)，名称索引(name_index)，描述符索引(descriptor_index)，属性表集合(attributes)几项，如下表所示：<br></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-方法表集合/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T07:03:21.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1112 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-字段表集合/">深入理解Java虚拟机笔记---字段表集合</a>
+            
+        </h1>
+        <div class="content">
+            <p>字段表(field_info)用于描述接口或类中声明的变量。字段(field)包括了类级变量或实例变量，但不包括方法内部声明的变量。描述一个字段的信息有：字段的作用域(public,private,protected修饰符)，是类级变量还是实例级变量(static修饰符)，可变性(final)，并发可见性(volatile修饰符，是否强制从主内存读写)，是否可序列化(transient修饰符)，字段数据类型(基本数据类型，对象，数组)，字段名称。这些信息中，各个修改符都是布尔值，要么有某个修饰符，要么没有，很适合使用标志位来表示。而字段叫什么名字，字段被定义为什么数据类型，这些都是无法固定的，只能引用常量池中的常量来描述。下面是字段表的最终格式。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-字段表集合/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T07:02:15.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 413 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-类索引-父类索引-接口索引集合/">深入理解Java虚拟机笔记---类索引-父类索引-接口索引集合</a>
+            
+        </h1>
+        <div class="content">
+            <p>类索引(this_class)和父类索引(super_class)都是u2类型的数据，而接口索引(interfaces)是一组u2类型的数据集合，class文件中由这三项数据来确定这个类的继承关系。类索引用于确定这个类的全限定名，父类索引用于确定这个类的父类的全限定名。由于Java语言不允许多继承，所以父类索引只有一个，除了java.lang.Object之外，所有的Java类都有父类，因了除了java.lang.Object之外，所有Java类的父类索引都不为0。接口索引集合用来描述这个实现实现了哪些接口，这些被实现的接口将按照implements语句后的接口顺序从左到右排列在接口的索引集合中。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-类索引-父类索引-接口索引集合/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T06:54:20.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 168 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-访问标志/">深入理解Java虚拟机笔记---访问标志</a>
+            
+        </h1>
+        <div class="content">
+            <p>常量池结束之后，紧接着的2个字节代表访问标志(access_flags)，这个标志用于识别一些或接口层次的访问信息，包括：这个class是类还是接口；是否定义为public类型；是否定义为abstract类型；如果是类的话，是否被声明为final，等等。具体的标志五个一标志的含义如下表：<br></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-访问标志/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T06:45:03.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 830 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-class类文件魔数-版本-常量池/">深入理解Java虚拟机笔记---class类文件魔数,版本,常量池</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-魔数"><a href="#1-魔数" class="headerlink" title="1.魔数"></a>1.魔数</h2><p>每个class文件的头4个字节称为魔数(Magic Number)，其值为：0xCAFEBABE，它的唯一作用是用于确定这个文件是否为一个能被虚拟机接受的class文件。使用魔数而不是扩展名来进行识别主要是基于安全的考虑，因为文件的扩展名可以随意地被改动。<br></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-class类文件魔数-版本-常量池/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T06:40:50.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 427 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-class类文件结构概述/">深入理解Java虚拟机笔记---class类文件结构概述</a>
+            
+        </h1>
+        <div class="content">
+            <p>class文件是一组以8位字节为基础单位的二进制流，各个数据项目严格紧凑地排列在class文件中，中间没有任何分隔符。当遇到需要占用8位字节以上的的数据项时，则会按照高位在前的方式侵害成若干个8位字节进行存储。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-class类文件结构概述/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-06T09:03:17.000Z">2019-06-06</time>
                 
                 <div class="level-item">
@@ -298,210 +655,25 @@
 
 
 
-    <div class="card">
+
     
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-06T05:34:52.000Z">2019-06-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    16 分钟 读完 (大约 2395 个字)
-                </span>
-                
-            </div>
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/JVM/page/0/">上一页</a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/JVM/page/2/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
             
-                <a class="has-link-black-ter" href="/2019/06/06/深入理解Java虚拟机笔记-垃圾收集器/">深入理解Java虚拟机笔记---垃圾收集器</a>
+            <li><a class="pagination-link is-current" href="/categories/JVM/">1</a></li>
             
-        </h1>
-        <div class="content">
-            <p>如果说收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现。Java虚拟机规范中对象垃圾收集器应该如何实现并没有任何规定，因此不同的厂商，不同版本的虚拟机所提供的收集器可能会有很的差别，并且一般会提供参数供用户根据自己的应用特点和要求组合出各个年代所使用的收集器。下面是Sun HotSpot虚拟机1.6版本Update22包含的所有收集器：<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/06/深入理解Java虚拟机笔记-垃圾收集器/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
+            <li><a class="pagination-link has-text-black-ter" href="/categories/JVM/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-06T02:22:45.000Z">2019-06-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1337 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/06/深入理解Java虚拟机笔记-垃圾收集算法/">深入理解Java虚拟机笔记---垃圾收集算法</a>
-            
-        </h1>
-        <div class="content">
-            <p>当对象判定为”已死”状态，虚拟就要采取一定的手段将这些对象从内存中移除，即回收垃圾，回收过程有采用一定的算法。如下是一些主要的垃圾收集算法：</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/06/深入理解Java虚拟机笔记-垃圾收集算法/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-05T09:13:40.000Z">2019-06-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1004 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/05/深入理解Java虚拟机笔记-判断对象是否存活/">深入理解Java虚拟机笔记---判断对象是否存活</a>
-            
-        </h1>
-        <div class="content">
-            <p>堆中几乎存放着Java世界中所有的对象实例，垃圾收集器在对堆回收之前，第一件事情就是要确定这些对象哪些还“存活”着，哪些对象已经“死去”(即不可能再被任何途径使用的对象)</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/05/深入理解Java虚拟机笔记-判断对象是否存活/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-05T06:00:01.000Z">2019-06-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    16 分钟 读完 (大约 2353 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/05/深入理解Java虚拟机笔记-内存区域/">深入理解Java虚拟机笔记---内存区域</a>
-            
-        </h1>
-        <div class="content">
-            <p>Java虚拟机在执行Java程序过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有自各的用途，以及创建及销毁时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范(第2版)》规定，Java虚拟机管理的内存区域包括以下几个运行时数据区域，如下图:<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/05/深入理解Java虚拟机笔记-内存区域/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -543,7 +715,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        40
+                        47
                     </p>
                 </div>
             </div>
@@ -632,7 +804,7 @@
                 <span class="level-item">JVM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
@@ -787,7 +959,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/学习笔记/">
                         <span class="tag">学习笔记</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
