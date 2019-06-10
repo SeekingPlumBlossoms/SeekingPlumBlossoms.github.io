@@ -2,27 +2,23 @@
 <html  lang="zh">
 <head>
     <meta charset="utf-8">
-<title>Nacos之基于springBoot注册中心的整合 - 宾哥部落格</title>
+<title>深入理解Java虚拟机笔记---内存分配与回收策略 - 宾哥部落格</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
 
-    <meta name="description" content="序接入上篇的内容，本次主要说明Nacos作为注册中心的用法,并且是使用dubbo使用注解的方式进行访问。">
-<meta name="keywords" content="nacos">
+    <meta name="description" content="Java技术体系中的自动内存管理最终可以归结为自动化地解决了两个问题：给对象分配内存以及回收分配给对象的内存。对象的内存分配往大的方向上讲，就是在堆上分配，对象主要分配在新生代的Eden区上，如果启动了本地线程分配缓冲(-XX:+UseTLAB,默认已开启)，将按线程优先在TLAB上分配。少数情况下也可能会直接分配在老年代中，分配的规则并不是百分之百固定的，其细节取决于当前使用的是哪一种垃圾收集器">
+<meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nacos之基于springBoot注册中心的整合">
-<meta property="og:url" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot注册中心的整合/index.html">
+<meta property="og:title" content="深入理解Java虚拟机笔记---内存分配与回收策略">
+<meta property="og:url" content="http://yoursite.com/2019/06/06/深入理解Java虚拟机笔记-内存分配与回收策略/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="序接入上篇的内容，本次主要说明Nacos作为注册中心的用法,并且是使用dubbo使用注解的方式进行访问。">
+<meta property="og:description" content="Java技术体系中的自动内存管理最终可以归结为自动化地解决了两个问题：给对象分配内存以及回收分配给对象的内存。对象的内存分配往大的方向上讲，就是在堆上分配，对象主要分配在新生代的Eden区上，如果启动了本地线程分配缓冲(-XX:+UseTLAB,默认已开启)，将按线程优先在TLAB上分配。少数情况下也可能会直接分配在老年代中，分配的规则并不是百分之百固定的，其细节取决于当前使用的是哪一种垃圾收集器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot注册中心的整合/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot注册中心的整合/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot注册中心的整合/5.png">
-<meta property="og:updated_time" content="2019-04-02T05:27:57.958Z">
+<meta property="og:updated_time" content="2019-06-10T05:26:02.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nacos之基于springBoot注册中心的整合">
-<meta name="twitter:description" content="序接入上篇的内容，本次主要说明Nacos作为注册中心的用法,并且是使用dubbo使用注解的方式进行访问。">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/20/Nacos之基于springBoot注册中心的整合/1.png">
+<meta name="twitter:title" content="深入理解Java虚拟机笔记---内存分配与回收策略">
+<meta name="twitter:description" content="Java技术体系中的自动内存管理最终可以归结为自动化地解决了两个问题：给对象分配内存以及回收分配给对象的内存。对象的内存分配往大的方向上讲，就是在堆上分配，对象主要分配在新生代的Eden区上，如果启动了本地线程分配缓冲(-XX:+UseTLAB,默认已开启)，将按线程优先在TLAB上分配。少数情况下也可能会直接分配在老年代中，分配的规则并不是百分之百固定的，其细节取决于当前使用的是哪一种垃圾收集器">
 
 
 
@@ -92,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Nacos之基于springBoot注册中心的整合" height="28">
+                <img src="/images/logo.svg" alt="深入理解Java虚拟机笔记---内存分配与回收策略" height="28">
             
             </a>
         </div>
@@ -148,17 +144,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-20T07:30:15.000Z">2019-03-20</time>
+                <time class="level-item has-text-grey" datetime="2019-06-06T09:03:17.000Z">2019-06-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/中间件/">中间件</a>
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 583 个字)
+                    9 分钟 读完 (大约 1363 个字)
                 </span>
                 
             </div>
@@ -166,62 +162,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Nacos之基于springBoot注册中心的整合
+                深入理解Java虚拟机笔记---内存分配与回收策略
             
         </h1>
         <div class="content">
-            <h3 id="序"><a href="#序" class="headerlink" title="序"></a>序</h3><p>接入上篇的内容，本次主要说明Nacos作为注册中心的用法,并且是使用dubbo使用注解的方式进行访问。</p>
-<a id="more"></a>
-<h3 id="开始搭建之旅"><a href="#开始搭建之旅" class="headerlink" title="开始搭建之旅"></a>开始搭建之旅</h3><ol>
-<li><p>新建maven工程并且在其中新建2个SringBoot2.X的工程，如下图所示</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2019/03/20/Nacos之基于springBoot注册中心的整合/1.png" alt=""></h2></li>
-<li><p>开始提供者provider的工程搭建</p>
+            <p>Java技术体系中的自动内存管理最终可以归结为自动化地解决了两个问题：给对象分配内存以及回收分配给对象的内存。对象的内存分配往大的方向上讲，就是在堆上分配，对象主要分配在新生代的Eden区上，如果启动了本地线程分配缓冲(-XX:+UseTLAB,默认已开启)，将按线程优先在TLAB上分配。少数情况下也可能会直接分配在老年代中，分配的规则并不是百分之百固定的，其细节取决于当前使用的是哪一种垃圾收集器组合，还有虚拟机中与内存相关的参数设置。<br>下面是几条主要的最普遍的内存分配规则：<br><a id="more"></a></p>
+<h2 id="1-对象优先在Eden分配"><a href="#1-对象优先在Eden分配" class="headerlink" title="1.对象优先在Eden分配"></a>1.对象优先在Eden分配</h2><p>大多数情况下，对象在新生代Eden区中分配。当Eden区没有足够空间进行分配时，虚拟机将发起一次Minor GC，如果GC后新生代存活的对象无法全部放入Survivor空间，则需要通过分配担保机制提前进入到老年代中，前提是老年代不能容纳所有存活对象，只能容纳部分。则未能进入到老年代的存活对象将继续分配在Eden中，如果Eden区也还未能容纳剩余的存储对象虚拟机将抛出OutOfMemoryError错误。虚拟机提供了-XX:+PrintGCDetails参数用于输出收集器的日志参数。</p>
 <ul>
-<li>引入Maven依赖<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;dubbo-registry-nacos&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.0.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;curator-framework&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- Dubbo dependency --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;dubbo&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6.5&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!-- Alibaba Spring Context extension --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.spring&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;nacos-discovery-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.2.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>minor GC:指发生在新生代的垃圾收集动作，因为Java对象大多都具备朝生夕死的特性，所以MinorGC非常频繁，一般回收速度也比较快</li>
+<li>FullGC：指发生在老年代的GC，出现了FullGC，经常会伴随至少一次minorGC。fullGc的速度会比minorGC慢10倍以上。</li>
 </ul>
-<hr>
-<ul>
-<li><p>在Application.properties中添加如下配置</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">## application</span><br><span class="line">dubbo.application.name = dubbo-provider-demo</span><br><span class="line">## Nacos registry address</span><br><span class="line">dubbo.registry.id = dubboRegistry</span><br><span class="line">dubbo.registry.address = ****Nacos****:<span class="hljs-number">8848</span></span><br><span class="line">dubbo.registry.protocol=nacos</span><br><span class="line">## Dubbo Protocol</span><br><span class="line">dubbo.protocol.id = dubbo</span><br><span class="line">dubbo.protocol.name = dubbo</span><br><span class="line">dubbo.protocol.port = <span class="hljs-number">20880</span></span><br><span class="line"># Provider @Service version</span><br><span class="line">demo.service.version=<span class="hljs-number">1.0</span>.0</span><br><span class="line">demo.service.name = demoService</span><br></pre></td></tr></table></figure>
-<p><strong>注意：其中：Nacos为Nacos服务器地址，Naocs的部署的方式需要为集群方式</strong></p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>如果出现以下错误</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalStateException: No such extension com.alibaba.dubbo.registry.RegistryFactory by name nacos</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这个错误的意思是：Dubbo的注册协议找不到Nacos类型的实现类。原因分析如下:dubbo2.5.6没有引入注册到Nacos实现类</p>
-<p>  <img src="/2019/03/20/Nacos之基于springBoot注册中心的整合/4.png" alt="原因分析"></p>
-</li>
-<li><p>需要加入新jar</p>
-<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;dubbo-registry-nacos&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;0.0.1&lt;/version&gt;</span><br><span class="line"> &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>问题解决！！！</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>新建一个实现类ProviderServiceImpl继承ProviderServicem,里面只有一个方法sayHello：<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Service</span>(registry  = <span class="hljs-string">"dubboRegistry"</span>,version = <span class="hljs-string">"1.0"</span>,group = <span class="hljs-string">"providerDemo"</span>,owner = <span class="hljs-string">"yebin"</span>,timeout = <span class="hljs-number">5000</span>)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProviderServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ProviderService</span> </span>&#123;</span><br><span class="line"><span class="hljs-meta">@Override</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">sayHello</span><span class="hljs-params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">"***** OH ， My God!~~~~"</span> + name + <span class="hljs-string">",天下无敌，唯我独尊~~~~!!! *****"</span>;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li>生产者启动类配置，需要加上EnableDubbo注解<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-meta">@EnableDubbo</span>(scanBasePackages = <span class="hljs-string">"com.nacos.provider.demo"</span>)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProviderApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        SpringApplication.run(ProviderApplication.class, args);</span><br><span class="line">        System.out.println(<span class="hljs-string">"DemoService provider is starting..."</span>);</span><br><span class="line">        <span class="hljs-comment">//程序等待不关闭</span></span><br><span class="line">        System.in.read();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>消费者配置文件同提供者一致，消费测试如下</p>
-<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Component</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConsumeService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Reference</span>(version = <span class="hljs-string">"1.0"</span>,group = <span class="hljs-string">"providerDemo"</span>,registry = <span class="hljs-string">"dubboRegistry"</span>)</span><br><span class="line">    ProviderService providerService;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@PostConstruct</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initData</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)&#123;</span><br><span class="line">            System.out.println(providerService.sayHello(<span class="hljs-string">"叶宾"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动测试,先启动生产者,在启动消费者,出现如下截图，表示成功<br><img src="/2019/03/20/Nacos之基于springBoot注册中心的整合/5.png" alt="启动成功"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>整合Nacos+SpringBoot+Dubbo完成了,后续会继续总结下原理，不能总停留在用上，要走上道的意义。</p>
-</li>
-</ul>
-<p>友情链接：<br><a href="http://wuwenliang.net" target="_blank" rel="noopener">(大佬)SnoWalker’s Blog</a></p>
-</li>
-</ol>
+<h2 id="2-大对象直接进入老年代"><a href="#2-大对象直接进入老年代" class="headerlink" title="2.大对象直接进入老年代"></a>2.大对象直接进入老年代</h2><p>所谓大对象是指，需要大量连续内存空间的Java对象，最典型的大对象就是那种很长的字符串及数组。大对象对虚拟机的内存分配来说是一个坏消息，经常出现大对象容易导致内存还有不少空间就提前触发垃圾收集以获取足够的连续空间来“安置”它们。<br>虚拟机担任了一个-XX:PretenureSizeThreshold参数，令大于这个设置值的对象直接在老年代中分配。这样做的目的是避免在Eden区及两个Survivor区之间发生大量的内存拷贝。</p>
+<h2 id="3-长期存活的对象将进入老年代"><a href="#3-长期存活的对象将进入老年代" class="headerlink" title="3.长期存活的对象将进入老年代"></a>3.长期存活的对象将进入老年代</h2><p>虚拟机采用了分代收集的思想来管理内存，那么内存回收时就必须能够识别哪些对象应当放在新生代，哪些对象应该放在老年代。为了做到这点，虚拟机给每个对象定义了一个对象年龄计数器。如果对象在Eden区出生并经过第一次Minor GC后仍然存活，并且能被Survivor区容纳的话，将被移到Survivor区中，并将对象年龄设置为1。对象在Survivor区中每熬过一次Minor GC，年龄就增加1岁。当它的年龄增加到一定程度(默认为15岁)，就会被晋升到老年代中。对象晋升老年代的年龄阈值，可以通过参数-XX:MaxTenuringThreshold来设置。</p>
+<h2 id="4-动态对象年龄判定"><a href="#4-动态对象年龄判定" class="headerlink" title="4.动态对象年龄判定"></a>4.动态对象年龄判定</h2><p>为了更好的适应不同程序的内存状况，虚拟机并不总是要求对象年龄必须达到MaxTenuringThreshold才能晋升到老年氏，如果在Survivor空间中相同年龄所有对象大小的总和大于Survivor空间的一半，那么年龄大于或等于该年龄的对象就直接进行老年代，无须等到MaxTenuringThreshold中要求的年龄。</p>
+<h2 id="5-空间分配担保"><a href="#5-空间分配担保" class="headerlink" title="5.空间分配担保"></a>5.空间分配担保</h2><p>在发生Minor GC时，虚拟机会检测之前每次晋升到老年代的平均大小是否大于老年代剩余空间的大小，如果大于，则改为直拉进行一次Full GC。如果小于，则查看HandlePromotionFailure设置是否允许担保失败；如果允许，那只会进行Minor GC；如果不允许，则要改为进行一次Full GC。</p>
+<p>新生代使用复制收集算法，但为了提高内存利用率，只使用其中一个Survivor空间来作为轮换备份，因此当出现大量对象在Minor GC后仍然存活的情况时，最需要老年代进行分配担保，让Survivor空间无法容纳的对象直接进入老年代。</p>
+<p>取平均值进行比较仍然是一种动态概率的手段，也就是说如果某次Minor GC存活的对象突增，远高于平均值的话，依然会导致担保失败(HandlePromotionFailure)。如果出现了HandlePromotionFailure，那只好在失败后重新发起一次Full GC。虽然担保失败时绕圈子是最大的，但是大部情况下还是会将HandlePromotionFailure开关打开，避免Full GC过于频繁。</p>
 
         </div>
         
@@ -229,7 +185,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/nacos/">nacos</a>
+                    <a class="has-link-grey -link" href="/tags/学习笔记/">学习笔记</a>
                 </div>
             </div>
         </div>
@@ -246,17 +202,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/25/深入浅出redis/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深入浅出redis</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/20/Nacos之基于springBoot配置中心的整合/">
-                <span class="level-item">Nacos之基于springBoot配置中心的整合</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/06/深入理解Java虚拟机笔记-JVM的运行模式/">
+                <span class="level-item">深入理解Java虚拟机笔记---JVM的运行模式</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -604,7 +553,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Nacos之基于springBoot注册中心的整合" height="28">
+                    <img src="/images/logo.svg" alt="深入理解Java虚拟机笔记---内存分配与回收策略" height="28">
                 
                 </a>
                 <p class="is-size-7">
