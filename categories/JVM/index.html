@@ -151,6 +151,315 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-21T02:55:54.000Z">2019-06-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    几秒 读完 (大约 0 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/21/深入理解Java虚拟机笔记-运行时栈帧结构/">深入理解Java虚拟机笔记---运行时栈帧结构</a>
+            
+        </h1>
+        <div class="content">
+            
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-11T08:46:56.000Z">2019-06-11</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1862 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/11/深入理解Java虚拟机笔记-双亲委派模型/">深入理解Java虚拟机笔记---双亲委派模型</a>
+            
+        </h1>
+        <div class="content">
+            <p>从java虚拟机的角度来讲，只存在两种不同类型的类加载器：一种是启动类加载器（Bootstrap ClassLoader），这个类加载器使用C++语音实现，是虚拟机自身的一部分；另一部分就是所有其他的类加载器，这些类加载器都有Java语音实现，独立于虚拟机外部，并且全部都继承自抽象类java.lang.ClassLoader。<br></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/11/深入理解Java虚拟机笔记-双亲委派模型/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T09:25:09.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    29 分钟 读完 (大约 4345 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-类加载过程/">深入理解Java虚拟机笔记---类加载过程</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-加载"><a href="#1-加载" class="headerlink" title="1.加载"></a>1.加载</h2><p>“加载”是“类加载”过程的一个阶段，在加载阶段，虚拟机需要完成以下3件事情：</p>
+<ul>
+<li>通过一个类的全限定名来获取定义此类的二级制字节流</li>
+<li>将这个字节流所代表的静态存储结构转化为方法去的运行时数据结构</li>
+<li>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口</li>
+</ul>
+<p>虚拟机规范的这个3点要求其实并不算具体，因此虚拟机实现与具体应用的灵活度都是相当大的。例如：“通过一个类的全限定名来获取定义此类的二进制字节流”这条，它没有指明二进制字节流要从一个Class文件中获取，准确的说是根本没有指明要从哪里获取、怎么获取。虚拟机设计团队在加载阶段搭建了一个相当开放的、广阔的“舞台”，Java发展历程中，充满创造力的开发人员则在这个“舞台”上玩出了各种花样，许多举足轻重的Java技术都建立在这一基础上，例如：</p>
+<ol>
+<li>从ZIP包中获取，这很常见，最终成功日后JAR、EAR、WAR格式的基础</li>
+<li>从网络中获取，这种场景最典型的应用就是Applet</li>
+<li>运行时计算机生成，这种场景使用得最多的就是动态代理技术，在Java.lang.reflect.Proxy中，就是用了ProxyGenerator.generateProxyClass来为特定的接口生成形式为“*$Proxy”的代理类的二进制字节流</li>
+<li>由其他文件生成，典型场景是JSP应用，即由JSP文件生成对应的Class类</li>
+<li>从数据库中读取，这种场景相对少见，例如有些中间件服务器（如SAP Netweaver）可以选择把程序安装到数据库中来完成程序代码在集群间的分发</li>
+<li>。。。。</li>
+</ol>
+<p>加载阶段与连接阶段的部分内容（如一部分字节码文件格式验证动作）是交叉进行的，加载阶段尚未完成，连接阶段可能已经开始了，但是这些记载加载阶段之中进行的动作，仍然属于连接阶段的内容，这两个阶段的开始时间 仍然保持着固定的先后顺序。</p>
+<h2 id="2-验证"><a href="#2-验证" class="headerlink" title="2.验证"></a>2.验证</h2><p>验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
+<p>尽管验证阶段是非常重要的，并且验证阶段的工作量在虚拟机的类加载子系统中占了很大一部分。如果验证到输入的字节流不符合Class文件的存储格式，就抛出一个java.lang.VerifyError错误或者其子错误。具体应当检查哪些方面，如何检查，何时检查，虚拟机规范都没有明确说明，所以不同的虚拟机对验证的实现可能会有所不同，但大致上都会完成四个阶段的验证过程：文件格式验证，元数据验证，字节码验证和符号引用验证。</p>
+<h2 id="3-准备"><a href="#3-准备" class="headerlink" title="3.准备"></a>3.准备</h2><p>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区中进行分配。需要强调的是：首先是这时候进行内存分配的仅包括类变量，而不包括实例变量，实例变量将会在对象实例化时随着对象一起分配是Java堆中。其次是这里所说的初始值“通常情况“下是数据类型的零值，假设一个类变量定义为：<br>public static int value = 123;<br>那么变量value在准备阶段过后的初始值是0而不是123，因为这时候尚未开始执行任何Java方法，而把value赋值为123的putstatic指令是在程序被编译后，存放于类构造器”&lt;“clinit”&gt;“方法中的，所以把value赋值为123的动作将在初始化阶段才会被执行。</p>
+<p>上面提到的”通常情况“下初始值为零值，但是，如果类字段的字段属性表中存在ConstantValue属性，那在准备阶段变量value就会初始初始化为ConstantValue属性所指定的值，假设上面类变量value被定义为：<br>public static final int value = 123;<br>编译时Javac将会为value生成ConstantValue属性表，在准备阶段虚拟会就会根据ConstantValue的设置将value赋值为123。</p>
+<h2 id="4-解析"><a href="#4-解析" class="headerlink" title="4.解析"></a>4.解析</h2><p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，在Class文件中它以CONSTANT_Class_info，CONSTANT_Fieldref_info，CONSTANT_Methodref_info等类型的常量出现。直接引用与符号引用的关联是：</p>
+<ul>
+<li><p>符号引用(Symbolic References)以一组符号来描述所引用的目录，符号可以任何形式的字面量，只要使用时能无歧义地定位到目标即可。符号引用与虚拟机实现的内存布局无关，引用的目标并不一定已经加载到了内存中。</p>
+</li>
+<li><p>直接引用可以是直接指向目标的指针，相对偏移量或是一个能间接定位到目标的句柄。直接引用与虚拟机实现的内存布局相关，同一个符号引用在不同的虚拟机实例上翻译出来的直接引用一般不会相同。如果有了直接引用，那引用的目标就必须已经在内存中存在。</p>
+</li>
+</ul>
+<p>虚拟机规范中并未规定解析阶段发生的具体时间，只要求在执行了newarray，heckcast，getfield，etstatic，instanceof，invokeinterface，invokespecial，nvokestatic，invokevritual，multianewarray，new，putfield和putstatic这13个用于操作符号引用的字节码指令之前，先对它们所使用的符号引用进行解析。所以虚拟机实现会根据需要来判断，到底是在类加载器加载时就是常量池中的符号引用进行解析，还是等到一个符号引用将要被使用时才去解析它。</p>
+<p>同一个符号引用可能会进行多次解析请求，虚拟机实现可能会对第一次解析的结果进行缓存从而避免解析动作重复进行。无论是否真正执行了多次解析操作，虚拟机需要保证的都是在同一个实体中，如果一个符号引用被成功解析过，那么后续的解析请求就应当一直成功；同样的，如果第一次解析失败了，其它指令对这个符号引用的解析请求也应该收到相同的异常。</p>
+<p>解析动作主要针对的是类或接口，字段，方法，接口方法四类符号引用进行的，分别对应于常量池的CONSTANT_Class_info，CONSTANT_Fieldref_info，CONSTANT_Methodref_info及CONSTANT_InterfaceMetodref_info四种常量类型。下面是这四种引用的解析过程。</p>
+<h3 id="1-类或接口的解析过程"><a href="#1-类或接口的解析过程" class="headerlink" title="1.类或接口的解析过程"></a>1.类或接口的解析过程</h3><p>假设当前代码所处的类为D，如果要把一个从未解析过的符号引用N解析为一个类或接口C的直接引用，那虚拟机完成整个解析过程需要包括以下3个步骤：</p>
+<ul>
+<li><p>如果C不是一个数组类型，那虚拟机将会把代表N的全限定名传递给D类的加载器去加载这个C。在加载过程中，由于无数据验证，字节码验证的需要，又将可能触发其它相关类的加载动作，例如加载这个类的父类或实现的接口。一旦这个加载过程出现了任何异常，解析过程就将宣告失败。</p>
+</li>
+<li><p>如果C是一个数组类型，并且数组的元素类型为对象，也就是N的描述符会是类似”[Ljava.lang.Integer”的形式，那么会按照第a点的规则加载数组元素类型。如果N的描述符如前面所假设的形式，需要加载的元素类型就是“java.lang.Integer”，接着由虚拟机生成一个代表此数组和元素的数组对象。</p>
+</li>
+<li><p>如果上面的步骤没有出现任何异常，那么C在虚拟机中实际上已经成为一个有效的类或接口了，但在解析完成之前还要进行符号引用验证，确认C是否具备对D的访问权限，如果发现不具体访问权限，将抛出java.lang.IllegalAccessError错误。</p>
+</li>
+</ul>
+<h3 id="2-字段解析"><a href="#2-字段解析" class="headerlink" title="2.字段解析"></a>2.字段解析</h3><p>要解析一个未被解析过的字段符号引用，首先将会对字段表内class_index项中索引的CONSTANT_Class_info符号引用进行解析，也就是字段所属性的类或接口的符号引用。如果在解析这个类或接口符号引用过程中出现了任何异常，都会导致字段符号引用解析失败。如果解析成功完成，那么这个字段所属性的类或接口用C表示，虚拟机规范要求如下步骤对C进行后续字段的搜索：</p>
+<ul>
+<li>如果C本身就包含了简单名称和字段描述符都与目标相匹配的字段，则返回这个字段的直接引用，查找结束。</li>
+<li>否则，如果C中实现了接口，将会按照继承关系从上往下递归搜索各个接口和它的父接口，如果接口中包含了简单名称答字段描述符都与目标相匹配的字段，则返回该字段的直接引用，查找结束。</li>
+<li>否则，如果C不是java.lang.Object的话，将会按照继承关系从上往下递归搜索其父类，如果在父类中包含了简单名称和字段描述符都与目标匹配的字段，则返回这个字段的直接引用，查找结束。</li>
+<li>否则，查找失败，招抛出java.lang.NoSuchFieldError错误。</li>
+</ul>
+<h3 id="3-类方法解析"><a href="#3-类方法解析" class="headerlink" title="3.类方法解析"></a>3.类方法解析</h3><p>类方法解析的第一个步骤与字段解析一样，也是需要先解析出方法表的class_index项中索引的方法所属性类或接口的符号引用，如果解析成功，依然用C表示这个类，接下来虚拟机将会按照如下步骤进行后续的类方法搜索：</p>
+<ul>
+<li>类方法和接口方法符号引用的常量类型定义是分开的，如果在类方法表中发现了class_index中索引的C是个接口，那么直接就抛出java.lang.IncompatibleClassChangeError错误。</li>
+<li>如果通了第a步，在类C中查找是否有简单名称和描述符与目标相匹配的方法，如果有则返回这个方法的直接引用，查找结束。</li>
+<li>否则，在类C的父类中递归查找是否有简单名称和字段描述符都与目标匹配的方法，则返回这个方法的直接引用，查找结束。</li>
+<li>否则，在类C实现的接口列表及它们的父接口中递归查找否有简单名称和字段描述符都与目标匹配的方法，说明类C是一个抽象类，这时候查找结束，抛java.lang.AbstractMethodError错误。</li>
+<li>否则，宣告查找失败，抛出java.lang.NoSuchMethodError错误。<br>最后，如果查找过程成功返回了直接引用，将会对晕个方法进行权限验证；如果发现不具务对此方法的访问权限，将抛出java.lang.IllegalAccessError错误。</li>
+</ul>
+<h3 id="4-接口方法解析"><a href="#4-接口方法解析" class="headerlink" title="4.接口方法解析"></a>4.接口方法解析</h3><p>接口方法也需要先解析出接口方法表中的class_index项中索引的方法所属性的类或接口的符号引用，如果解析成功，依然用C表示这个接口，接下来虚拟机将会按照如下步骤进行后续的接口访求搜索：</p>
+<ul>
+<li>与类方法解析相反，如果在接口方法表中发现了class_index中索引的C是个类而不是接口，那么直接就抛出java.lang.IncompatibleClassChangeError错误。</li>
+<li>否则，在接口C中查找是否有简单名称的描述符都与目标相匹配的方法，如果有则返回这个方法的直接引用，查找结束。</li>
+<li>否中，在接口C的父接口中递归查找，直到java.lang.Object类为止，看是否有简单名称和描述符都与目标相匹配的方法，如果有则返回这个方法的直接引用，查找结束。</li>
+<li>否则，宣告查找失败，抛出java.lang.NoSuchMethodError错误。<br>由于接口中的所有方法都默认是public的，所以不存在访问权限问题，因此接口方法的符号解析应该不会抛出java.lang.IllegalAccessError错误。</li>
+</ul>
+<h2 id="5-初始化"><a href="#5-初始化" class="headerlink" title="5.初始化"></a>5.初始化</h2><p>类的初始化是类加载过程的最后一步，前面的类加载动作，除了在加载阶段用户应用程序可以通过自定义类加载器参与之外，其余动作完全由虚拟机主导和控制。到了初始化阶段，才真正执行类中定义的Java程序代码(或者说是字节码)。</p>
+<p>在准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则是根据程序员通过程序制定的主观计划去初始化类变量和其它资源，或者可以从另外一个角度来表达：初始化阶段是执行类构造器&lt;“clinit”&gt;()方法的过程。&lt;“clinit”&gt;()方法执行过程可能会影响程序运行行为的一些特点与细节，如下：</p>
+<ol>
+<li>&lt;“clinit”&gt;()方法是由编译器自动收集类中所有类变量的赋值动作和静态语句块(static{})中的语句合并产生的，编译器收集的顺序是由语句在源文件中出现的顺序所决定的，静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后变量，在前面的静态语句块中可以赋值，但是不能访问。</li>
+<li>&lt;”clinit“&gt;()方法与类的构造器&lt;”init&gt;()不同，它不需要显示地调用父类类构造器，虚拟机会保证在子类的&lt;“clinit&gt;()方法执行之前，父类的&lt;”clinit”&gt;()方法已经执行完毕。因此在虚拟机中第一个被执行&lt;”clinit”&gt;()方法的类肯定是java.lang.Object。<br>由于父类的&lt;”clinit”&gt;()方法先执行，所就意味着父类中定义的静态语句块要优先于子类的类变量赋值操作。</li>
+<li>&lt;”clinit”&gt;()方法对于类或接口来说并不是必须的，如果一个类中没有静态语句块，也没有对类变量的赋值操作，那么编译器可以不为这类生成&lt;”clinit”&gt;()方法。</li>
+<li>接口中不能使用静态语句块，但仍然可以有变量初始化的同仁操作，因此接口与类一样都会生成&lt;”clinit”&gt;()方法，但接口与类不同的是，执行接口的&lt;”clinit”&gt;()方法不需要先执行父接口的&lt;”clinit”&gt;()方法。只有当父接口中定义的变量被使用时，父接口才会初始化。另外，接口的实现类在初始化时也不会执行接口的&lt;”clinit”&gt;()方法。</li>
+<li>虚拟机会保证一个类的&lt;”clinit”&gt;()方法在多线程环境中被正确地加锁同步，如果多个线程同时去初始化一个类，那么只会有一个线程去执行这个类的&lt;”clinit”&gt;()方法，其它线程都需要阻塞等待，直到活动线程执行&lt;”clinit”&gt;()方法完毕。如果在一个类的&lt;”clinit”&gt;()方法中有很耗时的操作，那就可能造成多个线程阻塞，在实际应用中这种阻塞往往是很隐蔽的。</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T07:47:10.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1772 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-类加载时机/">深入理解Java虚拟机笔记---类加载时机</a>
+            
+        </h1>
+        <div class="content">
+            <p>类从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期包括：加载、验证、准备、解析、初始化、使用和卸载7个阶段。其中验证、准备、解析3个部分统称为连接。<br></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-类加载时机/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-10T07:44:52.000Z">2019-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1118 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-引用类型和对象是否死亡/">深入理解Java虚拟机笔记---引用类型和对象是否死亡</a>
+            
+        </h1>
+        <div class="content">
+            <p>在JDK1.2以前，Java中的引用定义得很传统：如果reference类型的数值代表的是另外一块内存的起始地址，就称这块内存代表中一个引用。这种定义很纯粹，但太过狭隘，一个对象在这种定义下只有被引用或者没有引用两种状态，对于如何描述一个“食之无味，弃之可惜”的对象就显得无能为力；如果内存在进行垃圾收集后还是非常紧张，则可以抛弃这些对象。很多系统的缓存功能都符合这样的应用场景。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-引用类型和对象是否死亡/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-10T07:11:56.000Z">2019-06-10</time>
                 
                 <div class="level-item">
@@ -400,261 +709,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-10T06:45:03.000Z">2019-06-10</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 830 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-class类文件魔数-版本-常量池/">深入理解Java虚拟机笔记---class类文件魔数,版本,常量池</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="1-魔数"><a href="#1-魔数" class="headerlink" title="1.魔数"></a>1.魔数</h2><p>每个class文件的头4个字节称为魔数(Magic Number)，其值为：0xCAFEBABE，它的唯一作用是用于确定这个文件是否为一个能被虚拟机接受的class文件。使用魔数而不是扩展名来进行识别主要是基于安全的考虑，因为文件的扩展名可以随意地被改动。<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-class类文件魔数-版本-常量池/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-10T06:40:50.000Z">2019-06-10</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 427 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/10/深入理解Java虚拟机笔记-class类文件结构概述/">深入理解Java虚拟机笔记---class类文件结构概述</a>
-            
-        </h1>
-        <div class="content">
-            <p>class文件是一组以8位字节为基础单位的二进制流，各个数据项目严格紧凑地排列在class文件中，中间没有任何分隔符。当遇到需要占用8位字节以上的的数据项时，则会按照高位在前的方式侵害成若干个8位字节进行存储。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/10/深入理解Java虚拟机笔记-class类文件结构概述/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-06T09:03:17.000Z">2019-06-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1363 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/06/深入理解Java虚拟机笔记-内存分配与回收策略/">深入理解Java虚拟机笔记---内存分配与回收策略</a>
-            
-        </h1>
-        <div class="content">
-            <p>Java技术体系中的自动内存管理最终可以归结为自动化地解决了两个问题：给对象分配内存以及回收分配给对象的内存。对象的内存分配往大的方向上讲，就是在堆上分配，对象主要分配在新生代的Eden区上，如果启动了本地线程分配缓冲(-XX:+UseTLAB,默认已开启)，将按线程优先在TLAB上分配。少数情况下也可能会直接分配在老年代中，分配的规则并不是百分之百固定的，其细节取决于当前使用的是哪一种垃圾收集器组合，还有虚拟机中与内存相关的参数设置。<br>下面是几条主要的最普遍的内存分配规则：<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/06/深入理解Java虚拟机笔记-内存分配与回收策略/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-06T08:27:42.000Z">2019-06-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 423 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/06/深入理解Java虚拟机笔记-JVM的运行模式/">深入理解Java虚拟机笔记---JVM的运行模式</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>JVM有两种运行模式Server与Client。两种模式的区别在于，Client模式启动速度较快，Server模式启动较慢；但是启动进入稳定期长期运行之后Server模式的程序运行速度比Client要快很多。这是因为Server模式启动的JVM采用的是重量级的虚拟机，对程序采用了更多的优化；而Client模式启动的JVM采用的是轻量级的虚拟机。所以Server启动慢，但稳定后速度比Client远远要快。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/06/深入理解Java虚拟机笔记-JVM的运行模式/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-06T06:04:12.000Z">2019-06-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JVM/">JVM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1100 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/06/深入理解Java虚拟机笔记-理解GC日志/">深入理解Java虚拟机笔记---理解GC日志</a>
-            
-        </h1>
-        <div class="content">
-            <p>阅读GC日志是处理JAVA虚拟机内存问题的基础技能，他只是一些人为确定的规则，没有太多的技术含量。但是不能说它不重要。。。<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/06/深入理解Java虚拟机笔记-理解GC日志/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -715,7 +769,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        47
+                        53
                     </p>
                 </div>
             </div>
@@ -725,7 +779,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        4
+                        5
                     </p>
                 </div>
             </div>
@@ -804,7 +858,7 @@
                 <span class="level-item">JVM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">14</span>
+                <span class="level-item tag">19</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/docker/">
@@ -821,6 +875,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">14</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/redis/">
+            <span class="level-start">
+                <span class="level-item">redis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/中间件/">
@@ -938,7 +1000,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/事故/">
                         <span class="tag">事故</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -959,7 +1021,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/学习笔记/">
                         <span class="tag">学习笔记</span>
-                        <span class="tag is-grey">14</span>
+                        <span class="tag is-grey">19</span>
                     </a>
                 </div>
                 
