@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="1.加载“加载”是“类加载”过程的一个阶段，在加载阶段，虚拟机需要完成以下3件事情：  通过一个类的全限定名来获取定义此类的二级制字节流 将这个字节流所代表的静态存储结构转化为方法去的运行时数据结构 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口  虚拟机规范的这个3点要求其实并不算具体，因此虚拟机实现与具体应用的灵活度都是相当大的。例如：“通">
+    <meta name="description" content="1.加载“加载”是“类加载”过程的一个阶段，在加载阶段，虚拟机需要完成以下3件事情：  通过一个类的全限定名来获取定义此类的二级制字节流 将这个字节流所代表的静态存储结构转化为方法去的运行时数据结构 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Java虚拟机笔记---类加载过程">
 <meta property="og:url" content="http://yoursite.com/2019/06/10/深入理解Java虚拟机笔记-类加载过程/index.html">
 <meta property="og:site_name" content="宾哥部落格">
-<meta property="og:description" content="1.加载“加载”是“类加载”过程的一个阶段，在加载阶段，虚拟机需要完成以下3件事情：  通过一个类的全限定名来获取定义此类的二级制字节流 将这个字节流所代表的静态存储结构转化为方法去的运行时数据结构 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口  虚拟机规范的这个3点要求其实并不算具体，因此虚拟机实现与具体应用的灵活度都是相当大的。例如：“通">
+<meta property="og:description" content="1.加载“加载”是“类加载”过程的一个阶段，在加载阶段，虚拟机需要完成以下3件事情：  通过一个类的全限定名来获取定义此类的二级制字节流 将这个字节流所代表的静态存储结构转化为方法去的运行时数据结构 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-11T08:49:20.510Z">
+<meta property="og:updated_time" content="2019-09-01T15:56:32.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Java虚拟机笔记---类加载过程">
-<meta name="twitter:description" content="1.加载“加载”是“类加载”过程的一个阶段，在加载阶段，虚拟机需要完成以下3件事情：  通过一个类的全限定名来获取定义此类的二级制字节流 将这个字节流所代表的静态存储结构转化为方法去的运行时数据结构 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口  虚拟机规范的这个3点要求其实并不算具体，因此虚拟机实现与具体应用的灵活度都是相当大的。例如：“通">
+<meta name="twitter:description" content="1.加载“加载”是“类加载”过程的一个阶段，在加载阶段，虚拟机需要完成以下3件事情：  通过一个类的全限定名来获取定义此类的二级制字节流 将这个字节流所代表的静态存储结构转化为方法去的运行时数据结构 在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口">
 
 
 
@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    29 分钟 读完 (大约 4345 个字)
+                    29 分钟 读完 (大约 4346 个字)
                 </span>
                 
             </div>
@@ -172,6 +172,7 @@
 <li>将这个字节流所代表的静态存储结构转化为方法去的运行时数据结构</li>
 <li>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口</li>
 </ul>
+<a id="more"></a>
 <p>虚拟机规范的这个3点要求其实并不算具体，因此虚拟机实现与具体应用的灵活度都是相当大的。例如：“通过一个类的全限定名来获取定义此类的二进制字节流”这条，它没有指明二进制字节流要从一个Class文件中获取，准确的说是根本没有指明要从哪里获取、怎么获取。虚拟机设计团队在加载阶段搭建了一个相当开放的、广阔的“舞台”，Java发展历程中，充满创造力的开发人员则在这个“舞台”上玩出了各种花样，许多举足轻重的Java技术都建立在这一基础上，例如：</p>
 <ol>
 <li>从ZIP包中获取，这很常见，最终成功日后JAR、EAR、WAR格式的基础</li>
@@ -320,7 +321,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        53
+                        54
                     </p>
                 </div>
             </div>
@@ -330,7 +331,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </div>
             </div>
@@ -340,7 +341,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -404,6 +405,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/IDEA/">
+            <span class="level-start">
+                <span class="level-item">IDEA</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/JVM/">
             <span class="level-start">
                 <span class="level-item">JVM</span>
@@ -544,6 +553,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/thread/">
                         <span class="tag">thread</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/tools/">
+                        <span class="tag">tools</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
